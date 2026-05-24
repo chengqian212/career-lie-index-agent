@@ -1,4 +1,4 @@
-﻿"""Prompt 模块：所有 Agent 的系统提示词（LangChain 模板格式）
+"""Prompt 模块：所有 Agent 的系统提示词（LangChain 模板格式）
 
 每个 Prompt 包含以下结构：
 - 【功能描述】：Agent 的核心功能
