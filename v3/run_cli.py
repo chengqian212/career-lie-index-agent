@@ -93,6 +93,10 @@ def create_initial_state(max_rounds: int = MAX_ROUNDS) -> dict:
         "priority_issue": "",           # 优先关注的问题
         "followup_strategy": "",        # 追问策略
         "called_specialists": [],       # 实际调用的专家列表
+
+        # v3.3 新增字段：策略监督相关
+        "stop_reason": "",              # strategy_supervisor 决定继续或结束的原因
+        "target_anomaly_id": "",        # 本轮追问针对的具体异常ID
     }
 
 

@@ -57,5 +57,9 @@ class DialogueState(TypedDict):
     priority_issue: str                 # 优先关注的问题描述
     followup_strategy: str              # 追问策略（如深入/澄清/验证）
 
+    # ==================== v3.3 新增：策略监督相关字段 ====================
+    stop_reason: str                    # strategy_supervisor 决定继续或结束的原因
+    target_anomaly_id: str              # 本轮追问针对的具体异常ID，用于更新 followup_count
+
     # ==================== v3 新增：记录实际调用的专家 ====================
     called_specialists: Annotated[List[str], operator.add]  # 已调用专家记录，使用 add reducer 自动累加

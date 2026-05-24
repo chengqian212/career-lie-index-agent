@@ -10,6 +10,7 @@ v3.3 改进：
 - 在生成追问后更新对应异常的 followup_count
 - 达到上限后标记 stop_followup=True
 - _infer_priority_issue 额外返回 target_anomaly_id
+- 优先使用 strategy_supervisor 输出的状态字段（priority_issue 等）
 """
 
 import json
@@ -172,18 +173,24 @@ def followup_generation_node(state: DialogueState) -> dict:
     """
     llm = get_llm()
 
+    # v3.3 改进：优先使用 strategy_supervisor 输出的顶层状态字段
     routing_decision = state.get("routing_decision", {})
     routing_reason = ""
 
-    priority_issue = ""
-    followup_strategy = ""
-    target_anomaly_id = ""
+    priority_issue = state.get("priority_issue", "")
+    followup_strategy = state.get("followup_strategy", "")
+    target_anomaly_id = state.get("target_anomaly_id", "")
 
     if isinstance(routing_decision, dict):
         routing_reason = routing_decision.get("routing_reason", "")
-        priority_issue = routing_decision.get("priority_issue", "")
-        followup_strategy = routing_decision.get("followup_strategy", "")
-        target_anomaly_id = routing_decision.get("target_anomaly_id", "")
+
+        # 如果顶层没有，再回退到 routing_decision 中读取
+        if not priority_issue:
+            priority_issue = routing_decision.get("priority_issue", "")
+        if not followup_strategy:
+            followup_strategy = routing_decision.get("followup_strategy", "")
+        if not target_anomaly_id:
+            target_anomaly_id = routing_decision.get("target_anomaly_id", "")
 
     # 如果路由决策没有有效信息，自动推断
     if _is_invalid_priority_issue(priority_issue):

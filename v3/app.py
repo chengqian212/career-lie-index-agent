@@ -259,6 +259,9 @@ def create_initial_state(max_rounds: int = MAX_ROUNDS) -> dict:
         "priority_issue": "",
         "followup_strategy": "",
         "called_specialists": [],
+        # v3.3 新增字段
+        "stop_reason": "",
+        "target_anomaly_id": "",
     }
 
 
