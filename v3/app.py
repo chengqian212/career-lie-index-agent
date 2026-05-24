@@ -324,7 +324,7 @@ def render_message(msg: dict, is_streaming: bool = False):
         """, unsafe_allow_html=True)
 
 
-def _save_session_to_outputs(state: dict, thinking_history: list) -> str:
+def _save_session_to_outputs(state: dict, thinking_history: list, round_records: list) -> str:
     """保存完整测试会话到 outputs/reports 目录
 
     Args:
@@ -344,6 +344,7 @@ def _save_session_to_outputs(state: dict, thinking_history: list) -> str:
     data = {
         "round_id": state.get("round_id"),
         "max_rounds": state.get("max_rounds"),
+        "round_records": round_records,
         "dialogue_history": state.get("dialogue_history", []),
         "followup_history": state.get("followup_history", []),
         "facts_table": state.get("facts_table", []),
@@ -398,7 +399,9 @@ def main():
     if "is_streaming" not in st.session_state:
         st.session_state.is_streaming = False
     if "thinking_time_history" not in st.session_state:
-        st.session_state.thinking_time_history = []
+            st.session_state.thinking_time_history = []
+    if "round_records" not in st.session_state:
+        st.session_state.round_records = []
 
     if "last_thinking_time" not in st.session_state:
         st.session_state.last_thinking_time = 0.0
@@ -492,6 +495,7 @@ def main():
             st.session_state.thinking_time_history = []
             st.session_state.last_thinking_time = 0.0
             st.session_state.saved_filepath = ""
+            st.session_state.round_records = []
             st.rerun()
 
     # ============== 主内容区 ==============
@@ -588,7 +592,34 @@ def main():
                     })
                     # 更新状态
                     st.session_state.state.update(result)
+                    round_record = {
+                        "round": round_num,
+                        "user_input": user_input,
+                        "ai_followup": st.session_state.state.get("last_followup_question", ""),
+                        "elapsed": elapsed,
+                        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
 
+                        "lie_index": st.session_state.state.get("lie_index", 0.0),
+                        "dimension_scores": st.session_state.state.get("dimension_scores", {}),
+                        "risk_explanation": st.session_state.state.get("risk_explanation", []),
+
+                        "quick_fact_summary": st.session_state.state.get("quick_fact_summary", ""),
+                        "quick_signal_summary": st.session_state.state.get("quick_signal_summary", ""),
+                        "surface_risk_score": st.session_state.state.get("surface_risk_score", 0.0),
+                        "has_new_fact": st.session_state.state.get("has_new_fact", False),
+
+                        "need_specialist": st.session_state.state.get("need_specialist", False),
+                        "selected_specialists": st.session_state.state.get("selected_specialists", []),
+                        "called_specialists": st.session_state.state.get("called_specialists", []),
+                        "routing_decision": st.session_state.state.get("routing_decision", {}),
+
+                        "priority_issue": st.session_state.state.get("priority_issue", ""),
+                        "followup_strategy": st.session_state.state.get("followup_strategy", ""),
+
+                        "current_facts": st.session_state.state.get("current_facts", []),
+                        "current_anomalies": st.session_state.state.get("current_anomalies", []),
+                    }
+                    st.session_state.round_records.append(round_record)
                     # 更新显示数据
                     st.session_state.current_lie_index = result.get("lie_index", 0.0)
                     st.session_state.dimension_scores = result.get("dimension_scores", {})
@@ -696,6 +727,7 @@ def _generate_final_report():
         saved_path = _save_session_to_outputs(
             st.session_state.state,
             st.session_state.thinking_time_history,
+            st.session_state.round_records,
         )
         st.session_state.saved_filepath = saved_path
         st.success(f"💾 完整测试记录已保存至：{saved_path}")
