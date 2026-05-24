@@ -331,7 +331,7 @@ def _save_session_to_outputs(state: dict, thinking_history: list, round_records:
     Args:
         state: 完整的对话状态字典
         thinking_history: 每轮耗时记录列表
-        round_records: 每轮的详细记录（包含节点耗时）
+        round_records: 每轮的详细记录（包含节点耗时和 agent_thoughts）
 
     Returns:
         保存后的文件路径
@@ -370,6 +370,135 @@ def _save_session_to_outputs(state: dict, thinking_history: list, round_records:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
     return filepath
+
+
+# ============== 新：节点中文标题和自然语言提取 ==============
+def get_node_title(node_name: str) -> str:
+    """将节点名称映射成友好中文标题"""
+    mapping = {
+        "quick_preanalysis": "快速预分析",
+        "lightweight_routing_supervisor": "路由决策",
+        "semantic_agent": "语义分析专家",
+        "logical_agent": "逻辑分析专家",
+        "domain_agent": "领域知识专家",
+        "psycho_linguistic_agent": "心理语言学专家",
+        "debate_gate": "辩论门控",
+        "debate": "专家辩论",
+        "risk_aggregator": "风险聚合",
+        "strategy_supervisor": "策略决策",
+        "followup_generation": "追问生成",
+        "report_generation": "报告生成",
+    }
+    return mapping.get(node_name, node_name)
+
+
+def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
+    """从节点返回的更新中提取适合展示的自然语言摘要
+
+    返回 None 表示没有可展示的内容。
+    """
+    if not isinstance(node_update, dict):
+        return None
+
+    # 快速预分析
+    if node_name == "quick_preanalysis":
+        fact = node_update.get("quick_fact_summary", "")
+        signal = node_update.get("quick_signal_summary", "")
+        parts = []
+        if fact:
+            parts.append(fact)
+        if signal:
+            parts.append(signal)
+        return "；".join(parts) if parts else None
+
+    # 路由决策
+    if node_name == "lightweight_routing_supervisor":
+        need = node_update.get("need_specialist", False)
+        selected = node_update.get("selected_specialists", [])
+        reason = node_update.get("routing_decision", {}).get("routing_reason", "")
+        issue = node_update.get("priority_issue", "")
+        strategy = node_update.get("followup_strategy", "")
+        lines = []
+        if not need:
+            lines.append("系统判定本轮无需调用专家，直接进入风险聚合")
+        else:
+            names = [get_specialist_name(s) for s in selected if s]
+            lines.append(f"调用专家：{', '.join(names) if names else '语义、逻辑'}")
+        if reason:
+            lines.append(f"原因：{reason}")
+        if issue:
+            lines.append(f"关注点：{issue}")
+        return "；".join(lines) if lines else None
+
+    # specialist agents
+    agent_mapping = {
+        "semantic_agent": "semantic",
+        "logical_agent": "logical",
+        "domain_agent": "domain",
+        "psycho_linguistic_agent": "psycho_linguistic",
+    }
+    if node_name in agent_mapping:
+        # 尝试从 node_update 直接获取，也可能在 specialist_results 里
+        agent_key = agent_mapping[node_name]
+        # 有可能结果在 specialist_results 列表里
+        results = node_update.get("specialist_results", [])
+        # 优先找对应 agent
+        for r in results:
+            if isinstance(r, dict) and r.get("agent") == agent_key:
+                summary = r.get("summary") or r.get("analysis") or r.get("reason") or r.get("conclusion")
+                if not summary and isinstance(r.get("findings"), list):
+                    # 用第一条 finding 的 explanation
+                    findings = r.get("findings", [])
+                    if findings and isinstance(findings[0], dict):
+                        summary = findings[0].get("explanation", "") or findings[0].get("description", "")
+                if summary:
+                    return summary
+                score = r.get("score")
+                if score is not None:
+                    return f"该专家评分：{score}"
+                return None
+        # 直接看 score
+        score = node_update.get("score")
+        if score is not None:
+            return f"专家评分：{score}"
+        return None
+
+    # debate_gate
+    if node_name == "debate_gate":
+        needed = node_update.get("debate_needed", False)
+        return "触发争议处理" if needed else "无需争议处理"
+
+    # risk_aggregator
+    if node_name == "risk_aggregator":
+        lie = node_update.get("lie_index", 0)
+        exp = node_update.get("risk_explanation", [])
+        exp_text = "；".join(exp) if exp else ""
+        parts = [f"风险指数 {lie}"]
+        if exp_text:
+            parts.append(exp_text)
+        return "，".join(parts)
+
+    # strategy_supervisor
+    if node_name == "strategy_supervisor":
+        next_action = node_update.get("next_action", "")
+        stop_reason = node_update.get("stop_reason", "")
+        issue = node_update.get("priority_issue", "")
+        strategy = node_update.get("followup_strategy", "")
+        if next_action == "final_report":
+            return f"信息已足够，生成最终报告（{stop_reason}）"
+        else:
+            return f"继续追问（{stop_reason}），关注：{issue or '待澄清点'}，策略：{strategy or '未指定'}"
+
+    # followup_generation
+    if node_name == "followup_generation":
+        question = node_update.get("last_followup_question", "")
+        return f"生成追问：{question}" if question else None
+
+    # report_generation
+    if node_name == "report_generation":
+        return "最终测评报告已生成"
+
+    return None
 
 
 # ============== Streamlit 应用主体 ==============
@@ -583,23 +712,47 @@ def main():
             logger = get_logger()
             logger.start_round(round_num, user_input)
 
-            # 显示思考中状态
+            # ---- 实时分析过程展示 ----
+            expander = st.expander("🧠 Agent 分析过程", expanded=True)
+
             with st.status("🤔 系统思考中...", expanded=False) as status:
-                # 运行工作流
+                t_start = time.time()
+                accumulated_state = dict(st.session_state.state)
+                agent_thoughts = []
+
                 try:
-                    t_start = time.time()
-                    result = st.session_state.graph.invoke(st.session_state.state)
+                    # 使用 stream 代替 invoke，逐个节点获取更新
+                    for event in st.session_state.graph.stream(st.session_state.state, stream_mode="updates"):
+                        # event 是一个 dict，key 为节点名称，value 为节点输出
+                        for node_name, node_update in event.items():
+                            # 累计状态
+                            accumulated_state.update(node_update)
+
+                            # 更新状态栏标签
+                            title = get_node_title(node_name)
+                            status.update(label=f"正在分析: {title}")
+
+                            # 提取自然语言展示
+                            thought_text = extract_agent_thoughts(node_name, node_update)
+                            thought_entry = {
+                                "node": node_name,
+                                "title": title,
+                                "content": thought_text,
+                                "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                            }
+                            agent_thoughts.append(thought_entry)
+
+                            if thought_text:
+                                expander.markdown(f"**{title}**\n{thought_text}")
+
+                    # 所有节点执行完毕
                     t_end = time.time()
                     elapsed = t_end - t_start
 
-                    st.session_state.last_thinking_time = elapsed
-                    st.session_state.thinking_time_history.append({
-                        "round": round_num,
-                        "elapsed": elapsed,
-                        "time": datetime.now().strftime("%H:%M:%S"),
-                    })
+                    # 更新最终状态
+                    st.session_state.state.update(accumulated_state)
 
-                    # 结束本轮日志，收集节点耗时
+                    # 日志记录结束
                     logger.end_round()
                     node_times = {}
                     if logger.session_data.get("rounds"):
@@ -607,10 +760,15 @@ def main():
                         for node in last_round.get("nodes", []):
                             node_times[node["node_name"]] = node["elapsed_seconds"]
 
-                    # 更新状态
-                    st.session_state.state.update(result)
+                    # 计时
+                    st.session_state.last_thinking_time = elapsed
+                    st.session_state.thinking_time_history.append({
+                        "round": round_num,
+                        "elapsed": elapsed,
+                        "time": datetime.now().strftime("%H:%M:%S"),
+                    })
 
-                    # 构建本轮记录（包含节点耗时）
+                    # 构建 round_record
                     round_record = {
                         "round": round_num,
                         "user_input": user_input,
@@ -638,13 +796,15 @@ def main():
 
                         "current_facts": st.session_state.state.get("current_facts", []),
                         "current_anomalies": st.session_state.state.get("current_anomalies", []),
+
+                        "agent_thoughts": agent_thoughts,
                     }
                     st.session_state.round_records.append(round_record)
 
                     # 更新显示数据
-                    st.session_state.current_lie_index = result.get("lie_index", 0.0)
-                    st.session_state.dimension_scores = result.get("dimension_scores", {})
-                    st.session_state.called_specialists = result.get("called_specialists", [])
+                    st.session_state.current_lie_index = st.session_state.state.get("lie_index", 0.0)
+                    st.session_state.dimension_scores = st.session_state.state.get("dimension_scores", {})
+                    st.session_state.called_specialists = st.session_state.state.get("called_specialists", [])
 
                     status.update(label=f"✅ 分析完成（耗时 {elapsed:.2f}秒）", state="complete")
 
@@ -658,13 +818,10 @@ def main():
             next_action = st.session_state.state.get("next_action", "")
 
             if next_action == "final_report":
-                # 生成最终报告
                 _generate_final_report()
             else:
-                # 获取追问问题
                 followup = st.session_state.state.get("last_followup_question", "")
                 if followup:
-                    # 使用流式输出显示AI提问
                     _stream_ai_message(followup)
 
             st.rerun()
@@ -739,11 +896,25 @@ def _generate_final_report():
     logger.start_round(MAX_ROUNDS, "（自动生成最终报告）")
 
     try:
-        with st.spinner("📋 正在生成最终报告..."):
-            t_start = time.time()
-            result = st.session_state.graph.invoke(st.session_state.state)
-            t_end = time.time()
-            elapsed = t_end - t_start
+        t_start = time.time()
+        accumulated_state = dict(st.session_state.state)
+        agent_thoughts = []
+
+        # 使用 stream 获取最终报告过程中的节点分析
+        for event in st.session_state.graph.stream(st.session_state.state, stream_mode="updates"):
+            for node_name, node_update in event.items():
+                accumulated_state.update(node_update)
+                thought_text = extract_agent_thoughts(node_name, node_update)
+                thought_entry = {
+                    "node": node_name,
+                    "title": get_node_title(node_name),
+                    "content": thought_text,
+                    "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                }
+                agent_thoughts.append(thought_entry)
+
+        t_end = time.time()
+        elapsed = t_end - t_start
 
         logger.end_round()
         node_times = {}
@@ -752,14 +923,14 @@ def _generate_final_report():
             for node in last_round.get("nodes", []):
                 node_times[node["node_name"]] = node["elapsed_seconds"]
 
-        st.session_state.state.update(result)
+        st.session_state.state.update(accumulated_state)
         st.session_state.final_report_shown = True
 
         # 更新最终数据
-        st.session_state.current_lie_index = result.get("lie_index", 0.0)
-        st.session_state.dimension_scores = result.get("dimension_scores", {})
+        st.session_state.current_lie_index = accumulated_state.get("lie_index", 0.0)
+        st.session_state.dimension_scores = accumulated_state.get("dimension_scores", {})
 
-        # 将最终报告轮次也加入 round_records
+        # 将最终报告轮次加入 round_records
         final_round_record = {
             "round": MAX_ROUNDS,
             "user_input": "（自动生成最终报告）",
@@ -767,9 +938,9 @@ def _generate_final_report():
             "elapsed": elapsed,
             "node_times": node_times,
             "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "lie_index": result.get("lie_index", 0.0),
-            "dimension_scores": result.get("dimension_scores", {}),
-            "risk_explanation": result.get("risk_explanation", []),
+            "lie_index": accumulated_state.get("lie_index", 0.0),
+            "dimension_scores": accumulated_state.get("dimension_scores", {}),
+            "risk_explanation": accumulated_state.get("risk_explanation", []),
             "need_specialist": False,
             "selected_specialists": [],
             "called_specialists": [],
@@ -782,6 +953,7 @@ def _generate_final_report():
             "followup_strategy": "",
             "current_facts": [],
             "current_anomalies": [],
+            "agent_thoughts": agent_thoughts,
         }
         st.session_state.round_records.append(final_round_record)
 
