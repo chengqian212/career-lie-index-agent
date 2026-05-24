@@ -1,4 +1,8 @@
-"""项目配置模块：读取 .env 并提供全局配置"""
+"""项目配置模块：读取 .env 并提供全局配置
+
+支持通过 .env 文件配置 API 密钥、基础 URL、模型名称等信息。
+默认值适用于 DeepSeek 开放平台，如需使用其他提供商只需修改对应环境变量。
+"""
 
 import os
 from dotenv import load_dotenv
@@ -33,11 +37,17 @@ def disable_proxy():
 disable_proxy()
 
 # --- 配置项 ---
-DASHSCOPE_API_KEY: str = os.getenv("DASHSCOPE_API_KEY", "")
+
+# DeepSeek API 密钥
+DEEPSEEK_API_KEY: str = os.getenv("DEEPSEEK_API_KEY", "")
+
+# API 基础地址（OpenAI SDK 会自动拼接 /chat/completions 等路径）
 BAILIAN_BASE_URL: str = os.getenv(
-    "BAILIAN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    "BAILIAN_BASE_URL", "https://api.deepseek.com"
 )
-MODEL_NAME: str = os.getenv("MODEL_NAME", "deepseek-v3")
+
+# 默认模型名称（deepseek-chat 为 DeepSeek 最新对话模型）
+MODEL_NAME: str = os.getenv("MODEL_NAME", "deepseek-chat")
 MAX_ROUNDS: int = int(os.getenv("MAX_ROUNDS", "5"))
 TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.2"))
 

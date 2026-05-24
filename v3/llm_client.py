@@ -20,7 +20,7 @@ def get_llm(temperature: float | None = None, model: str | None = None) -> ChatO
     config.disable_proxy()
 
     return ChatOpenAI(
-        api_key=SecretStr(config.DASHSCOPE_API_KEY),
+        api_key=SecretStr(config.DEEPSEEK_API_KEY),
         base_url=config.BAILIAN_BASE_URL,
         model=model or config.MODEL_NAME,
         temperature=temperature if temperature is not None else config.TEMPERATURE,
