@@ -5,6 +5,11 @@ v3 改进：
 - 优先使用 routing_decision 中的 priority_issue 和 followup_strategy
 - 当 routing_decision 没有有效信息时，按优先级自动选择追问方向
 - 返回 next_action="generate_followup" 供 CLI 判断流程状态
+
+v3.3 改进：
+- 在生成追问后更新对应异常的 followup_count
+- 达到上限后标记 stop_followup=True
+- _infer_priority_issue 额外返回 target_anomaly_id
 """
 
 import json
@@ -59,8 +64,11 @@ def _is_active_anomaly(anomaly: dict) -> bool:
     活跃条件（满足任一即可）：
     - status 为 unresolved 或 reinforced
     - followup_needed 为 True
+    - 且 stop_followup 不为 True
     """
     if not isinstance(anomaly, dict):
+        return False
+    if anomaly.get("stop_followup") is True:
         return False
     status = anomaly.get("status", "")
     if status in ("unresolved", "reinforced"):
@@ -77,7 +85,7 @@ def _has_risk_signal(state: DialogueState) -> bool:
     current_anomalies = state.get("current_anomalies", [])
     lie_index = state.get("lie_index", 0)
 
-    # 1. anomalies_table 中有活跃异常（unresolved / reinforced / followup_needed=True）
+    # 1. anomalies_table 中有活跃异常
     if any(_is_active_anomaly(a) for a in anomalies_table):
         return True
 
@@ -98,11 +106,13 @@ def _has_risk_signal(state: DialogueState) -> bool:
     return False
 
 
-def _infer_priority_issue(state: DialogueState) -> tuple[str, str]:
-    """推断追问焦点和策略
+def _infer_priority_issue(state: DialogueState) -> tuple[str, str, str]:
+    """推断追问焦点和策略，并返回目标异常 ID
+
+    v3.3 修改：额外返回 target_anomaly_id
 
     当 routing_decision 没有给出有效信息时，按以下优先级推断：
-    1. anomalies_table 里有未解决异常 → 围绕未解决异常温和追问
+    1. anomalies_table 里有活跃异常（排除 stop_followup） → 围绕异常温和追问
     2. risk_explanation 不为空 → 围绕风险解释温和了解
     3. current_facts 有内容 → 围绕当前事实轻量了解日常
     4. 默认 → 继续自然聊天
@@ -111,23 +121,25 @@ def _infer_priority_issue(state: DialogueState) -> tuple[str, str]:
     risk_explanation = state.get("risk_explanation", [])
     current_facts = state.get("current_facts", [])
 
+    # 活跃异常（排除 stop_followup=true）
     active = [a for a in anomalies_table if _is_active_anomaly(a)]
     if active:
         latest = active[-1]
         issue = latest.get("description") or "待澄清的异常点"
-        return f"温和澄清：{issue}", "light_clarification"
+        anomaly_id = latest.get("anomaly_id", "")
+        return f"温和澄清：{issue}", "light_clarification", anomaly_id
 
     if risk_explanation:
         issue = str(risk_explanation[0])
-        return f"温和了解：{issue}", "light_clarification"
+        return f"温和了解：{issue}", "light_clarification", ""
 
     if current_facts:
         latest_fact = current_facts[-1]
         content = latest_fact.get("content", "")
         if content:
-            return f"围绕事实轻量了解：{content}", "daily_routine"
+            return f"围绕事实轻量了解：{content}", "daily_routine", ""
 
-    return "继续自然聊天", "daily_routine"
+    return "继续自然聊天", "daily_routine", ""
 
 
 def _is_invalid_priority_issue(priority_issue: str) -> bool:
@@ -155,7 +167,8 @@ def followup_generation_node(state: DialogueState) -> dict:
     1. 根据 routing_decision / 风险信息 / 当前事实确定追问焦点
     2. 调用 LLM 生成一个自然追问
     3. 更新 followup_history
-    4. 返回 next_action="generate_followup"
+    4. 更新被追问异常的 followup_count（v3.3）
+    5. 返回 next_action="generate_followup"
     """
     llm = get_llm()
 
@@ -164,14 +177,21 @@ def followup_generation_node(state: DialogueState) -> dict:
 
     priority_issue = ""
     followup_strategy = ""
+    target_anomaly_id = ""
 
     if isinstance(routing_decision, dict):
         routing_reason = routing_decision.get("routing_reason", "")
         priority_issue = routing_decision.get("priority_issue", "")
         followup_strategy = routing_decision.get("followup_strategy", "")
+        target_anomaly_id = routing_decision.get("target_anomaly_id", "")
 
+    # 如果路由决策没有有效信息，自动推断
     if _is_invalid_priority_issue(priority_issue):
-        priority_issue, followup_strategy = _infer_priority_issue(state)
+        inferred_issue, inferred_strategy, inferred_aid = _infer_priority_issue(state)
+        priority_issue = inferred_issue
+        followup_strategy = inferred_strategy
+        if not target_anomaly_id:
+            target_anomaly_id = inferred_aid
 
     if not followup_strategy:
         followup_strategy = "daily_routine"
@@ -214,10 +234,25 @@ def followup_generation_node(state: DialogueState) -> dict:
         "followup_strategy": followup_strategy,
     })
 
+    # ---- v3.3 更新异常追问计数 ----
+    updated_anomalies_table = list(state.get("anomalies_table", []))
+    if target_anomaly_id:
+        for i, anomaly in enumerate(updated_anomalies_table):
+            if anomaly.get("anomaly_id") == target_anomaly_id:
+                updated_anomalies_table[i] = dict(anomaly)  # 浅拷贝足够
+                old_count = int(updated_anomalies_table[i].get("followup_count", 0) or 0)
+                updated_anomalies_table[i]["followup_count"] = old_count + 1
+
+                if updated_anomalies_table[i]["followup_count"] >= 2:
+                    updated_anomalies_table[i]["stop_followup"] = True
+                    updated_anomalies_table[i]["followup_needed"] = False
+                break
+
     return {
         "last_followup_question": followup_question,
         "followup_history": followup_history,
         "priority_issue": priority_issue,
         "followup_strategy": followup_strategy,
         "next_action": "generate_followup",
+        "anomalies_table": updated_anomalies_table,   # v3.3 返回更新后的异常表
     }

@@ -656,6 +656,10 @@ followup_strategy 只能理解为以下几类：
 - “你用的算法和损失函数是什么？”
 - “你是不是做过这个项目？”
 
+【重要限制 v3.3】
+如果某个异常已经 stop_followup=true，说明这个疑点已经达到追问上限，不要继续围绕它生成追问。
+如果 priority_issue 对应的是某个待澄清异常，要用自然聊天方式旁敲侧击，不要直接指出异常。
+
 【失败处理】
 - 如果无法生成回应：返回"听起来你最近也挺充实的，那你平时一般都在忙些什么呀？"
 - 如果输入信息不完整：返回"可以呀，我对这块还挺好奇的，那你平时接触这个多一点吗？"
@@ -985,7 +989,7 @@ LIGHTWEIGHT_ROUTING_SUPERVISOR_PROMPT = ChatPromptTemplate.from_messages([
 
 
 # ============================================================
-# Strategy Supervisor Prompt
+# Strategy Supervisor Prompt (v3.3 更新)
 # ============================================================
 STRATEGY_SUPERVISOR_TEMPLATE = """你是策略决策者（Strategy Supervisor）。
 
@@ -997,6 +1001,16 @@ STRATEGY_SUPERVISOR_TEMPLATE = """你是策略决策者（Strategy Supervisor）
 - 不重新抽取事实（由 Quick Fact Extraction 负责）；
 - 不重新判断所有矛盾（由 Specialist Agent 和 Debate Agent 负责）；
 - 不生成追问问题（由 Follow-up Generator 负责生成具体问题）。
+
+【重要更新 v3.3】
+你必须根据以下 5 类结束条件判断何时生成最终报告：
+1. 达到最大轮次，必须生成报告；
+2. 没有活跃疑点，且核心事实已经足够，生成报告；
+3. 疑点已经被澄清（所有异常 status 为 resolved），生成报告；
+4. 同一个疑点已经追问多次仍未澄清（followup_count >= 2 且 status 仍为 unresolved/reinforced），生成报告；
+5. 疑点已经基本坐实（status 为 reinforced 且 score >= 75），继续追问收益不大，生成报告。
+
+如果仍有核心事实缺失，或者仍有可追问且未达到追问上限的疑点，则继续追问。
 
 【输入参数】
 - lie_index: 当前谎言指数（0-100）
@@ -1012,12 +1026,14 @@ STRATEGY_SUPERVISOR_TEMPLATE = """你是策略决策者（Strategy Supervisor）
 【输出要求】
 必须输出标准 JSON 格式：
 {{
-  "next_action": "generate_followup|final_report",
   "priority_issue": "最需要追问的问题",
-    "followup_strategy": "daily_routine|entry_experience|work_style|recent_memory|light_clarification|topic_shift_buffer",
-  "reason_summary": "简短理由（20-50字）",
-  "target_evidence": ["相关证据1", "相关证据2"]
+  "followup_strategy": "daily_routine|entry_experience|work_style|recent_memory|light_clarification|topic_shift_buffer",
+  "target_anomaly_id": "如果本轮追问对应某个异常，填写 anomaly_id；否则为空",
+  "reason_summary": "简短理由（20-50字）"
 }}
+
+注意：不要输出 next_action 字段，该字段由 Python 硬规则决定。
+LLM 只需给出继续追问时的策略建议。
 
 【追问策略选择规则】
 followup_strategy 必须从以下选项中选择：
@@ -1031,17 +1047,14 @@ followup_strategy 必须从以下选项中选择：
 禁止输出 deep_dive、verify、investigate、interview、professional_probe、clarification、continue、expansion 等不受控策略。
 
 【限制条件】
-1. next_action 必须从指定选项中选择
-2. target_evidence 数组可以为空
-3. 不重新抽取事实
-4. 不重新判断所有矛盾
-5. 只做策略决策
-6. 不负责决定调用哪些专家（由 lightweight_routing_supervisor 决定）
-7. round_id >= max_rounds 时，next_action 应为 "final_report"
+1. 不输出 next_action 字段（由系统根据规则决定）
+2. 优先为当前最需要解决的异常提供 target_anomaly_id
+3. priority_issue 用自然语言表达后台关注点，但不要泄露系统内部判断
+4. followup_strategy 必须从允许列表中选择
 
 【失败处理】
-- 如果输入数据不完整：next_action="final_report"
-- 如果无法决策：next_action="generate_followup", reason_summary="继续收集信息"
+- 如果输入数据不完整：返回空 JSON {}
+- 如果无法决策：priority_issue="继续了解对方背景"，followup_strategy="daily_routine"
 - 注意：如果 LLM 输出格式异常导致 JSON 解析失败，节点会尝试两次解析（第一次正常清理，第二次激进清理），两次均失败时返回默认值，并在日志中记录错误信息。
 
 【当前数据】

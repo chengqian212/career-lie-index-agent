@@ -5,6 +5,10 @@ v3 改进：
 - 再写入专家 new_anomalies
 - 再计算 unresolved_count
 - 最后计算 lie_index
+
+v3.3 改进：
+- 合并 lightweight_risk_aggregator 的轻量评分逻辑
+- 在没有调用专家时，使用 surface_risk_score、unresolved_count、current_anomalies 综合评分
 """
 
 from typing import Optional
@@ -13,6 +17,7 @@ from ..state_schema import DialogueState
 from ..utils.score_utils import (
     compute_lie_index,
     compute_dimension_scores_debate_adjusted,
+    calculate_lightweight_risk_score,
 )
 from ..memory.anomaly_table import (
     count_unresolved,
@@ -24,13 +29,9 @@ from ..memory.anomaly_table import (
 def risk_aggregator_node(state: DialogueState) -> dict:
     """风险聚合节点
 
-    v3 改进：
-    - 能处理只调用 1 个 Specialist 的情况
-    - 能处理调用 2-4 个 Specialist 的情况
-    - 能处理没有 Specialist 结果的情况
-    - 未调用的维度不强行记 0 分
-    - 总分根据实际调用维度动态归一化
-    - 先处理专家 anomaly_updates，再写入专家 new_anomalies
+    v3.3 改进：
+    - 合并轻量评分逻辑，跳过专家时不再只用 unresolved_count * 20
+    - 引入 surface_risk_score 和 current_anomalies 信息
 
     Args:
         state: 当前对话状态
@@ -59,20 +60,52 @@ def risk_aggregator_node(state: DialogueState) -> dict:
     # v3: 计算 unresolved_count（基于更新后的 anomalies_table）
     unresolved_count = count_unresolved(updated_anomalies_table)
 
-    # v3: 动态初始化维度分数，只对实际调用的专家设置初始值
-    dimension_scores = {}
-
-    # 如果没有调用任何专家，返回空维度分数
+    # ============================================================
+    # 情况一：没有调用任何专家
+    # ============================================================
     if not called_specialists:
-        # 计算基础风险分数
-        lie_index = min(100, unresolved_count * 20)
-        
+        surface_risk_score = state.get("surface_risk_score", 0)
+        current_anomalies = state.get("current_anomalies", [])
+
+        lie_index = calculate_lightweight_risk_score(
+            surface_risk_score=surface_risk_score,
+            unresolved_count=unresolved_count,
+            current_anomalies=current_anomalies,
+        )
+
+        dimension_scores = {
+            "lightweight_surface": surface_risk_score,
+            "unresolved_anomalies": min(100, unresolved_count * 20),
+        }
+
+        risk_explanation = []
+
+        if surface_risk_score >= 30:
+            risk_explanation.append(f"当前回答存在一定表层风险信号（{surface_risk_score}分）")
+
+        if unresolved_count > 0:
+            risk_explanation.append(f"存在{unresolved_count}个未澄清的异常信号")
+
+        if current_anomalies:
+            anomaly_types = [a.get("type", "未知") for a in current_anomalies]
+            risk_explanation.append(f"本轮识别到异常类型：{', '.join(set(anomaly_types))}")
+
+        if not risk_explanation:
+            risk_explanation.append("当前轮次未发现明显风险信号")
+
         return {
             "lie_index": lie_index,
-            "dimension_scores": {},
-            "risk_explanation": ["本轮未调用专家 Agent，风险评分基于异常数量"] if unresolved_count > 0 else ["本轮未发现明显风险"],
+            "dimension_scores": dimension_scores,
+            "risk_explanation": risk_explanation,
             "anomalies_table": updated_anomalies_table,
         }
+
+    # ============================================================
+    # 情况二：有专家分析结果
+    # ============================================================
+
+    # v3: 动态初始化维度分数，只对实际调用的专家设置初始值
+    dimension_scores = {}
 
     # 从 specialist_results 提取分数
     for result in specialist_results:

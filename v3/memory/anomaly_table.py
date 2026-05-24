@@ -5,6 +5,10 @@ v3 改进：
 - 统一使用 score 表示风险强度，删除 severity
 - 新增 update_anomalies_status、get_active_anomalies 等函数
 - 新增 apply_specialist_anomaly_updates、add_specialist_results_as_anomalies
+
+v3.3 改进：
+- 新增 followup_count 和 stop_followup 字段，用于追踪对该异常的追问次数
+- get_active_anomalies 排除 stop_followup=True 的异常
 """
 
 from typing import List, Dict, Optional
@@ -67,7 +71,7 @@ def normalize_anomaly(
 ) -> dict:
     """v3 新增：归一化异常记录格式
     
-    补齐异常记录的所有必需字段
+    补齐异常记录的所有必需字段，包括 v3.3 的 followup_count / stop_followup
     
     Args:
         anomaly: 原始异常数据
@@ -107,6 +111,8 @@ def normalize_anomaly(
         "status": anomaly.get("status", "unresolved"),
         "clarification_status": anomaly.get("clarification_status", "none"),
         "followup_needed": anomaly.get("followup_needed", True),
+        "followup_count": anomaly.get("followup_count", 0),          # v3.3 新增
+        "stop_followup": anomaly.get("stop_followup", False),        # v3.3 新增
         "related_facts": anomaly.get("related_facts", []),
         "created_round": round_id,
         "last_update_round": round_id,
@@ -134,6 +140,8 @@ def add_anomalies(
         "status": str,
         "clarification_status": str,
         "followup_needed": bool,
+        "followup_count": int,            # v3.3
+        "stop_followup": bool,            # v3.3
         "related_facts": List,
         "created_round": int,
         "last_update_round": int,
@@ -276,10 +284,10 @@ def update_anomalies_status(
 
 
 def get_active_anomalies(anomalies_table: List[Dict]) -> List[Dict]:
-    """v3 新增：获取仍需关注的异常
+    """v3.3 改进：获取仍需关注的异常
 
-    包括 status 为 unresolved 或 reinforced，或 followup_needed 为 True 的异常
-    
+    排除 stop_followup=True 的异常，即便其状态为 unresolved / reinforced
+
     Args:
         anomalies_table: 异常表
     
@@ -288,15 +296,18 @@ def get_active_anomalies(anomalies_table: List[Dict]) -> List[Dict]:
     """
     return [
         a for a in anomalies_table
-        if a.get("status") in ["unresolved", "reinforced"]
-        or a.get("followup_needed") is True
+        if a.get("stop_followup") is not True
+        and (
+            a.get("status") in ["unresolved", "reinforced"]
+            or a.get("followup_needed") is True
+        )
     ]
 
 
 def count_unresolved(anomalies_table: List[Dict]) -> int:
     """统计未解决的异常数量
 
-    v3 改进：统计 active anomalies（仍需关注的异常）
+    v3.3 改进：统计 active anomalies（仍需关注的异常，排除 stop_followup=True）
 
     Args:
         anomalies_table: 异常表
@@ -309,7 +320,7 @@ def count_unresolved(anomalies_table: List[Dict]) -> int:
 def get_unresolved_anomalies(anomalies_table: List[Dict]) -> List[Dict]:
     """获取所有未解决的异常
 
-    v3 改进：返回 active anomalies
+    v3.3 改进：返回 active anomalies
 
     Args:
         anomalies_table: 异常表

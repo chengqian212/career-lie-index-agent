@@ -5,6 +5,9 @@
 - 轻量预分析 + 条件路由 + 按需专家调用
 - 实时显示分析过程和结果
 - 支持中文输出（Windows UTF-8 编码）
+
+v3.3 改进：
+- 支持显示 stop_reason
 """
 
 import json
@@ -96,7 +99,7 @@ def create_initial_state(max_rounds: int = MAX_ROUNDS) -> dict:
 def print_round_summary(state: dict, elapsed: float = 0.0) -> None:
     """打印每轮分析摘要
 
-    v3 改进：显示本轮调用的专家、路由风险等级等新特性
+    v3.3 改进：显示 stop_reason
 
     Args:
         state: 当前对话状态字典
@@ -114,6 +117,7 @@ def print_round_summary(state: dict, elapsed: float = 0.0) -> None:
     called_specialists = state.get("called_specialists", [])
     need_specialist = state.get("need_specialist", False)
     routing_reason = state.get("routing_decision", {}).get("routing_reason", "")
+    stop_reason = state.get("stop_reason", "")         # v3.3 新增
 
     print("\n" + "=" * 60)
     print(f"📊 当前轮次：{round_id} / {MAX_ROUNDS}")
@@ -157,6 +161,19 @@ def print_round_summary(state: dict, elapsed: float = 0.0) -> None:
     # v3: 显示路由原因
     if routing_reason:
         print(f"🔍 路由原因：{routing_reason}")
+
+    # v3.3: 显示停止/继续原因
+    if stop_reason:
+        reason_explanations = {
+            "max_rounds": "已达最大轮次",
+            "enough_information_no_active_anomaly": "信息充分且无活跃疑点",
+            "anomaly_resolved": "疑点已被澄清",
+            "followup_exhausted": "疑点追问次数已达上限",
+            "anomaly_confirmed": "疑点已基本坐实",
+            "need_more_information_or_clarification": "仍需继续追问",
+        }
+        reason_text = reason_explanations.get(stop_reason, stop_reason)
+        print(f"🛑 决策原因：{reason_text}")
 
     # 显示风险原因
     if risk_explanation:
@@ -229,6 +246,8 @@ def print_detailed_node_log(logger, round_id: int) -> None:
 
     在终端中清晰展示每个节点的输入/输出/耗时/状态，
     方便用户了解系统内部每一步的分析过程。
+
+    v3.3 新增：显示 stop_reason
 
     Args:
         logger: DetailedLogger 实例
@@ -379,6 +398,19 @@ def print_detailed_node_log(logger, round_id: int) -> None:
                 print(f"│     ⚠ {exp}")
 
         # 策略监督相关
+        if "stop_reason" in output:
+            reason_text = output["stop_reason"]
+            reason_explanations = {
+                "max_rounds": "已达最大轮次",
+                "enough_information_no_active_anomaly": "信息充分且无活跃疑点",
+                "anomaly_resolved": "疑点已被澄清",
+                "followup_exhausted": "疑点追问次数已达上限",
+                "anomaly_confirmed": "疑点已基本坐实",
+                "need_more_information_or_clarification": "仍需继续追问",
+            }
+            reason_display = reason_explanations.get(reason_text, reason_text)
+            print(f"│     决策原因: {reason_display}")
+
         if "next_action" in output:
             action_map = {"final_report": "生成报告", "generate_followup": "继续追问"}
             print(f"│     下一步: {str(action_map.get(output['next_action']) or output['next_action'])}")
@@ -426,10 +458,10 @@ def run_cli():
     logger = get_logger()
 
     # 打印欢迎信息
-    print("🤖 多 Agent 谎言指数测评系统 v3.0")
+    print("🤖 多 Agent 谎言指数测评系统 v3.3")
     print(f"   最大对话轮次：{MAX_ROUNDS}")
     print("   输入 'quit' 退出，输入 'skip' 跳过当前轮次")
-    print("   v3 特性：轻量预分析 + 条件路由 + 按需专家调用")
+    print("   v3.3 特性：智能状态驱动决策，信息够了就停")
     print("   📝 详细日志将在每轮结束后自动保存")
     print()
 
@@ -506,7 +538,7 @@ def run_cli():
                     "content": followup,
                 })
 
-            # 检查是否已生成最终报告（图内已路由到 report_generation）
+            # 检查是否已生成最终报告
             if state.get("next_action") == "final_report":
                 print_final_report(state)
                 break
