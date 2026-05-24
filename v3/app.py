@@ -1,4 +1,4 @@
-"""Streamlit 前端：多 Agent 谎言指数测评系统 v3.0
+"""Streamlit 前端：多 Agent 相亲对话小助手 v3.0
 
 该模块实现了 v3 版本的 Web 交互界面，主要特性包括：
 - 美观的聊天界面，大字体显示用户回答和AI提问
@@ -352,6 +352,11 @@ def main():
         st.session_state.streaming_text = ""
     if "is_streaming" not in st.session_state:
         st.session_state.is_streaming = False
+    if "thinking_time_history" not in st.session_state:
+        st.session_state.thinking_time_history = []
+
+    if "last_thinking_time" not in st.session_state:
+        st.session_state.last_thinking_time = 0.0
 
     # ============== 侧边栏 ==============
     with st.sidebar:
@@ -371,7 +376,7 @@ def main():
         st.markdown(f"""
         <div class="stat-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
             <div class="stat-value">{lie_index:.1f}</div>
-            <div class="stat-label">谎言指数</div>
+            <div class="stat-label">风险指数</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -404,7 +409,23 @@ def main():
                 st.markdown(f'<span class="specialist-tag {get_specialist_class(spec)}">{get_specialist_name(spec)}</span>', unsafe_allow_html=True)
         else:
             st.info("本轮尚未调用专家")
+        # 思考耗时
+        st.markdown('<div class="sidebar-title">⏱️ 思考耗时</div>', unsafe_allow_html=True)
 
+        last_time = st.session_state.last_thinking_time
+        if last_time > 0:
+            st.metric("最近一轮耗时", f"{last_time:.2f} 秒")
+        else:
+            st.info("暂无耗时记录")
+
+        history = st.session_state.thinking_time_history
+        if history:
+            with st.expander("查看每轮耗时", expanded=False):
+                for item in reversed(history[-10:]):
+                    st.write(
+                        f"第 {item['round']} 轮：{item['elapsed']:.2f} 秒 "
+                        f"（{item['time']}）"
+                    )
         # 分隔线
         st.divider()
 
@@ -420,18 +441,20 @@ def main():
             st.session_state.called_specialists = []
             st.session_state.streaming_text = ""
             st.session_state.is_streaming = False
+            st.session_state.thinking_time_history = []
+            st.session_state.last_thinking_time = 0.0
             st.rerun()
 
     # ============== 主内容区 ==============
-    st.title("🤖 多 Agent 谎言指数测评系统 v3.0")
+    st.title("🤖 多 Agent 相亲对话小助手 v3.0")
 
     # 欢迎区域（仅在未开始时显示）
     if not st.session_state.started:
         st.markdown(f"""
         <div class="welcome-area">
-            <div class="welcome-title">👋 欢迎使用谎言指数测评系统</div>
+            <div class="welcome-title">👋 欢迎使用风险指数测评系统</div>
             <div class="welcome-subtitle">
-                本系统通过多 Agent 协作分析，评估对话中的谎言指数。<br>
+                本系统通过多 Agent 协作分析，评估对话中的风险指数。<br>
                 系统将自动进行语义分析、逻辑验证、领域知识检查和心理语言学分析。<br>
                 最大对话轮次：{MAX_ROUNDS}轮
             </div>
@@ -508,6 +531,12 @@ def main():
                     t_end = time.time()
                     elapsed = t_end - t_start
 
+                    st.session_state.last_thinking_time = elapsed
+                    st.session_state.thinking_time_history.append({
+                        "round": round_num,
+                        "elapsed": elapsed,
+                        "time": datetime.now().strftime("%H:%M:%S"),
+                    })
                     # 更新状态
                     st.session_state.state.update(result)
 
