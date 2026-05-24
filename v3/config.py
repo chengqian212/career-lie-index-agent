@@ -38,8 +38,19 @@ disable_proxy()
 
 # --- 配置项 ---
 
-# 阿里云百炼 API 密钥
-DASHSCOPE_API_KEY: str = os.getenv("DASHSCOPE_API_KEY", "")
+# 统一 API 密钥读取：依次尝试 LLM_API_KEY、DASHSCOPE_API_KEY、DEEPSEEK_API_KEY、OPENAI_API_KEY
+_llm_key = os.getenv("LLM_API_KEY", "")
+if not _llm_key:
+    _llm_key = os.getenv("DASHSCOPE_API_KEY", "")
+if not _llm_key:
+    _llm_key = os.getenv("DEEPSEEK_API_KEY", "")
+if not _llm_key:
+    _llm_key = os.getenv("OPENAI_API_KEY", "")
+LLM_API_KEY: str = _llm_key
+
+# 提供旧变量名兼容（但建议使用 LLM_API_KEY）
+DASHSCOPE_API_KEY: str = LLM_API_KEY
+DEEPSEEK_API_KEY: str = LLM_API_KEY
 
 # API 基础地址（OpenAI SDK 兼容格式）
 BAILIAN_BASE_URL: str = os.getenv(

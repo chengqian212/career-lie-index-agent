@@ -15,12 +15,21 @@ def get_llm(temperature: float | None = None, model: str | None = None) -> ChatO
         model: 可选覆盖模型名
     Returns:
         ChatOpenAI 实例
+    Raises:
+        ValueError: 当缺少 API 密钥时
     """
     # 确保代理已禁用（config.disable_proxy 会设置 NO_PROXY='*'）
     config.disable_proxy()
 
+    api_key = config.LLM_API_KEY
+    if not api_key:
+        raise ValueError(
+            "缺少 API 密钥！请在 .env 文件中设置 LLM_API_KEY、DASHSCOPE_API_KEY、"
+            "DEEPSEEK_API_KEY 或 OPENAI_API_KEY 环境变量。"
+        )
+
     return ChatOpenAI(
-        api_key=SecretStr(config.DASHSCOPE_API_KEY),
+        api_key=SecretStr(api_key),
         base_url=config.BAILIAN_BASE_URL,
         model=model or config.MODEL_NAME,
         temperature=temperature if temperature is not None else config.TEMPERATURE,
