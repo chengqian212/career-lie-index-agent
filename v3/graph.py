@@ -107,7 +107,9 @@ def route_after_routing_supervisor(state: DialogueState) -> list[Send]:
 
 
 def route_after_debate_gate(state: DialogueState) -> str:
-    """Debate 门控路由
+    """Debate 门控路由（目前暂时绕过辩论，直接进入风险聚合）
+    
+    v3.3 改进：暂时无效化辩论节点，所有情况直接进入 risk_aggregator
     
     Args:
         state: 当前对话状态
@@ -116,11 +118,14 @@ def route_after_debate_gate(state: DialogueState) -> str:
         下一个节点的名称
         
     说明:
-        - 根据 debate_needed 标志决定是否需要专家辩论
-        - 如果需要辩论，返回 "debate" 节点
-        - 否则直接进入风险聚合节点
+        - 当前始终返回 "risk_aggregator"
+        - 若要恢复辩论，可取消注释原始逻辑
     """
-    return "debate" if state.get("debate_needed", False) else "risk_aggregator"
+    # 暂时绕过辩论
+    return "risk_aggregator"
+
+    # 原始逻辑（保留以便恢复）
+    # return "debate" if state.get("debate_needed", False) else "risk_aggregator"
 
 
 def route_after_strategy_supervisor(state: DialogueState) -> str:
@@ -154,7 +159,7 @@ def build_graph() -> CompiledStateGraph:
         1. 快速预分析节点一次 LLM 调用完成事实抽取和异常检测
         2. 路由监督器决定是否需要专家分析
         3. 根据决策并行启动指定的专家代理或直接进入 risk_aggregator
-        4. 专家分析结果通过辩论门控，决定是否需要辩论
+        4. 专家分析结果通过辩论门控，决定是否需要辩论（目前绕过辩论）
         5. 风险聚合器汇总所有分析结果（先处理异常更新，再写入新异常）
         6. strategy_supervisor 根据状态决定继续追问还是生成报告
         7. 输出结果并结束
@@ -162,7 +167,7 @@ def build_graph() -> CompiledStateGraph:
     流程图:
         START → quick_preanalysis → lightweight_routing_supervisor
               → 条件 fan-out specialists 或 risk_aggregator
-              →（若调用专家）debate_gate → debate 或 risk_aggregator
+              →（若调用专家）debate_gate → risk_aggregator
               → risk_aggregator → strategy_supervisor
               → 根据 strategy_supervisor 路由 → followup_generation 或 report_generation
               → END
@@ -182,9 +187,9 @@ def build_graph() -> CompiledStateGraph:
     builder.add_node("domain_agent", domain_agent_node)                             # 领域知识专家
     builder.add_node("psycho_linguistic_agent", psycho_linguistic_agent_node)       # 心理语言学专家
     
-    # 辩论和聚合节点
+    # 辩论和聚合节点（辩论节点仍保留注册，但当前路由会绕过辩论）
     builder.add_node("debate_gate", debate_gate_node)                               # 辩论门控
-    builder.add_node("debate", debate_node)                                         # 专家辩论
+    builder.add_node("debate", debate_node)                                         # 专家辩论（当前无效）
     builder.add_node("risk_aggregator", risk_aggregator_node)                       # 风险聚合器
     
     # 策略和输出节点
@@ -205,13 +210,13 @@ def build_graph() -> CompiledStateGraph:
     for agent in ("semantic_agent", "logical_agent", "domain_agent", "psycho_linguistic_agent"):
         builder.add_edge(agent, "debate_gate")
 
-    # 辩论门控：决定是否需要专家辩论，否则直接到风险聚合器
+    # 辩论门控：目前绕过辩论，直接到风险聚合器
     builder.add_conditional_edges(
         "debate_gate", route_after_debate_gate,
         {"debate": "debate", "risk_aggregator": "risk_aggregator"},
     )
     
-    # 辩论结束后汇聚到风险聚合器
+    # 辩论结束后汇聚到风险聚合器（当前不会被触发，但保留以备后续启用）
     builder.add_edge("debate", "risk_aggregator")
     
     # v3.3 添加：risk_aggregator 后进入 strategy_supervisor
