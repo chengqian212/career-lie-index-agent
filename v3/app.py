@@ -324,6 +324,32 @@ def render_message(msg: dict, is_streaming: bool = False):
         """, unsafe_allow_html=True)
 
 
+def _save_report_to_outputs(report: dict) -> str:
+    """将最终报告保存到 outputs/reports 目录
+
+    Args:
+        report: 报告字典（包含 report_text 等字段）
+
+    Returns:
+        保存后的文件路径
+    """
+    reports_dir = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        "outputs",
+        "reports",
+    )
+    os.makedirs(reports_dir, exist_ok=True)
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"report_{timestamp}.json"
+    filepath = os.path.join(reports_dir, filename)
+
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
+
+    return filepath
+
+
 # ============== Streamlit 应用主体 ==============
 def main():
     # 关闭代理
@@ -357,6 +383,9 @@ def main():
 
     if "last_thinking_time" not in st.session_state:
         st.session_state.last_thinking_time = 0.0
+
+    if "saved_filepath" not in st.session_state:
+        st.session_state.saved_filepath = ""
 
     # ============== 侧边栏 ==============
     with st.sidebar:
@@ -443,6 +472,7 @@ def main():
             st.session_state.is_streaming = False
             st.session_state.thinking_time_history = []
             st.session_state.last_thinking_time = 0.0
+            st.session_state.saved_filepath = ""
             st.rerun()
 
     # ============== 主内容区 ==============
@@ -622,7 +652,7 @@ def _stream_ai_message(message: str, chunk_size: int = 2, delay: float = 0.03):
 
 
 def _generate_final_report():
-    """生成并显示最终报告"""
+    """生成并显示最终报告，同时将报告保存到 outputs/reports 目录"""
     st.session_state.state["round_id"] = MAX_ROUNDS
     st.session_state.state["specialist_results"] = []
     st.session_state.state["called_specialists"] = []
@@ -639,8 +669,12 @@ def _generate_final_report():
         st.session_state.current_lie_index = result.get("lie_index", 0.0)
         st.session_state.dimension_scores = result.get("dimension_scores", {})
 
-        # 显示报告
-        st.success("✅ 最终报告已生成！")
+        # 保存报告到 outputs 目录
+        final_report = st.session_state.state.get("final_report")
+        if final_report:
+            saved_path = _save_report_to_outputs(final_report)
+            st.session_state.saved_filepath = saved_path
+            st.success(f"💾 报告已保存至：{saved_path}")
 
     except Exception as e:
         st.error(f"生成报告出错：{e}")
