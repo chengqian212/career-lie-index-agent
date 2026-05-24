@@ -23,6 +23,7 @@ from v3.config import (
     MAX_ROUNDS,
 )
 from v3.graph import build_graph
+from v3.utils.logger import get_logger, reset_logger
 
 
 # ============== 页面配置 ==============
@@ -330,6 +331,7 @@ def _save_session_to_outputs(state: dict, thinking_history: list, round_records:
     Args:
         state: 完整的对话状态字典
         thinking_history: 每轮耗时记录列表
+        round_records: 每轮的详细记录（包含节点耗时）
 
     Returns:
         保存后的文件路径
@@ -496,6 +498,7 @@ def main():
             st.session_state.last_thinking_time = 0.0
             st.session_state.saved_filepath = ""
             st.session_state.round_records = []
+            reset_logger()  # 清空上一轮日志
             st.rerun()
 
     # ============== 主内容区 ==============
@@ -517,6 +520,7 @@ def main():
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
             if st.button("🚀 开始测评", use_container_width=True, type="primary"):
+                reset_logger()  # 新会话开始，重置日志
                 st.session_state.started = True
                 # 初始化第一轮
                 opening_question = "你平时是做什么方向的工作呀？"
@@ -575,6 +579,10 @@ def main():
             st.session_state.state["specialist_results"] = []
             st.session_state.state["called_specialists"] = []
 
+            # 开始日志轮次记录
+            logger = get_logger()
+            logger.start_round(round_num, user_input)
+
             # 显示思考中状态
             with st.status("🤔 系统思考中...", expanded=False) as status:
                 # 运行工作流
@@ -590,13 +598,25 @@ def main():
                         "elapsed": elapsed,
                         "time": datetime.now().strftime("%H:%M:%S"),
                     })
+
+                    # 结束本轮日志，收集节点耗时
+                    logger.end_round()
+                    node_times = {}
+                    if logger.session_data.get("rounds"):
+                        last_round = logger.session_data["rounds"][-1]
+                        for node in last_round.get("nodes", []):
+                            node_times[node["node_name"]] = node["elapsed_seconds"]
+
                     # 更新状态
                     st.session_state.state.update(result)
+
+                    # 构建本轮记录（包含节点耗时）
                     round_record = {
                         "round": round_num,
                         "user_input": user_input,
                         "ai_followup": st.session_state.state.get("last_followup_question", ""),
                         "elapsed": elapsed,
+                        "node_times": node_times,
                         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
 
                         "lie_index": st.session_state.state.get("lie_index", 0.0),
@@ -620,6 +640,7 @@ def main():
                         "current_anomalies": st.session_state.state.get("current_anomalies", []),
                     }
                     st.session_state.round_records.append(round_record)
+
                     # 更新显示数据
                     st.session_state.current_lie_index = result.get("lie_index", 0.0)
                     st.session_state.dimension_scores = result.get("dimension_scores", {})
@@ -628,6 +649,7 @@ def main():
                     status.update(label=f"✅ 分析完成（耗时 {elapsed:.2f}秒）", state="complete")
 
                 except Exception as e:
+                    logger.end_round()  # 即使出错也要结束本轮日志
                     status.update(label=f"❌ 分析出错: {str(e)}", state="error")
                     st.error(f"运行出错：{e}")
                     return
@@ -712,16 +734,56 @@ def _generate_final_report():
     st.session_state.state["called_specialists"] = []
     st.session_state.state["next_action"] = "final_report"
 
+    # 为最终报告轮次也记录日志
+    logger = get_logger()
+    logger.start_round(MAX_ROUNDS, "（自动生成最终报告）")
+
     try:
         with st.spinner("📋 正在生成最终报告..."):
+            t_start = time.time()
             result = st.session_state.graph.invoke(st.session_state.state)
-            st.session_state.state.update(result)
+            t_end = time.time()
+            elapsed = t_end - t_start
 
+        logger.end_round()
+        node_times = {}
+        if logger.session_data.get("rounds"):
+            last_round = logger.session_data["rounds"][-1]
+            for node in last_round.get("nodes", []):
+                node_times[node["node_name"]] = node["elapsed_seconds"]
+
+        st.session_state.state.update(result)
         st.session_state.final_report_shown = True
 
         # 更新最终数据
         st.session_state.current_lie_index = result.get("lie_index", 0.0)
         st.session_state.dimension_scores = result.get("dimension_scores", {})
+
+        # 将最终报告轮次也加入 round_records
+        final_round_record = {
+            "round": MAX_ROUNDS,
+            "user_input": "（自动生成最终报告）",
+            "ai_followup": "",
+            "elapsed": elapsed,
+            "node_times": node_times,
+            "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "lie_index": result.get("lie_index", 0.0),
+            "dimension_scores": result.get("dimension_scores", {}),
+            "risk_explanation": result.get("risk_explanation", []),
+            "need_specialist": False,
+            "selected_specialists": [],
+            "called_specialists": [],
+            "quick_fact_summary": "",
+            "quick_signal_summary": "",
+            "surface_risk_score": 0.0,
+            "has_new_fact": False,
+            "routing_decision": {},
+            "priority_issue": "",
+            "followup_strategy": "",
+            "current_facts": [],
+            "current_anomalies": [],
+        }
+        st.session_state.round_records.append(final_round_record)
 
         # 保存完整 session 数据到 outputs 目录
         saved_path = _save_session_to_outputs(
@@ -733,6 +795,7 @@ def _generate_final_report():
         st.success(f"💾 完整测试记录已保存至：{saved_path}")
 
     except Exception as e:
+        logger.end_round()
         st.error(f"生成报告出错：{e}")
 
 
