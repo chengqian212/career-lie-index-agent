@@ -415,7 +415,9 @@ def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
     if node_name == "lightweight_routing_supervisor":
         need = node_update.get("need_specialist", False)
         selected = node_update.get("selected_specialists", [])
-        reason = node_update.get("routing_decision", {}).get("routing_reason", "")
+        rd = node_update.get("routing_decision", {})
+        # 兼容多种原因字段
+        reason = rd.get("routing_reason") or rd.get("reason") or rd.get("decision_reason") or rd.get("explanation") or ""
         issue = node_update.get("priority_issue", "")
         strategy = node_update.get("followup_strategy", "")
         lines = []
@@ -438,16 +440,19 @@ def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
         "psycho_linguistic_agent": "psycho_linguistic",
     }
     if node_name in agent_mapping:
-        # 尝试从 node_update 直接获取，也可能在 specialist_results 里
         agent_key = agent_mapping[node_name]
-        # 有可能结果在 specialist_results 列表里
         results = node_update.get("specialist_results", [])
         # 优先找对应 agent
         for r in results:
-            if isinstance(r, dict) and r.get("agent") == agent_key:
-                summary = r.get("summary") or r.get("analysis") or r.get("reason") or r.get("conclusion")
+            if not isinstance(r, dict):
+                continue
+            # 兼容 agent, specialist, dimension, agent_name 等字段
+            rid = r.get("agent") or r.get("specialist") or r.get("dimension") or r.get("agent_name") or ""
+            if rid == agent_key:
+                # 自然语言字段：summary, analysis, reason, conclusion, explanation, rationale
+                summary = (r.get("summary") or r.get("analysis") or r.get("reason") or
+                           r.get("conclusion") or r.get("explanation") or r.get("rationale"))
                 if not summary and isinstance(r.get("findings"), list):
-                    # 用第一条 finding 的 explanation
                     findings = r.get("findings", [])
                     if findings and isinstance(findings[0], dict):
                         summary = findings[0].get("explanation", "") or findings[0].get("description", "")
@@ -499,6 +504,63 @@ def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
         return "最终测评报告已生成"
 
     return None
+
+
+def merge_node_update(accumulated: dict, node_update: dict) -> dict:
+    """安全合并节点更新到累计状态
+
+    对于列表类字段，采用追加合并，避免并行节点结果互相覆盖。
+    其他字段直接覆盖。
+
+    Args:
+        accumulated: 当前累计的状态
+        node_update: 单个节点的部分更新
+
+    Returns:
+        合并后的状态（原地修改 accumulated）
+    """
+    # 需要追加合并的列表字段
+    extend_fields = ["specialist_results", "called_specialists", "risk_explanation", "indicator_history"]
+    for key in extend_fields:
+        if key in node_update and isinstance(node_update[key], list):
+            if key not in accumulated or not isinstance(accumulated[key], list):
+                accumulated[key] = []
+            # 追加列表，简单去重（dict 不能简单用 set）
+            existing_ids = set()
+            if key == "specialist_results":
+                # 按 agent 去重
+                for item in accumulated[key]:
+                    if isinstance(item, dict):
+                        agent = item.get("agent") or item.get("specialist") or item.get("dimension") or ""
+                        if agent:
+                            existing_ids.add(agent)
+                for item in node_update[key]:
+                    if isinstance(item, dict):
+                        agent = item.get("agent") or item.get("specialist") or item.get("dimension") or ""
+                        if agent and agent not in existing_ids:
+                            accumulated[key].append(item)
+                            existing_ids.add(agent)
+                        elif not agent:
+                            accumulated[key].append(item)
+                    else:
+                        accumulated[key].append(item)
+            elif key == "called_specialists":
+                # 字符串列表去重
+                for item in node_update[key]:
+                    if item not in accumulated[key]:
+                        accumulated[key].append(item)
+            else:
+                # risk_explanation、indicator_history 直接扩展（去重太复杂，可接受少量重复）
+                accumulated[key].extend(node_update[key])
+            # 从 node_update 中移除，以免后续覆盖
+            continue
+
+    # 其他字段直接合并
+    for key, value in node_update.items():
+        if key not in extend_fields:
+            accumulated[key] = value
+
+    return accumulated
 
 
 # ============== Streamlit 应用主体 ==============
@@ -671,6 +733,18 @@ def main():
             is_streaming = is_last and st.session_state.is_streaming and msg["role"] == "assistant"
             render_message(msg, is_streaming=is_streaming)
 
+    # ============== 最近一轮 Agent 分析过程持久展示 ==============
+    if st.session_state.round_records:
+        last_record = st.session_state.round_records[-1]
+        last_thoughts = last_record.get("agent_thoughts") or []
+        if last_thoughts:
+            with st.expander("🧠 上一轮 Agent 分析过程", expanded=False):
+                for thought in last_thoughts:
+                    title = thought.get("title", "")
+                    content = thought.get("content", "")
+                    if content:  # 避免展示空内容
+                        st.markdown(f"**{title}**  \n{content}")
+
     # ============== 最终报告显示 ==============
     if st.session_state.final_report_shown and st.session_state.state.get("final_report"):
         report = st.session_state.state["final_report"]
@@ -725,8 +799,8 @@ def main():
                     for event in st.session_state.graph.stream(st.session_state.state, stream_mode="updates"):
                         # event 是一个 dict，key 为节点名称，value 为节点输出
                         for node_name, node_update in event.items():
-                            # 累计状态
-                            accumulated_state.update(node_update)
+                            # 使用安全合并函数，避免列表覆盖
+                            merge_node_update(accumulated_state, node_update)
 
                             # 更新状态栏标签
                             title = get_node_title(node_name)
@@ -734,15 +808,15 @@ def main():
 
                             # 提取自然语言展示
                             thought_text = extract_agent_thoughts(node_name, node_update)
-                            thought_entry = {
-                                "node": node_name,
-                                "title": title,
-                                "content": thought_text,
-                                "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                            }
-                            agent_thoughts.append(thought_entry)
 
-                            if thought_text:
+                            if thought_text:   # 只添加非空内容
+                                thought_entry = {
+                                    "node": node_name,
+                                    "title": title,
+                                    "content": thought_text,
+                                    "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                                }
+                                agent_thoughts.append(thought_entry)
                                 expander.markdown(f"**{title}**\n{thought_text}")
 
                     # 所有节点执行完毕
@@ -903,15 +977,17 @@ def _generate_final_report():
         # 使用 stream 获取最终报告过程中的节点分析
         for event in st.session_state.graph.stream(st.session_state.state, stream_mode="updates"):
             for node_name, node_update in event.items():
-                accumulated_state.update(node_update)
+                merge_node_update(accumulated_state, node_update)
+
                 thought_text = extract_agent_thoughts(node_name, node_update)
-                thought_entry = {
-                    "node": node_name,
-                    "title": get_node_title(node_name),
-                    "content": thought_text,
-                    "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                }
-                agent_thoughts.append(thought_entry)
+                if thought_text:
+                    thought_entry = {
+                        "node": node_name,
+                        "title": get_node_title(node_name),
+                        "content": thought_text,
+                        "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    }
+                    agent_thoughts.append(thought_entry)
 
         t_end = time.time()
         elapsed = t_end - t_start
