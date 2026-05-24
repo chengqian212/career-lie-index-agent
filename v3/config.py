@@ -59,6 +59,12 @@ BAILIAN_BASE_URL: str = os.getenv(
 
 # 默认模型名称（deepseek-v3 在百炼平台上的模型 ID）
 MODEL_NAME: str = os.getenv("MODEL_NAME", "deepseek-v3")
+
+print("=== 配置调试信息 ===")
+print(f"API_KEY   = {LLM_API_KEY}")
+print(f"BASE_URL  = {BAILIAN_BASE_URL}")
+print(f"MODEL     = {MODEL_NAME}")
+
 MAX_ROUNDS: int = int(os.getenv("MAX_ROUNDS", "5"))
 TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.2"))
 
