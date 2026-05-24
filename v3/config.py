@@ -38,30 +38,26 @@ disable_proxy()
 
 # --- 配置项 ---
 
-# 统一 API 密钥读取：依次尝试 LLM_API_KEY、DASHSCOPE_API_KEY、DEEPSEEK_API_KEY、OPENAI_API_KEY
-_llm_key = os.getenv("LLM_API_KEY", "")
-if not _llm_key:
-    _llm_key = os.getenv("DASHSCOPE_API_KEY", "")
-if not _llm_key:
-    _llm_key = os.getenv("DEEPSEEK_API_KEY", "")
-if not _llm_key:
-    _llm_key = os.getenv("OPENAI_API_KEY", "")
-LLM_API_KEY: str = _llm_key
+# 阿里云百炼 API 密钥（统一使用 BAILIAN_API_KEY，去除首尾空白）
+BAILIAN_API_KEY: str = os.getenv("BAILIAN_API_KEY", "").strip()
 
-# 提供旧变量名兼容（但建议使用 LLM_API_KEY）
-DASHSCOPE_API_KEY: str = LLM_API_KEY
-DEEPSEEK_API_KEY: str = LLM_API_KEY
+# 提供旧变量名兼容（但建议使用 BAILIAN_API_KEY）
+DASHSCOPE_API_KEY: str = BAILIAN_API_KEY
+LLM_API_KEY: str = BAILIAN_API_KEY
 
 # API 基础地址（OpenAI SDK 兼容格式）
 BAILIAN_BASE_URL: str = os.getenv(
     "BAILIAN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"
-)
+).strip()
 
 # 默认模型名称（deepseek-v3 在百炼平台上的模型 ID）
-MODEL_NAME: str = os.getenv("MODEL_NAME", "deepseek-v3")
+MODEL_NAME: str = os.getenv("MODEL_NAME", "deepseek-v3").strip()
 
-print("=== 配置调试信息 ===")
-print(f"API_KEY   = {LLM_API_KEY}")
+if BAILIAN_API_KEY:
+    print(f"=== 配置调试信息 ===")
+    print(f"API_KEY first 12: {BAILIAN_API_KEY[:12]}... len={len(BAILIAN_API_KEY)}")
+else:
+    print("=== 配置调试信息 === BAILIAN_API_KEY 为空")
 print(f"BASE_URL  = {BAILIAN_BASE_URL}")
 print(f"MODEL     = {MODEL_NAME}")
 

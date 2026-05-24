@@ -21,11 +21,18 @@ def get_llm(temperature: float | None = None, model: str | None = None) -> ChatO
     # 确保代理已禁用（config.disable_proxy 会设置 NO_PROXY='*'）
     config.disable_proxy()
 
-    api_key = config.LLM_API_KEY
+    api_key = config.BAILIAN_API_KEY
+
+    # 调试打印：运行时传入 ChatOpenAI 的 key、base_url、model
+    print(f"[LLM Client] BAILIAN_API_KEY 存在: {bool(api_key)}, 长度: {len(api_key)}")
+    if api_key:
+        print(f"[LLM Client] KEY 前12位: {api_key[:12]}...")
+    print(f"[LLM Client] BASE_URL: {config.BAILIAN_BASE_URL}")
+    print(f"[LLM Client] MODEL: {model or config.MODEL_NAME}")
+
     if not api_key:
         raise ValueError(
-            "缺少 API 密钥！请在 .env 文件中设置 LLM_API_KEY、DASHSCOPE_API_KEY、"
-            "DEEPSEEK_API_KEY 或 OPENAI_API_KEY 环境变量。"
+            "缺少 API 密钥！请在 .env 文件中设置 BAILIAN_API_KEY 环境变量。"
         )
 
     return ChatOpenAI(
