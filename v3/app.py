@@ -506,6 +506,26 @@ def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
     return None
 
 
+def get_latest_node_elapsed(logger, node_name: str):
+    """从 logger 中获取最近一次指定节点的执行耗时
+
+    Args:
+        logger: DetailedLogger 实例
+        node_name: 节点名称（与日志中的 node_name 字段一致）
+
+    Returns:
+        float 或 None
+    """
+    rounds = logger.session_data.get("rounds", [])
+    if not rounds:
+        return None
+    nodes = rounds[-1].get("nodes", [])
+    for node in reversed(nodes):
+        if node.get("node_name") == node_name:
+            return node.get("elapsed_seconds")
+    return None
+
+
 def merge_node_update(accumulated: dict, node_update: dict) -> dict:
     """安全合并节点更新到累计状态
 
@@ -742,8 +762,10 @@ def main():
                 for thought in last_thoughts:
                     title = thought.get("title", "")
                     content = thought.get("content", "")
-                    if content:  # 避免展示空内容
-                        st.markdown(f"**{title}**  \n{content}")
+                    elapsed = thought.get("elapsed_seconds")
+                    elapsed_text = f"  {elapsed:.2f}s" if elapsed is not None else ""
+                    if content:
+                        st.markdown(f"**{title}{elapsed_text}**  \n{content}")
 
     # ============== 最终报告显示 ==============
     if st.session_state.final_report_shown and st.session_state.state.get("final_report"):
@@ -817,15 +839,20 @@ def main():
                             # 提取自然语言展示
                             thought_text = extract_agent_thoughts(node_name, node_update)
 
-                            if thought_text:   # 只添加非空内容
+                            # 获取节点耗时（logger 已由 wrap_node 记录）
+                            node_elapsed = get_latest_node_elapsed(logger, node_name)
+                            elapsed_text = f"  {node_elapsed:.2f}s" if node_elapsed is not None else ""
+
+                            if thought_text:
                                 thought_entry = {
                                     "node": node_name,
                                     "title": title,
                                     "content": thought_text,
+                                    "elapsed_seconds": node_elapsed,
                                     "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                 }
                                 agent_thoughts.append(thought_entry)
-                                expander.markdown(f"**{title}**\n{thought_text}")
+                                expander.markdown(f"**{title}{elapsed_text}**  \n{thought_text}")
 
                     # 所有节点执行完毕
                     t_end = time.time()
@@ -988,11 +1015,14 @@ def _generate_final_report():
                 merge_node_update(accumulated_state, node_update)
 
                 thought_text = extract_agent_thoughts(node_name, node_update)
+                node_elapsed = get_latest_node_elapsed(logger, node_name)
+
                 if thought_text:
                     thought_entry = {
                         "node": node_name,
                         "title": get_node_title(node_name),
                         "content": thought_text,
+                        "elapsed_seconds": node_elapsed,
                         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     }
                     agent_thoughts.append(thought_entry)
