@@ -839,20 +839,18 @@ def main():
                             # 提取自然语言展示
                             thought_text = extract_agent_thoughts(node_name, node_update)
 
-                            # 获取节点耗时（logger 已由 wrap_node 记录）
-                            node_elapsed = get_latest_node_elapsed(logger, node_name)
-                            elapsed_text = f"  {node_elapsed:.2f}s" if node_elapsed is not None else ""
-
+                            # 实时阶段不再尝试获取耗时，先记为 None
                             if thought_text:
                                 thought_entry = {
                                     "node": node_name,
                                     "title": title,
                                     "content": thought_text,
-                                    "elapsed_seconds": node_elapsed,
+                                    "elapsed_seconds": None,
                                     "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                 }
                                 agent_thoughts.append(thought_entry)
-                                expander.markdown(f"**{title}{elapsed_text}**  \n{thought_text}")
+                                # 实时展示不显示耗时
+                                expander.markdown(f"**{title}**  \n{thought_text}")
 
                     # 所有节点执行完毕
                     t_end = time.time()
@@ -868,6 +866,11 @@ def main():
                         last_round = logger.session_data["rounds"][-1]
                         for node in last_round.get("nodes", []):
                             node_times[node["node_name"]] = node["elapsed_seconds"]
+
+                    # 回填 agent_thoughts 的耗时
+                    for thought in agent_thoughts:
+                        node_name = thought.get("node")
+                        thought["elapsed_seconds"] = node_times.get(node_name)
 
                     # 计时
                     st.session_state.last_thinking_time = elapsed
@@ -1015,14 +1018,13 @@ def _generate_final_report():
                 merge_node_update(accumulated_state, node_update)
 
                 thought_text = extract_agent_thoughts(node_name, node_update)
-                node_elapsed = get_latest_node_elapsed(logger, node_name)
 
                 if thought_text:
                     thought_entry = {
                         "node": node_name,
                         "title": get_node_title(node_name),
                         "content": thought_text,
-                        "elapsed_seconds": node_elapsed,
+                        "elapsed_seconds": None,
                         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     }
                     agent_thoughts.append(thought_entry)
@@ -1036,6 +1038,11 @@ def _generate_final_report():
             last_round = logger.session_data["rounds"][-1]
             for node in last_round.get("nodes", []):
                 node_times[node["node_name"]] = node["elapsed_seconds"]
+
+        # 回填 agent_thoughts 的耗时
+        for thought in agent_thoughts:
+            node_name = thought.get("node")
+            thought["elapsed_seconds"] = node_times.get(node_name)
 
         st.session_state.state.update(accumulated_state)
         st.session_state.final_report_shown = True
