@@ -3,17 +3,18 @@
 import json
 import os
 import sys
+import time
 from datetime import datetime
 
 # 确保项目根目录在 sys.path 中
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from career_lie_index_agent.config import (
+from v2.config import (
     disable_proxy,
     MAX_ROUNDS,
 )
-from career_lie_index_agent.graph import build_graph
-from career_lie_index_agent.state_schema import DialogueState
+from v2.graph import build_graph
+from v2.state_schema import DialogueState
 
 
 def create_initial_state(max_rounds: int = MAX_ROUNDS) -> dict:
@@ -50,11 +51,12 @@ def create_initial_state(max_rounds: int = MAX_ROUNDS) -> dict:
     }
 
 
-def print_round_summary(state: dict) -> None:
+def print_round_summary(state: dict, elapsed: float = 0.0) -> None:
     """打印每轮分析摘要
 
     Args:
         state: 当前状态
+        elapsed: 本轮系统思考耗时（秒）
     """
     lie_index = state.get("lie_index", 0)
     risk_level = state.get("risk_level", "低")
@@ -90,6 +92,8 @@ def print_round_summary(state: dict) -> None:
     print("-" * 60)
     if followup:
         print(f"🔍 追问：{followup}")
+    if elapsed > 0:
+        print(f"⏱️  系统思考耗时：{elapsed:.2f} 秒")
     print("=" * 60)
 
 
@@ -187,13 +191,17 @@ def run_cli():
 
         # 运行图
         try:
+            print("⏳ 系统思考中...")
+            t_start = time.time()
             result = graph.invoke(state)
+            t_end = time.time()
+            elapsed = t_end - t_start
 
             # 更新状态（保留完整结果）
             state.update(result)
 
             # 打印本轮摘要
-            print_round_summary(state)
+            print_round_summary(state, elapsed)
 
             # 将追问加入对话历史
             followup = state.get("last_followup_question", "")
@@ -221,8 +229,12 @@ def run_cli():
         state["specialist_results"] = []
         state["next_action"] = "final_report"
         try:
+            t_start = time.time()
             result = graph.invoke(state)
+            t_end = time.time()
+            elapsed = t_end - t_start
             state.update(result)
+            print(f"⏱️  报告生成耗时：{elapsed:.2f} 秒")
             print_final_report(state)
         except Exception as e:
             print(f"\n❌ 生成报告出错：{e}")

@@ -1,6 +1,6 @@
 """
 全局状态定义：定义 DialogueState TypedDict，标注各字段的 reducer（Overwrite 覆盖 / Append 追加）。
-调用关系：被 graph.py 和所有 6 个节点文件引用。
+调用关系：被 graph.py 和所有 Agent 节点、普通节点文件引用。
 输入：无
 输出：DialogueState 类型
 """
@@ -21,7 +21,7 @@ Append = Annotated[list, operator.add]
 
 
 class DialogueState(TypedDict):
-    """多轮对话全局状态"""
+    """多轮对话全局状态（三 Agent 版）"""
     # 轮次控制
     round_id: Overwrite
     max_rounds: Overwrite
@@ -29,41 +29,32 @@ class DialogueState(TypedDict):
     # 当前用户输入
     current_user_text: Overwrite
 
-    # 对话历史：每项为 {"role": "user"/"assistant", "content": "..."}
+    # 对话历史：每项为 {"round_id": int, "role": "user"/"assistant", "content": "..."}
     dialogue_history: Append
 
-    # 当前轮抽取的事实
+    # Agent 2 输出：当前事实、当前异常、事实比对结果
     current_facts: Overwrite
-
-    # 历史事实表
-    facts_table: Overwrite
-
-    # 当前轮识别的异常表达
     current_anomalies: Overwrite
-
-    # 异常表达历史记录
-    indicator_history: Append
-
-    # 事实一致性判断结果
     consistency_results: Overwrite
 
-    # 异常表
+    # 状态表
+    facts_table: Overwrite
     anomalies_table: Overwrite
+    indicator_history: Append
 
-    # 上一轮追问问题
-    last_followup_question: Overwrite
-
-    # 追问历史
-    followup_history: Append
-
-    # 路由控制：followup / report
+    # Agent 3 输出：策略反馈
+    priority_issue: Overwrite
+    followup_strategy: Overwrite
+    strategy_reason: Overwrite
     next_action: Overwrite
+
+    # Agent 1 输出：追问
+    last_followup_question: Overwrite
+    followup_history: Append
 
     # 谎言指数
     lie_index: Overwrite
-
-    # 风险等级
     risk_level: Overwrite
 
-    # 最终测评报告
+    # 最终报告
     final_report: Overwrite

@@ -80,7 +80,7 @@ python run_cli.py
 ```env
 DASHSCOPE_API_KEY=你的阿里云百炼API_KEY
 BAILIAN_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
-MODEL_NAME=deepseek-v4-pro
+MODEL_NAME=deepseek-v3
 MAX_ROUNDS=5
 TEMPERATURE=0.2
 ```
@@ -90,7 +90,7 @@ TEMPERATURE=0.2
 - Python 3.10+
 - LangGraph
 - LangChain Core
-- 阿里云百炼 DeepSeek-V4-Pro（OpenAI-compatible API）
+- 阿里云百炼 deepseek-v3（OpenAI-compatible API）
 - python-dotenv / pydantic
 
 ## 注意事项

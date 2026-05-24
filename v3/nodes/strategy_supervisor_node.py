@@ -51,11 +51,6 @@ def _is_active_anomaly(anomaly: dict) -> bool:
 
 
 def _has_enough_core_facts(facts_table: list[dict]) -> bool:
-    """检查是否已经收集到足够多的核心事实
-
-    需要至少覆盖 3 个核心槽位：
-    occupation, role, work_content, time_stage, experience
-    """
     slots = set()
     for fact in facts_table:
         if not isinstance(fact, dict):
@@ -64,15 +59,11 @@ def _has_enough_core_facts(facts_table: list[dict]) -> bool:
         if slot:
             slots.add(slot)
 
-    core_slots = {
-        "occupation",
-        "role",
-        "work_content",
-        "time_stage",
-        "experience",
-    }
-    hit_count = len(slots & core_slots)
-    return hit_count >= 3
+    has_identity = bool(slots & {"occupation", "role"})
+    has_content = bool(slots & {"work_content", "experience"})
+    has_time_or_project = bool(slots & {"time_stage", "company"})
+
+    return has_identity and has_content and has_time_or_project
 
 
 def _has_exhausted_anomaly(anomalies_table: list[dict], max_followup_per_anomaly: int = 2) -> bool:
@@ -118,6 +109,8 @@ def strategy_supervisor_node(state: DialogueState) -> dict:
     """
     round_id = state.get("round_id", 1)
     max_rounds = state.get("max_rounds", config.MAX_ROUNDS)
+    min_rounds_before_early_stop = 6
+    can_early_stop = round_id >= min_rounds_before_early_stop
     facts_table = state.get("facts_table", [])
     anomalies_table = state.get("anomalies_table", [])
     lie_index = state.get("lie_index", 0)
@@ -145,16 +138,16 @@ def strategy_supervisor_node(state: DialogueState) -> dict:
     if round_id >= max_rounds:
         next_action = "final_report"
         stop_reason = "max_rounds"
-    elif all_anomalies_resolved and has_enough_facts:
+    elif can_early_stop and all_anomalies_resolved and has_enough_facts:
         next_action = "final_report"
         stop_reason = "anomaly_resolved"
-    elif has_exhausted:
+    elif can_early_stop and has_exhausted:
         next_action = "final_report"
         stop_reason = "followup_exhausted"
-    elif has_confirmed_high_risk:
+    elif can_early_stop and has_confirmed_high_risk:
         next_action = "final_report"
         stop_reason = "anomaly_confirmed"
-    elif not active_anomalies and has_enough_facts:
+    elif can_early_stop and not active_anomalies and has_enough_facts:
         next_action = "final_report"
         stop_reason = "enough_information_no_active_anomaly"
     else:
@@ -228,6 +221,10 @@ def strategy_supervisor_node(state: DialogueState) -> dict:
         "recent_memory",
         "light_clarification",
         "topic_shift_buffer",
+        "experience_probe",
+        "knowledge_probe",
+        "tool_workflow_probe",
+        "scenario_judgment_probe",
     ]
     if followup_strategy not in ALLOWED_STRATEGIES:
         followup_strategy = "daily_routine"

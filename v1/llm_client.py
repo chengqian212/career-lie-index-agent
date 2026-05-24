@@ -1,16 +1,16 @@
 """
-LLM 调用封装：通过 langchain-openai 连接阿里云百炼 DeepSeek-V4-Pro，提供纯文本和 JSON 两种调用方式。
+LLM 调用封装：通过 langchain-openai 连接阿里云百炼 deepseek-v3，提供纯文本和 JSON 两种调用方式。
 调用关系：调用 config.py 读取配置；被 6 个节点文件（fact_extraction, anomaly_detection, consistency_judge, followup_generation, report_generation）引用。
 输入：config.py (API_KEY, BASE_URL, MODEL_NAME)
 输出：call_llm(), call_llm_json()
 """
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
-from config import API_KEY, BASE_URL, MODEL_NAME
+from v1.config import API_KEY, BASE_URL, MODEL_NAME
 
 
 def get_chat_model(temperature: float = 0.3) -> ChatOpenAI:
-    """返回一个 ChatOpenAI 实例，连接阿里云百炼 DeepSeek-V4-Pro"""
+    """返回一个 ChatOpenAI 实例，连接阿里云百炼 deepseek-v3"""
     return ChatOpenAI(
         model=MODEL_NAME,
         api_key=API_KEY,  # type: ignore[arg-type]

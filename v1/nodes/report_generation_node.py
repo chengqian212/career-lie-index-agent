@@ -1,14 +1,15 @@
 """
 报告生成节点：调用 LLM 根据全部状态生成最终谎言指数测评报告。
 调用关系：调用 llm_client.py、prompts.py、utils/json_utils.py；被 graph.py 注册为节点。
-输入：state["dialogue_history"], state["facts_table"], state["anomalies_table"], state["indicator_history"], state["lie_index"], state["risk_level"]
+输入：state["dialogue_history"], state["facts_table"], state["anomalies_table"], state["indicator_history"],
+      state["lie_index"], state["risk_level"]
 输出：state["final_report"]
 """
 import json
-from state_schema import DialogueState
-from llm_client import call_llm_json
-from prompts import REPORT_GENERATION_PROMPT
-from utils.json_utils import parse_json_response
+from v1.state_schema import DialogueState
+from v1.llm_client import call_llm_json
+from v1.prompts import REPORT_GENERATION_PROMPT
+from v1.utils.json_utils import parse_json_response
 
 
 def report_generation_node(state: DialogueState) -> dict:

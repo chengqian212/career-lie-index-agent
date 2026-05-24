@@ -102,7 +102,7 @@ Python 3.10+
 LangGraph 最新稳定版
 LangChain Core 最新稳定版
 langchain-openai 或 OpenAI-compatible 客户端
-阿里云百炼 DeepSeek-V4-Pro
+阿里云百炼 deepseek-v3
 python-dotenv
 pydantic
 ```
@@ -144,7 +144,7 @@ checkpointer 可选，用于多轮持久化
 ```env
 DASHSCOPE_API_KEY=你的阿里云百炼API_KEY
 BAILIAN_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
-MODEL_NAME=deepseek-v4-pro
+MODEL_NAME=deepseek-v3
 MAX_ROUNDS=5
 TEMPERATURE=0.2
 ```
@@ -820,7 +820,7 @@ domain_agent_node.py
 psycho_linguistic_agent_node.py
 ```
 
-每个节点都调用 DeepSeek-V4-Pro。每个节点输出统一 JSON。
+每个节点都调用 deepseek-v3。每个节点输出统一 JSON。
 
 ---
 

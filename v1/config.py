@@ -8,7 +8,7 @@
 # 阿里云百炼 API 配置
 API_KEY = "sk-7e4f567862e84ab2ab8936bf21d657e3"
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
-MODEL_NAME = "deepseek-v4-pro"
+MODEL_NAME = "deepseek-v3"
 
 # 对话轮数
 MAX_ROUNDS = 5
