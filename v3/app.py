@@ -399,7 +399,7 @@ def main():
     if "is_streaming" not in st.session_state:
         st.session_state.is_streaming = False
     if "thinking_time_history" not in st.session_state:
-            st.session_state.thinking_time_history = []
+        st.session_state.thinking_time_history = []
     if "round_records" not in st.session_state:
         st.session_state.round_records = []
 
