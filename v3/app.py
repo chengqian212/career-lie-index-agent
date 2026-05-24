@@ -779,8 +779,16 @@ def main():
             st.session_state.round_num += 1
             round_num = st.session_state.round_num
             st.session_state.state["round_id"] = round_num
+
+            # 清空本轮临时字段，避免上一轮结果残留
             st.session_state.state["specialist_results"] = []
             st.session_state.state["called_specialists"] = []
+            st.session_state.state["current_facts"] = []
+            st.session_state.state["current_anomalies"] = []
+            st.session_state.state["risk_explanation"] = []
+            st.session_state.state["dimension_scores"] = {}
+            st.session_state.state["debate_needed"] = False
+            st.session_state.state["debate_result"] = None
 
             # 开始日志轮次记录
             logger = get_logger()
