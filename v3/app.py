@@ -324,11 +324,12 @@ def render_message(msg: dict, is_streaming: bool = False):
         """, unsafe_allow_html=True)
 
 
-def _save_report_to_outputs(report: dict) -> str:
-    """将最终报告保存到 outputs/reports 目录
+def _save_session_to_outputs(state: dict, thinking_history: list) -> str:
+    """保存完整测试会话到 outputs/reports 目录
 
     Args:
-        report: 报告字典（包含 report_text 等字段）
+        state: 完整的对话状态字典
+        thinking_history: 每轮耗时记录列表
 
     Returns:
         保存后的文件路径
@@ -340,12 +341,30 @@ def _save_report_to_outputs(report: dict) -> str:
     )
     os.makedirs(reports_dir, exist_ok=True)
 
+    data = {
+        "round_id": state.get("round_id"),
+        "max_rounds": state.get("max_rounds"),
+        "dialogue_history": state.get("dialogue_history", []),
+        "followup_history": state.get("followup_history", []),
+        "facts_table": state.get("facts_table", []),
+        "anomalies_table": state.get("anomalies_table", []),
+        "indicator_history": state.get("indicator_history", []),
+        "lie_index": state.get("lie_index", 0.0),
+        "dimension_scores": state.get("dimension_scores", {}),
+        "risk_explanation": state.get("risk_explanation", []),
+        "called_specialists": state.get("called_specialists", []),
+        "routing_decision": state.get("routing_decision", {}),
+        "final_report": state.get("final_report"),
+        "thinking_time_history": thinking_history,
+        "saved_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    }
+
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"report_{timestamp}.json"
+    filename = f"session_{timestamp}.json"
     filepath = os.path.join(reports_dir, filename)
 
     with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(report, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
     return filepath
 
@@ -652,7 +671,11 @@ def _stream_ai_message(message: str, chunk_size: int = 2, delay: float = 0.03):
 
 
 def _generate_final_report():
-    """生成并显示最终报告，同时将报告保存到 outputs/reports 目录"""
+    """生成并显示最终报告，同时保存完整测试记录"""
+    # 保护：避免重复生成
+    if st.session_state.final_report_shown:
+        return
+
     st.session_state.state["round_id"] = MAX_ROUNDS
     st.session_state.state["specialist_results"] = []
     st.session_state.state["called_specialists"] = []
@@ -669,12 +692,13 @@ def _generate_final_report():
         st.session_state.current_lie_index = result.get("lie_index", 0.0)
         st.session_state.dimension_scores = result.get("dimension_scores", {})
 
-        # 保存报告到 outputs 目录
-        final_report = st.session_state.state.get("final_report")
-        if final_report:
-            saved_path = _save_report_to_outputs(final_report)
-            st.session_state.saved_filepath = saved_path
-            st.success(f"💾 报告已保存至：{saved_path}")
+        # 保存完整 session 数据到 outputs 目录
+        saved_path = _save_session_to_outputs(
+            st.session_state.state,
+            st.session_state.thinking_time_history,
+        )
+        st.session_state.saved_filepath = saved_path
+        st.success(f"💾 完整测试记录已保存至：{saved_path}")
 
     except Exception as e:
         st.error(f"生成报告出错：{e}")
