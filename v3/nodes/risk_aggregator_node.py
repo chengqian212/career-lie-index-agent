@@ -1,178 +1,168 @@
-"""风险聚合节点：根据各维度分数计算谎言指数
+"""
+风险聚合节点（risk_aggregator_node.py）
 
-v3 改进：
-- 先处理专家 anomaly_updates
-- 再写入专家 new_anomalies
-- 再计算 unresolved_count
-- 最后计算 lie_index
-
-v3.3 改进：
-- 合并 lightweight_risk_aggregator 的轻量评分逻辑
-- 在没有调用专家时，使用 surface_risk_score、unresolved_count、current_anomalies 综合评分
+此节点功能：
+1. 将各专家产生的异常更新和新发现写入 anomalies_table；
+2. 计算 LieIndex（谎言指数）：
+   - 每条活跃专家异常事件的风险值 V = severity_base_score * confidence_weight
+   - LieIndex = 100 * (1 - product(1 - V_i / 100))
 """
 
-from typing import Optional
-
-from ..state_schema import DialogueState
-from ..utils.score_utils import (
-    compute_lie_index,
-    compute_dimension_scores_debate_adjusted,
-    calculate_lightweight_risk_score,
+from memory.anomaly_table import (
+    add_specialist_results_as_anomalies,   # 将专家结果写入 anomalies_table
+    apply_specialist_anomaly_updates,      # 更新旧异常状态
 )
-from ..memory.anomaly_table import (
-    count_unresolved,
-    apply_specialist_anomaly_updates,
-    add_specialist_results_as_anomalies,
+from state_schema import DialogueState
+from utils.score_utils import (
+    VALID_CONFIDENCES,
+    VALID_SEVERITIES,
+    combine_independent_risk_values,      # 对独立风险值做加权归一化
+    effective_risk_value,                 # 根据 severity/confidence 计算风险值
 )
 
+# 这些来源才会被纳入风险聚合计算
+RISK_EVIDENCE_SOURCES = {
+    "quick_preanalysis",
+    "semantic",
+    "logical",
+    "domain",
+    "psycho_linguistic",
+}
+
+# 显示名称映射（用于生成日志或可视化）
+SOURCE_DISPLAY_NAMES = {
+    "quick_preanalysis": "表层检测",
+    "semantic": "语义一致性",
+    "logical": "逻辑时间线",
+    "domain": "职业常识",
+    "psycho_linguistic": "心理语言",
+}
+
+def _is_active_specialist_evidence(anomaly: dict) -> bool:
+    """
+    判断异常是否属于“活跃专家证据”
+    条件：
+    1. anomaly 是 dict
+    2. source 属于 RISK_EVIDENCE_SOURCES
+    3. stop_followup != True
+    4. status != "resolved"
+    """
+    if not isinstance(anomaly, dict):
+        return False
+    if anomaly.get("source") not in RISK_EVIDENCE_SOURCES:
+        return False
+    if anomaly.get("stop_followup") is True:
+        return False
+    if anomaly.get("status") == "resolved":
+        return False
+    return True
+
+def _risk_events_from_anomalies(anomalies_table: list[dict]) -> list[dict]:
+    """
+    从 anomalies_table 中提取活跃专家事件，并计算风险值
+    逻辑：
+    1. 遍历 anomalies_table
+    2. 只保留活跃专家异常
+    3. 校验 severity/confidence 是否合法
+    4. 计算 risk_value（若异常未提供，则使用 effective_risk_value）
+    """
+    events = []
+
+    for anomaly in anomalies_table:
+        if not _is_active_specialist_evidence(anomaly):
+            continue
+
+        severity = str(anomaly.get("severity") or "").strip().upper()
+        confidence = str(anomaly.get("confidence") or "").strip().upper()
+        if severity not in VALID_SEVERITIES or confidence not in VALID_CONFIDENCES:
+            continue
+
+        risk_value = float(
+            anomaly.get("risk_value")
+            or effective_risk_value(severity, confidence)
+        )
+
+        # 生成标准化事件对象
+        events.append({
+            "source": anomaly.get("source", ""),
+            "display_source": SOURCE_DISPLAY_NAMES.get(
+                anomaly.get("source", ""),
+                anomaly.get("source", ""),
+            ),
+            "anomaly_id": anomaly.get("anomaly_id", ""),
+            "type": anomaly.get("type", ""),
+            "description": anomaly.get("description", ""),
+            "severity": severity,
+            "confidence": confidence,
+            "risk_value": risk_value,
+        })
+
+    return events
 
 def risk_aggregator_node(state: DialogueState) -> dict:
-    """风险聚合节点
-
-    v3.3 改进：
-    - 合并轻量评分逻辑，跳过专家时不再只用 unresolved_count * 20
-    - 引入 surface_risk_score 和 current_anomalies 信息
-
-    Args:
-        state: 当前对话状态
-    Returns:
-        状态更新字典，包含 lie_index, dimension_scores, risk_explanation, anomalies_table
+    """
+    核心聚合函数：
+    1. 应用专家异常更新
+    2. 将专家产生的新异常写入表
+    3. 提取活跃异常事件
+    4. 计算 LieIndex
+    5. 生成维度分数与风险解释
     """
     round_id = state.get("round_id", 1)
     anomalies_table = state.get("anomalies_table", [])
     specialist_results = state.get("specialist_results", [])
-    called_specialists = state.get("called_specialists", [])
 
-    # v3: 先处理专家 anomaly_updates
+    # ----------------------------
+    # 1. 更新旧异常状态（clarify/resolve/reinforce/remain_unresolved）
     updated_anomalies_table = apply_specialist_anomaly_updates(
         anomalies_table=anomalies_table,
         specialist_results=specialist_results,
         round_id=round_id,
     )
 
-    # v3: 再写入专家 new_anomalies
+    # 2. 写入专家产生的新异常
     updated_anomalies_table = add_specialist_results_as_anomalies(
         anomalies_table=updated_anomalies_table,
         specialist_results=specialist_results,
         round_id=round_id,
     )
 
-    # v3: 计算 unresolved_count（基于更新后的 anomalies_table）
-    unresolved_count = count_unresolved(updated_anomalies_table)
+    # 3. 提取活跃专家事件，计算单条风险值
+    risk_events = _risk_events_from_anomalies(updated_anomalies_table)
 
-    # ============================================================
-    # 情况一：没有调用任何专家
-    # ============================================================
-    if not called_specialists:
-        surface_risk_score = state.get("surface_risk_score", 0)
-        current_anomalies = state.get("current_anomalies", [])
+    # 4. LieIndex 聚合公式（独立事件概率叠加）
+    lie_index = combine_independent_risk_values([
+        event["risk_value"] for event in risk_events
+    ])
 
-        lie_index = calculate_lightweight_risk_score(
-            surface_risk_score=surface_risk_score,
-            unresolved_count=unresolved_count,
-            current_anomalies=current_anomalies,
+    # ----------------------------
+    # 5. 维度分数计算（每个来源取最大 risk_value）
+    dimension_scores: dict[str, float] = {}
+    for event in risk_events:
+        source = event["display_source"]
+        dimension_scores[source] = round(
+            max(dimension_scores.get(source, 0.0), event["risk_value"]),
+            1,
         )
 
-        dimension_scores = {
-            "lightweight_surface": surface_risk_score,
-            "unresolved_anomalies": min(100, unresolved_count * 20),
-        }
-
-        risk_explanation = []
-
-        if surface_risk_score >= 30:
-            risk_explanation.append(f"当前回答存在一定表层风险信号（{surface_risk_score}分）")
-
-        if unresolved_count > 0:
-            risk_explanation.append(f"存在{unresolved_count}个未澄清的异常信号")
-
-        if current_anomalies:
-            anomaly_types = [a.get("type", "未知") for a in current_anomalies]
-            risk_explanation.append(f"本轮识别到异常类型：{', '.join(set(anomaly_types))}")
-
-        if not risk_explanation:
-            risk_explanation.append("当前轮次未发现明显风险信号")
-
-        return {
-            "lie_index": lie_index,
-            "dimension_scores": dimension_scores,
-            "risk_explanation": risk_explanation,
-            "anomalies_table": updated_anomalies_table,
-        }
-
-    # ============================================================
-    # 情况二：有专家分析结果
-    # ============================================================
-
-    # v3: 动态初始化维度分数，只对实际调用的专家设置初始值
-    dimension_scores = {}
-
-    # 从 specialist_results 提取分数
-    for result in specialist_results:
-        if isinstance(result, dict):
-            agent = result.get("agent", "")
-            score = float(result.get("score", 0))
-            if agent in called_specialists:
-                dimension_scores[agent] = score
-
-    # 对于调用了但没有返回结果的专家，设置默认分数
-    for specialist in called_specialists:
-        if specialist not in dimension_scores:
-            dimension_scores[specialist] = 0.0
-
-    # 获取 Debate 调整
-    debate_result = state.get("debate_result")
-    debate_adjustment = None
-    if isinstance(debate_result, dict):
-        debate_adjustment = debate_result.get("debate_adjustment")
-
-    # v3: 计算谎言指数，传入实际调用的专家列表
-    lie_index = compute_lie_index(
-        dimension_scores=dimension_scores,
-        unresolved_count=unresolved_count,
-        debate_adjustment=debate_adjustment,
-        called_specialists=called_specialists,
-    )
-
-    # 生成风险解释
-    risk_explanation = []
-
-    # 经 Debate 调整后的维度分数
-    adjusted_scores = compute_dimension_scores_debate_adjusted(
-        dimension_scores, debate_adjustment
-    )
-
-    # v3: 只对实际调用的专家生成解释
-    if "semantic" in adjusted_scores and adjusted_scores["semantic"] >= 50:
-        risk_explanation.append("职业内容表述存在潜在不一致")
-    if "logical" in adjusted_scores and adjusted_scores["logical"] >= 50:
-        risk_explanation.append("时间线或逻辑存在待澄清点")
-    if "domain" in adjusted_scores and adjusted_scores["domain"] >= 50:
-        risk_explanation.append("职业描述与常识存在偏差")
-    if "psycho_linguistic" in adjusted_scores and adjusted_scores["psycho_linguistic"] >= 50:
-        risk_explanation.append("表达方式存在软性风险信号")
-    
-    if unresolved_count > 0:
-        risk_explanation.append(f"仍有 {unresolved_count} 个待澄清异常")
-
+    # 6. 风险解释文本
+    risk_explanation = [
+        (
+            f"{event['display_source']}:{event['type']} "
+            f"severity={event['severity']} "
+            f"confidence={event['confidence']} "
+            f"V={event['risk_value']:.1f}"
+        )
+        for event in risk_events
+    ]
     if not risk_explanation:
-        risk_explanation.append("暂无明显不一致")
+        risk_explanation.append("No active specialist evidence; LieIndex=0.")
 
-    # v3: 在维度分数中标记本轮未调用的专家
-    full_dimension_scores: dict[str, Optional[float]] = {
-        "semantic": None,
-        "logical": None,
-        "domain": None,
-        "psycho_linguistic": None,
-    }
-    for specialist in called_specialists:
-        if specialist in adjusted_scores:
-            full_dimension_scores[specialist] = adjusted_scores[specialist]
-
-    # 只返回非 None 的维度分数
+    # ----------------------------
+    # 7. 返回更新状态
     return {
         "lie_index": lie_index,
-        "dimension_scores": {k: v for k, v in full_dimension_scores.items() if v is not None},
+        "dimension_scores": dimension_scores,
         "risk_explanation": risk_explanation,
-        "anomalies_table": updated_anomalies_table,  # v3: 返回更新后的 anomalies_table
+        "anomalies_table": updated_anomalies_table,
     }

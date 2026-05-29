@@ -6,9 +6,9 @@ v3: 已废弃
 本节点保留用于兼容旧版本，不再注册到 graph.py。
 """
 
-from ..state_schema import DialogueState
-from ..memory.fact_table import add_facts
-from ..memory.anomaly_table import add_anomalies
+from state_schema import DialogueState
+from memory.fact_table import add_facts
+from memory.anomaly_table import add_anomalies
 
 
 def state_update_node(state: DialogueState) -> dict:

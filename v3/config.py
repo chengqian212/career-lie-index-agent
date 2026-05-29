@@ -52,16 +52,7 @@ BAILIAN_BASE_URL: str = os.getenv(
 
 # 默认模型名称（deepseek-v3 在百炼平台上的模型 ID）
 MODEL_NAME: str = os.getenv("MODEL_NAME", "deepseek-v3").strip()
-
-if BAILIAN_API_KEY:
-    print(f"=== 配置调试信息 ===")
-    print(f"API_KEY first 12: {BAILIAN_API_KEY[:12]}... len={len(BAILIAN_API_KEY)}")
-else:
-    print("=== 配置调试信息 === BAILIAN_API_KEY 为空")
-print(f"BASE_URL  = {BAILIAN_BASE_URL}")
-print(f"MODEL     = {MODEL_NAME}")
-
-MAX_ROUNDS: int = int(os.getenv("MAX_ROUNDS", "5"))
+MAX_ROUNDS: int = int(os.getenv("MAX_ROUNDS", "8"))
 TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.2"))
 
 # 风险等级阈值
@@ -75,9 +66,6 @@ WEIGHT_DOMAIN: float = 0.20             # 领域一致性权重
 WEIGHT_PSYCHO_LINGUISTIC: float = 0.15  # 心理语言学权重
 WEIGHT_UNRESOLVED_FOLLOWUP: float = 0.10  # 未解决追问权重
 
-# Debate 触发阈值
-DEBATE_SCORE_THRESHOLD: int = 75           # Debate 触发分数阈值：谎言指数达到此值时触发辩论
-DEBATE_SCORE_DIFF_THRESHOLD: int = 40      # Debate 分数差阈值：专家评分差异超过此值时触发辩论
 UNRESOLVED_FOLLOWUP_PER_SCORE: int = 20    # 未解决追问每项扣分：每个未解决的追问按此分值计入谎言指数
 
 # ---- v3 新增：路由配置 ----
@@ -93,5 +81,4 @@ MEDIUM_RISK_THRESHOLD: int = 50
 # 高风险阈值：高于此值调用多个或全部专家
 HIGH_RISK_THRESHOLD: int = 70
 
-# Debate 最少专家数：调用少于该数量专家时不触发 Debate
-MIN_SPECIALISTS_FOR_DEBATE: int = 2
+

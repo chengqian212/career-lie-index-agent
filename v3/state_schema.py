@@ -25,7 +25,6 @@ class DialogueState(TypedDict):
     facts_table: List[Dict]            # 全局事实表，存储所有已验证事实
     current_anomalies: List[Dict]      # 当前检测到的不一致/矛盾点
     indicator_history: List[Dict]      # 历史指标检测结果，用于趋势分析
-    consistency_results: List[Dict]    # 一致性校验结果列表
     anomalies_table: List[Dict]        # 全局异常表，记录所有检测到的问题
     last_followup_question: str        # 最近生成的追问问题
     followup_history: List[Dict]       # 追问历史记录
@@ -33,9 +32,6 @@ class DialogueState(TypedDict):
     # ==================== 第二版新增字段 ====================
     specialist_results: Annotated[List[Dict], operator.add]  # 专家分析结果，使用 add reducer 自动合并并行结果
     dimension_scores: Dict[str, float]  # 各维度评分（如逻辑性、情感度等）
-    debate_needed: bool                 # 是否需要 Agent 之间的辩论
-    debate_result: Optional[Dict]       # 辩论结果记录
-
     # ==================== 谎言指数相关 ====================
     lie_index: float                    # 谎言指数（0-100，越高越可疑）
     risk_explanation: List[str]         # 风险解释说明列表
@@ -48,12 +44,16 @@ class DialogueState(TypedDict):
     quick_fact_summary: str             # 快速事实摘要，用于初步理解
     quick_signal_summary: str           # 快速信号摘要，标识异常信号
     surface_risk_score: float           # 表面风险评分，快速评估风险程度
+    severity: str                       # 快速预分析严重度：CRITICAL/HIGH/MEDIUM/LOW
+    confidence: str                     # 快速预分析置信度：HIGH/LOW
+    schema_error: str                   # 节点输出结构错误标记
+    schema_errors: List[str]            # 节点输出结构错误明细
+    quick_preanalysis_retry_count: int  # quick_preanalysis schema 重试次数
     has_new_fact: bool                  # 是否检测到新事实
 
     # ==================== v3 新增：路由决策 ====================
     routing_decision: Dict              # 路由决策详情，包含决策依据
     selected_specialists: List[str]     # 选择调用的专家列表
-    need_specialist: bool               # 是否需要专家深入分析
     priority_issue: str                 # 优先关注的问题描述
     followup_strategy: str              # 追问策略（如深入/澄清/验证）
 
@@ -63,3 +63,4 @@ class DialogueState(TypedDict):
 
     # ==================== v3 新增：记录实际调用的专家 ====================
     called_specialists: Annotated[List[str], operator.add]  # 已调用专家记录，使用 add reducer 自动累加
+

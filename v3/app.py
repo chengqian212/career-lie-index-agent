@@ -11,19 +11,20 @@ import json
 import os
 import sys
 import time
+from html import escape
 from datetime import datetime
 
 import streamlit as st
 
-# 确保项目根目录在 sys.path 中
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# 确保 v3 目录作为项目根目录在 sys.path 中
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from v3.config import (
+from config import (
     disable_proxy,
     MAX_ROUNDS,
 )
-from v3.graph import build_graph
-from v3.utils.logger import get_logger, reset_logger
+from graph import build_graph
+from utils.logger import get_logger, reset_logger
 
 
 # ============== 页面配置 ==============
@@ -222,6 +223,45 @@ footer {visibility: hidden;}
 .specialist-logical { background-color: #e8f5e9; color: #2e7d32; }
 .specialist-domain { background-color: #fff3e0; color: #ef6c00; }
 .specialist-psycho { background-color: #f3e5f5; color: #7b1fa2; }
+
+/* Agent 思考监控 */
+.monitor-shell {
+    border: 1px solid #e4e7ec;
+    border-radius: 8px;
+    padding: 14px;
+    background: #ffffff;
+    margin-bottom: 12px;
+}
+
+.thought-card {
+    border-left: 4px solid #64748b;
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin: 8px 0;
+    line-height: 1.65;
+    color: #1f2937;
+}
+
+.thought-title {
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+.thought-meta {
+    color: #667085;
+    font-size: 0.86rem;
+    margin-left: 4px;
+}
+
+.thought-semantic { border-left-color: #1565c0; }
+.thought-logical { border-left-color: #2e7d32; }
+.thought-domain { border-left-color: #ef6c00; }
+.thought-psycho { border-left-color: #7b1fa2; }
+.thought-routing { border-left-color: #0f766e; }
+.thought-risk { border-left-color: #c2410c; }
+.thought-strategy { border-left-color: #7c3aed; }
+.thought-report { border-left-color: #b45309; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -238,14 +278,11 @@ def create_initial_state(max_rounds: int = MAX_ROUNDS) -> dict:
         "facts_table": [],
         "current_anomalies": [],
         "indicator_history": [],
-        "consistency_results": [],
         "anomalies_table": [],
         "last_followup_question": "",
         "followup_history": [],
         "specialist_results": [],
         "dimension_scores": {},
-        "debate_needed": False,
-        "debate_result": None,
         "lie_index": 0.0,
         "risk_explanation": [],
         "next_action": "",
@@ -253,10 +290,14 @@ def create_initial_state(max_rounds: int = MAX_ROUNDS) -> dict:
         "quick_fact_summary": "",
         "quick_signal_summary": "",
         "surface_risk_score": 0.0,
+        "severity": "",
+        "confidence": "",
+        "schema_error": "",
+        "schema_errors": [],
+        "quick_preanalysis_retry_count": 0,
         "has_new_fact": False,
         "routing_decision": {},
         "selected_specialists": [],
-        "need_specialist": False,
         "priority_issue": "",
         "followup_strategy": "",
         "called_specialists": [],
@@ -382,14 +423,141 @@ def get_node_title(node_name: str) -> str:
         "logical_agent": "逻辑分析专家",
         "domain_agent": "领域知识专家",
         "psycho_linguistic_agent": "心理语言学专家",
-        "debate_gate": "辩论门控",
-        "debate": "专家辩论",
         "risk_aggregator": "风险聚合",
         "strategy_supervisor": "策略决策",
         "followup_generation": "追问生成",
         "report_generation": "报告生成",
     }
     return mapping.get(node_name, node_name)
+
+
+def get_thought_class(node_name: str) -> str:
+    """返回监控卡片的节点样式类。"""
+    if node_name == "semantic_agent":
+        return "thought-semantic"
+    if node_name == "logical_agent":
+        return "thought-logical"
+    if node_name == "domain_agent":
+        return "thought-domain"
+    if node_name == "psycho_linguistic_agent":
+        return "thought-psycho"
+    if node_name == "lightweight_routing_supervisor":
+        return "thought-routing"
+    if node_name == "risk_aggregator":
+        return "thought-risk"
+    if node_name == "strategy_supervisor":
+        return "thought-strategy"
+    if node_name in ("followup_generation", "report_generation"):
+        return "thought-report"
+    return ""
+
+
+def format_thought_line(thought: dict) -> str:
+    """格式化为：节点标题：思考内容（耗时 1.23s）。"""
+    title = escape(str(thought.get("title") or thought.get("node") or "节点"))
+    content = escape(str(thought.get("content") or ""))
+    elapsed = thought.get("elapsed_seconds")
+    elapsed_text = ""
+    if isinstance(elapsed, (int, float)):
+        elapsed_text = f'<span class="thought-meta">（耗时 {elapsed:.2f}s）</span>'
+    elif thought.get("time"):
+        elapsed_text = f'<span class="thought-meta">（{escape(str(thought["time"]))}）</span>'
+    css_class = get_thought_class(str(thought.get("node") or ""))
+    return (
+        f'<div class="thought-card {css_class}">'
+        f'<span class="thought-title">{title}：</span>{content}{elapsed_text}'
+        f'</div>'
+    )
+
+
+def render_thought_items(thoughts: list[dict]) -> None:
+    """渲染一组思考摘要，不输出原始 JSON。"""
+    visible_thoughts = [t for t in thoughts if isinstance(t, dict) and t.get("content")]
+    if not visible_thoughts:
+        st.info("暂无可展示的 Agent 思考摘要。")
+        return
+    for thought in visible_thoughts:
+        st.markdown(format_thought_line(thought), unsafe_allow_html=True)
+
+
+def get_monitor_records(max_recent: int = 10) -> list[dict]:
+    """读取历史轮次和当前实时轮次，供监控 Tab 只读展示。"""
+    raw_records = st.session_state.get("round_records", [])
+    if isinstance(raw_records, dict):
+        records = list(raw_records.values())
+    else:
+        records = list(raw_records)
+
+    live_thoughts = st.session_state.get("live_agent_thoughts", [])
+    if live_thoughts:
+        records.append({
+            "round": st.session_state.get("live_agent_round") or st.session_state.get("round_num", 0),
+            "time": "进行中",
+            "agent_thoughts": live_thoughts,
+            "is_live": True,
+        })
+
+    def sort_key(record: dict) -> tuple[int, int]:
+        round_no = record.get("round", 0)
+        try:
+            round_no = int(round_no)
+        except (TypeError, ValueError):
+            round_no = 0
+        return (round_no, 1 if record.get("is_live") else 0)
+
+    return sorted(records, key=sort_key)[-max_recent:]
+
+
+def append_live_agent_thought(agent_thoughts: list[dict], thought_entry: dict, max_live: int = 10) -> None:
+    """追加实时思考摘要，并限制监控区当前轮展示数量。"""
+    agent_thoughts.append(thought_entry)
+    st.session_state.live_agent_thoughts = agent_thoughts[-max_live:]
+
+
+def render_agent_monitor(max_recent: int = 10) -> None:
+    """只读监控页：按轮次展示 Agent 思考摘要。"""
+    recent_records = get_monitor_records(max_recent)
+
+    st.markdown('<div class="monitor-shell">', unsafe_allow_html=True)
+    st.subheader("Agent 思考监控")
+    st.caption("这里只显示节点思考摘要，不显示对话文本、最终报告或原始 JSON。")
+
+    if not recent_records:
+        st.info("开始测评后，每个节点返回摘要时会显示在这里。")
+        st.markdown("</div>", unsafe_allow_html=True)
+        return
+
+    left_col, right_col = st.columns([1, 3])
+    labels = [
+        f"第 {record.get('round', '?')} 轮{'（进行中）' if record.get('is_live') else ''}"
+        for record in recent_records
+    ]
+    with left_col:
+        selected_label = st.radio(
+            "轮次",
+            labels,
+            index=len(labels) - 1,
+            key="monitor_round_selector",
+        )
+        st.caption(f"最多显示最近 {max_recent} 轮")
+
+    selected_record = recent_records[labels.index(selected_label)]
+    with right_col:
+        round_no = selected_record.get("round", "?")
+        expanded = bool(selected_record.get("is_live")) or labels.index(selected_label) == len(labels) - 1
+        with st.expander(f"第 {round_no} 轮 Agent 思考", expanded=expanded):
+            render_thought_items(selected_record.get("agent_thoughts") or [])
+
+        if len(recent_records) > 1:
+            st.markdown("#### 最近轮次概览")
+            for record in reversed(recent_records[-5:]):
+                title = f"第 {record.get('round', '?')} 轮"
+                if record.get("is_live"):
+                    title += "（进行中）"
+                with st.expander(title, expanded=bool(record.get("is_live"))):
+                    render_thought_items(record.get("agent_thoughts") or [])
+
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
@@ -413,7 +581,6 @@ def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
 
     # 路由决策
     if node_name == "lightweight_routing_supervisor":
-        need = node_update.get("need_specialist", False)
         selected = node_update.get("selected_specialists", [])
         rd = node_update.get("routing_decision", {})
         # 兼容多种原因字段
@@ -421,7 +588,7 @@ def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
         issue = node_update.get("priority_issue", "")
         strategy = node_update.get("followup_strategy", "")
         lines = []
-        if not need:
+        if not selected:
             lines.append("系统判定本轮无需调用专家，直接进入风险聚合")
         else:
             names = [get_specialist_name(s) for s in selected if s]
@@ -452,10 +619,10 @@ def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
                 # 自然语言字段：summary, analysis, reason, conclusion, explanation, rationale
                 summary = (r.get("summary") or r.get("analysis") or r.get("reason") or
                            r.get("conclusion") or r.get("explanation") or r.get("rationale"))
-                if not summary and isinstance(r.get("findings"), list):
-                    findings = r.get("findings", [])
-                    if findings and isinstance(findings[0], dict):
-                        summary = findings[0].get("explanation", "") or findings[0].get("description", "")
+                if not summary and isinstance(r.get("evidence_list"), list):
+                    evidence_list = r.get("evidence_list", [])
+                    if evidence_list and isinstance(evidence_list[0], dict):
+                        summary = evidence_list[0].get("description", "")
                 if summary:
                     return summary
                 score = r.get("score")
@@ -467,11 +634,6 @@ def extract_agent_thoughts(node_name: str, node_update: dict) -> str | None:
         if score is not None:
             return f"专家评分：{score}"
         return None
-
-    # debate_gate
-    if node_name == "debate_gate":
-        needed = node_update.get("debate_needed", False)
-        return "触发争议处理" if needed else "无需争议处理"
 
     # risk_aggregator
     if node_name == "risk_aggregator":
@@ -615,12 +777,18 @@ def main():
         st.session_state.thinking_time_history = []
     if "round_records" not in st.session_state:
         st.session_state.round_records = []
+    if "live_agent_thoughts" not in st.session_state:
+        st.session_state.live_agent_thoughts = []
+    if "live_agent_round" not in st.session_state:
+        st.session_state.live_agent_round = None
 
     if "last_thinking_time" not in st.session_state:
         st.session_state.last_thinking_time = 0.0
 
     if "saved_filepath" not in st.session_state:
         st.session_state.saved_filepath = ""
+    if "saved_log_filepath" not in st.session_state:
+        st.session_state.saved_log_filepath = ""
 
     # ============== 侧边栏 ==============
     with st.sidebar:
@@ -708,12 +876,28 @@ def main():
             st.session_state.thinking_time_history = []
             st.session_state.last_thinking_time = 0.0
             st.session_state.saved_filepath = ""
+            st.session_state.saved_log_filepath = ""
             st.session_state.round_records = []
+            st.session_state.live_agent_thoughts = []
+            st.session_state.live_agent_round = None
             reset_logger()  # 清空上一轮日志
             st.rerun()
 
     # ============== 主内容区 ==============
     st.title("🤖 多 Agent 相亲对话小助手 v3.0")
+    dialogue_tab, monitor_tab = st.tabs(["对话", "Agent 思考监控"])
+
+    with monitor_tab:
+        monitor_placeholder = st.empty()
+        with monitor_placeholder.container():
+            render_agent_monitor()
+
+    with dialogue_tab:
+        render_dialogue_page(monitor_placeholder)
+
+
+def render_dialogue_page(monitor_placeholder=None):
+    """渲染主对话页；Agent 思考展示由监控 Tab 承担。"""
 
     # 欢迎区域（仅在未开始时显示）
     if not st.session_state.started:
@@ -733,6 +917,8 @@ def main():
             if st.button("🚀 开始测评", use_container_width=True, type="primary"):
                 reset_logger()  # 新会话开始，重置日志
                 st.session_state.started = True
+                st.session_state.live_agent_thoughts = []
+                st.session_state.live_agent_round = None
                 # 初始化第一轮
                 opening_question = "你平时是做什么方向的工作呀？"
                 st.session_state.messages.append({"role": "assistant", "content": opening_question})
@@ -753,20 +939,6 @@ def main():
             is_streaming = is_last and st.session_state.is_streaming and msg["role"] == "assistant"
             render_message(msg, is_streaming=is_streaming)
 
-    # ============== 最近一轮 Agent 分析过程持久展示 ==============
-    if st.session_state.round_records:
-        last_record = st.session_state.round_records[-1]
-        last_thoughts = last_record.get("agent_thoughts") or []
-        if last_thoughts:
-            with st.expander("🧠 上一轮 Agent 分析过程", expanded=False):
-                for thought in last_thoughts:
-                    title = thought.get("title", "")
-                    content = thought.get("content", "")
-                    elapsed = thought.get("elapsed_seconds")
-                    elapsed_text = f"  {elapsed:.2f}s" if elapsed is not None else ""
-                    if content:
-                        st.markdown(f"**{title}{elapsed_text}**  \n{content}")
-
     # ============== 最终报告显示 ==============
     if st.session_state.final_report_shown and st.session_state.state.get("final_report"):
         report = st.session_state.state["final_report"]
@@ -782,7 +954,7 @@ def main():
         # 检查是否已达到最大轮次
         if st.session_state.round_num >= MAX_ROUNDS:
             st.warning("已达到最大对话轮次，正在生成最终报告...")
-            _generate_final_report()
+            _generate_final_report(monitor_placeholder)
             return
 
         # 用户输入
@@ -801,6 +973,8 @@ def main():
             st.session_state.round_num += 1
             round_num = st.session_state.round_num
             st.session_state.state["round_id"] = round_num
+            st.session_state.live_agent_round = round_num
+            st.session_state.live_agent_thoughts = []
 
             # 清空本轮临时字段，避免上一轮结果残留
             st.session_state.state["specialist_results"] = []
@@ -809,15 +983,10 @@ def main():
             st.session_state.state["current_anomalies"] = []
             st.session_state.state["risk_explanation"] = []
             st.session_state.state["dimension_scores"] = {}
-            st.session_state.state["debate_needed"] = False
-            st.session_state.state["debate_result"] = None
 
             # 开始日志轮次记录
             logger = get_logger()
             logger.start_round(round_num, user_input)
-
-            # ---- 实时分析过程展示 ----
-            expander = st.expander("🧠 Agent 分析过程", expanded=True)
 
             with st.status("🤔 系统思考中...", expanded=False) as status:
                 t_start = time.time()
@@ -848,9 +1017,10 @@ def main():
                                     "elapsed_seconds": None,
                                     "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                                 }
-                                agent_thoughts.append(thought_entry)
-                                # 实时展示不显示耗时
-                                expander.markdown(f"**{title}**  \n{thought_text}")
+                                append_live_agent_thought(agent_thoughts, thought_entry)
+                                if monitor_placeholder is not None:
+                                    with monitor_placeholder.container():
+                                        render_agent_monitor()
 
                     # 所有节点执行完毕
                     t_end = time.time()
@@ -898,7 +1068,6 @@ def main():
                         "surface_risk_score": st.session_state.state.get("surface_risk_score", 0.0),
                         "has_new_fact": st.session_state.state.get("has_new_fact", False),
 
-                        "need_specialist": st.session_state.state.get("need_specialist", False),
                         "selected_specialists": st.session_state.state.get("selected_specialists", []),
                         "called_specialists": st.session_state.state.get("called_specialists", []),
                         "routing_decision": st.session_state.state.get("routing_decision", {}),
@@ -912,6 +1081,8 @@ def main():
                         "agent_thoughts": agent_thoughts,
                     }
                     st.session_state.round_records.append(round_record)
+                    st.session_state.live_agent_thoughts = []
+                    st.session_state.live_agent_round = None
 
                     # 更新显示数据
                     st.session_state.current_lie_index = st.session_state.state.get("lie_index", 0.0)
@@ -930,7 +1101,7 @@ def main():
             next_action = st.session_state.state.get("next_action", "")
 
             if next_action == "final_report":
-                _generate_final_report()
+                _generate_final_report(monitor_placeholder)
             else:
                 followup = st.session_state.state.get("last_followup_question", "")
                 if followup:
@@ -992,7 +1163,7 @@ def _stream_ai_message(message: str, chunk_size: int = 2, delay: float = 0.03):
     })
 
 
-def _generate_final_report():
+def _generate_final_report(monitor_placeholder=None):
     """生成并显示最终报告，同时保存完整测试记录"""
     # 保护：避免重复生成
     if st.session_state.final_report_shown:
@@ -1002,6 +1173,8 @@ def _generate_final_report():
     st.session_state.state["specialist_results"] = []
     st.session_state.state["called_specialists"] = []
     st.session_state.state["next_action"] = "final_report"
+    st.session_state.live_agent_round = MAX_ROUNDS
+    st.session_state.live_agent_thoughts = []
 
     # 为最终报告轮次也记录日志
     logger = get_logger()
@@ -1027,7 +1200,10 @@ def _generate_final_report():
                         "elapsed_seconds": None,
                         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                     }
-                    agent_thoughts.append(thought_entry)
+                    append_live_agent_thought(agent_thoughts, thought_entry)
+                    if monitor_placeholder is not None:
+                        with monitor_placeholder.container():
+                            render_agent_monitor()
 
         t_end = time.time()
         elapsed = t_end - t_start
@@ -1062,7 +1238,6 @@ def _generate_final_report():
             "lie_index": accumulated_state.get("lie_index", 0.0),
             "dimension_scores": accumulated_state.get("dimension_scores", {}),
             "risk_explanation": accumulated_state.get("risk_explanation", []),
-            "need_specialist": False,
             "selected_specialists": [],
             "called_specialists": [],
             "quick_fact_summary": "",
@@ -1077,6 +1252,8 @@ def _generate_final_report():
             "agent_thoughts": agent_thoughts,
         }
         st.session_state.round_records.append(final_round_record)
+        st.session_state.live_agent_thoughts = []
+        st.session_state.live_agent_round = None
 
         # 保存完整 session 数据到 outputs 目录
         saved_path = _save_session_to_outputs(
@@ -1087,6 +1264,10 @@ def _generate_final_report():
         st.session_state.saved_filepath = saved_path
         st.success(f"💾 完整测试记录已保存至：{saved_path}")
 
+        log_path = logger.finalize_session(st.session_state.state)
+        st.session_state.saved_log_filepath = log_path
+        st.success(f"📝 详细日志已保存至：{log_path}")
+
     except Exception as e:
         logger.end_round()
         st.error(f"生成报告出错：{e}")
@@ -1094,3 +1275,4 @@ def _generate_final_report():
 
 if __name__ == "__main__":
     main()
+

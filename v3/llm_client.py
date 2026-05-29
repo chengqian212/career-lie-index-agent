@@ -2,7 +2,7 @@
 
 from pydantic import SecretStr
 from langchain_openai import ChatOpenAI
-from . import config
+import config
 
 
 def get_llm(temperature: float | None = None, model: str | None = None) -> ChatOpenAI:
@@ -23,13 +23,6 @@ def get_llm(temperature: float | None = None, model: str | None = None) -> ChatO
 
     api_key = config.BAILIAN_API_KEY
 
-    # 调试打印：运行时传入 ChatOpenAI 的 key、base_url、model
-    print(f"[LLM Client] BAILIAN_API_KEY 存在: {bool(api_key)}, 长度: {len(api_key)}")
-    if api_key:
-        print(f"[LLM Client] KEY 前12位: {api_key[:12]}...")
-    print(f"[LLM Client] BASE_URL: {config.BAILIAN_BASE_URL}")
-    print(f"[LLM Client] MODEL: {model or config.MODEL_NAME}")
-
     if not api_key:
         raise ValueError(
             "缺少 API 密钥！请在 .env 文件中设置 BAILIAN_API_KEY 环境变量。"
@@ -42,3 +35,4 @@ def get_llm(temperature: float | None = None, model: str | None = None) -> ChatO
         temperature=temperature if temperature is not None else config.TEMPERATURE,
         max_retries=2,
     )
+

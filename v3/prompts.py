@@ -39,7 +39,7 @@ SEMANTIC_AGENT_TEMPLATE = """你是语义一致性分析专家（Semantic Agent�
 {{
   "agent": "semantic",
   "score": 0-100,
-  "findings": [
+  "evidence_list": [
     {{
       "type": "semantic_mismatch",
       "evidence": ["第1轮：...", "第3轮：..."],
@@ -70,7 +70,7 @@ SEMANTIC_AGENT_TEMPLATE = """你是语义一致性分析专家（Semantic Agent�
 1. score: 0-100（0=完全一致，100=严重不一致）
 2. 必须引用具体轮次和原文 evidence
 3. 不允许直接判定"用户说谎"
-4. findings 数组可以为空
+4. evidence_list 数组可以为空
 5. anomaly_updates 用于更新旧异常状态
 6. new_anomalies 用于添加新异常
 7. 你不直接修改 anomalies_table，只提出 anomaly_updates 和 new_anomalies
@@ -85,7 +85,7 @@ SEMANTIC_AGENT_TEMPLATE = """你是语义一致性分析专家（Semantic Agent�
 - 不要因为用户做了解释就自动关闭异常。
 
 【失败处理】
-- 如果无法进行分析：score=0, findings=[]
+- 如果无法进行分析：score=0, evidence_list=[]
 - 如果 dialogue_history 不完整：使用可用部分进行分析
 - 注意：如果 LLM 输出格式异常导致 JSON 解析失败，节点会尝试两次解析（第一次正常清理，第二次激进清理），两次均失败时返回默认值，并在日志中记录错误信息。
 
@@ -112,6 +112,16 @@ SEMANTIC_AGENT_TEMPLATE = """你是语义一致性分析专家（Semantic Agent�
 {current_anomalies}
 
 请输出 JSON："""
+
+SEMANTIC_AGENT_TEMPLATE += """
+
+【全局数据字典补充要求】
+每条专家证据必须放入 evidence_list，且每条包含：
+- severity: CRITICAL|HIGH|MEDIUM|LOW
+- confidence: CRITICAL|HIGH|MEDIUM|LOW
+如果无法判断 severity/confidence，不要输出该条证据。
+只输出 evidence_list 作为专家证据主字段；不要输出旧字段。
+"""
 
 SEMANTIC_AGENT_PROMPT = ChatPromptTemplate.from_messages([
     ("system", SEMANTIC_AGENT_TEMPLATE),
@@ -144,7 +154,7 @@ LOGICAL_AGENT_TEMPLATE = """你是逻辑与时间线分析专家（Logical Agent
 {{
   "agent": "logical",
   "score": 0-100,
-  "findings": [
+  "evidence_list": [
     {{
       "type": "timeline_conflict|causal_issue|career_path_gap",
       "evidence": ["第1轮：...", "第3轮：..."],
@@ -190,7 +200,7 @@ LOGICAL_AGENT_TEMPLATE = """你是逻辑与时间线分析专家（Logical Agent
 - 不要因为用户做了解释就自动关闭异常。
 
 【失败处理】
-- 如果无法进行时间线分析：score=0, findings=[]
+- 如果无法进行时间线分析：score=0, evidence_list=[]
 - 如果时间信息不完整：基于现有信息进行有限分析
 - 注意：如果 LLM 输出格式异常导致 JSON 解析失败，节点会尝试两次解析（第一次正常清理，第二次激进清理），两次均失败时返回默认值，并在日志中记录错误信息。
 
@@ -217,6 +227,16 @@ LOGICAL_AGENT_TEMPLATE = """你是逻辑与时间线分析专家（Logical Agent
 {current_anomalies}
 
 请输出 JSON："""
+
+LOGICAL_AGENT_TEMPLATE += """
+
+【全局数据字典补充要求】
+每条专家证据必须放入 evidence_list，且每条包含：
+- severity: CRITICAL|HIGH|MEDIUM|LOW
+- confidence: CRITICAL|HIGH|MEDIUM|LOW
+如果无法判断 severity/confidence，不要输出该条证据。
+只输出 evidence_list 作为专家证据主字段；不要输出旧字段。
+"""
 
 LOGICAL_AGENT_PROMPT = ChatPromptTemplate.from_messages([
     ("system", LOGICAL_AGENT_TEMPLATE),
@@ -250,7 +270,7 @@ DOMAIN_AGENT_TEMPLATE = """你是职业常识分析专家（Domain Agent）。
 {{
   "agent": "domain",
   "score": 0-100,
-  "findings": [
+  "evidence_list": [
     {{
       "type": "domain_mismatch|responsibility_gap|industry_confusion",
       "evidence": ["第1轮：...", "第3轮：..."],
@@ -298,7 +318,7 @@ DOMAIN_AGENT_TEMPLATE = """你是职业常识分析专家（Domain Agent）。
 - 不要因为用户做了解释就自动关闭异常。
 
 【失败处理】
-- 如果无法判断职业常识：score=0, findings=[]
+- 如果无法判断职业常识：score=0, evidence_list=[]
 - 如果职业描述不明确：基于现有描述进行有限分析
 - 注意：如果 LLM 输出格式异常导致 JSON 解析失败，节点会尝试两次解析（第一次正常清理，第二次激进清理），两次均失败时返回默认值，并在日志中记录错误信息。
 
@@ -325,6 +345,16 @@ DOMAIN_AGENT_TEMPLATE = """你是职业常识分析专家（Domain Agent）。
 {current_anomalies}
 
 请输出 JSON："""
+
+DOMAIN_AGENT_TEMPLATE += """
+
+【全局数据字典补充要求】
+每条专家证据必须放入 evidence_list，且每条包含：
+- severity: CRITICAL|HIGH|MEDIUM|LOW
+- confidence: CRITICAL|HIGH|MEDIUM|LOW
+如果无法判断 severity/confidence，不要输出该条证据。
+只输出 evidence_list 作为专家证据主字段；不要输出旧字段。
+"""
 
 DOMAIN_AGENT_PROMPT = ChatPromptTemplate.from_messages([
     ("system", DOMAIN_AGENT_TEMPLATE),
@@ -357,7 +387,7 @@ PSYCHO_LINGUISTIC_AGENT_TEMPLATE = """你是心理语言学线索分析专家（
 {{
   "agent": "psycho_linguistic",
   "score": 0-100,
-  "findings": [
+  "evidence_list": [
     {{
       "type": "detail_missing|avoidance|irrelevant_answer|vague_expression|over_explanation|self_correction",
       "evidence": ["第1轮：...", "第3轮：..."],
@@ -405,7 +435,7 @@ PSYCHO_LINGUISTIC_AGENT_TEMPLATE = """你是心理语言学线索分析专家（
 - 不要因为用户做了解释就自动关闭异常。
 
 【失败处理】
-- 如果无法识别语言特征：score=0, findings=[]
+- 如果无法识别语言特征：score=0, evidence_list=[]
 - 如果 current_user_text 太短：基于现有文本进行分析
 - 注意：如果 LLM 输出格式异常导致 JSON 解析失败，节点会尝试两次解析（第一次正常清理，第二次激进清理），两次均失败时返回默认值，并在日志中记录错误信息。
 
@@ -432,74 +462,20 @@ PSYCHO_LINGUISTIC_AGENT_TEMPLATE = """你是心理语言学线索分析专家（
 
 请输出 JSON："""
 
+PSYCHO_LINGUISTIC_AGENT_TEMPLATE += """
+
+【全局数据字典补充要求】
+每条专家证据必须放入 evidence_list，且每条包含：
+- severity: CRITICAL|HIGH|MEDIUM|LOW
+- confidence: CRITICAL|HIGH|MEDIUM|LOW
+如果无法判断 severity/confidence，不要输出该条证据。
+只输出 evidence_list 作为专家证据主字段；不要输出旧字段。
+"""
+
 PSYCHO_LINGUISTIC_AGENT_PROMPT = ChatPromptTemplate.from_messages([
     ("system", PSYCHO_LINGUISTIC_AGENT_TEMPLATE),
 ])
 
-
-# ============================================================
-# Debate Prompt
-# ============================================================
-DEBATE_TEMPLATE = """你是争议讨论协调者（Debate Agent）。
-
-【功能描述】
-职责：当 Specialist Agent 之间出现明显分歧时，汇总各方的观点并给出结构化争议总结和调整建议。
-用途：通过协调不同专家的判断，达成共识并调整维度分数，用于追问策略和最终风险评估。
-边界：
-- 不重新抽取事实或重新识别异常（由 Quick Fact Extraction 和 Quick Signal Detection 负责）；
-- 不生成追问问题（由 Follow-up Generator 负责）；
-- 不决定是否结束对话（由 Strategy Supervisor 负责）；
-- 不进行自由长篇辩论，只做结构化总结。
-
-【输入参数】
-- specialist_results: 各 Specialist Agent 的分析结果
-- anomalies_table: 已识别的异常表
-- facts_table: 已抽取的事实表
-
-【输出要求】
-必须输出标准 JSON 格式：
-{{
-  "debate_trigger": "触发原因",
-  "main_disagreement": "主要分歧描述",
-  "skeptic_view": "怀疑方观点",
-  "explainer_view": "解释方观点",
-  "consensus": "最终共识",
-  "recommended_followup_focus": "追问方向建议",
-  "debate_adjustment": {{
-    "semantic": 数字调整值（-20到+20）,
-    "logical": 数字调整值（-20到+20）,
-    "domain": 数字调整值（-20到+20）,
-    "psycho_linguistic": 数字调整值（-20到+20）
-  }}
-}}
-
-【限制条件】
-1. 不输出完整思维链
-2. 必须说明争议点和最终共识
-3. debate_adjustment 的每个维度调整值范围：-20到+20
-4. 如果没有争议，所有调整值为 0
-5. 结果用于调整维度分数和追问策略
-
-【失败处理】
-- 如果没有分歧：debate_adjustment 全部为 0，consensus 为"无争议"
-- 如果 specialist_results 不完整：基于可用结果进行分析
-- 注意：如果 LLM 输出格式异常导致 JSON 解析失败，节点会尝试两次解析（第一次正常清理，第二次激进清理），两次均失败时返回默认值，并在日志中记录错误信息。
-
-【当前数据】
-各 Specialist Agent 分析结果：
-{specialist_results}
-
-异常表：
-{anomalies_table}
-
-事实表：
-{facts_table}
-
-请输出 JSON："""
-
-DEBATE_PROMPT = ChatPromptTemplate.from_messages([
-    ("system", DEBATE_TEMPLATE),
-])
 
 # ============================================================
 # Follow-up Generation Prompt
@@ -519,9 +495,7 @@ FOLLOWUP_GENERATION_TEMPLATE = """你是对话追问生成器（Follow-up Genera
 【输入参数】
 - priority_issue: 当前优先关注的问题
 - followup_strategy: 追问策略方向
-- routing_reason: 路由决策原因
 - dimension_scores: 各维度分数（JSON）
-- debate_result: 辩论结果（如有）
 - anomalies_table: 已识别的异常表
 - dialogue_history: 完整对话历史
 
@@ -672,13 +646,8 @@ FOLLOWUP_GENERATION_TEMPLATE = """你是对话追问生成器（Follow-up Genera
 【当前数据】
 当前优先问题：{priority_issue}
 追问策略方向：{followup_strategy}
-路由原因：{routing_reason}
-
 各维度分数：
 {dimension_scores}
-
-辩论结果：
-{debate_result}
 
 异常表：
 {anomalies_table}
@@ -704,14 +673,13 @@ FINAL_REPORT_TEMPLATE = """你是最终测评报告生成器（Final Report Gene
 边界：
 - 严禁使用"对方说谎""他/她撒谎""谎言""造假""欺骗"等指责性表述；
 - 应使用"当前职业身份叙述中存在若干待澄清线索""部分信息有待验证"等客观表述；
-- 不重新进行分析或判断（所有判断由 Specialist Agent 和 Debate Agent 完成）；
+- 不重新进行分析或判断（所有判断由 Specialist Agent 完成）；
 - 不生成追问问题（对话已结束）。
 
 【输入参数】
 - lie_index: 总谎言指数（0-100）
 - dimension_scores: 各维度分数（JSON）
 - specialist_results: 各 Specialist Agent 主要发现
-- debate_result: Debate 结论
 - unresolved_anomalies: 待澄清问题
 
 【输出要求】
@@ -752,9 +720,6 @@ FINAL_REPORT_TEMPLATE = """你是最终测评报告生成器（Final Report Gene
 
 各 Specialist Agent 主要发现：
 {specialist_results}
-
-Debate 结论：
-{debate_result}
 
 待澄清问题：
 {unresolved_anomalies}
@@ -837,7 +802,7 @@ QUICK_PREANALYSIS_TEMPLATE = """你是快速预分析助手（Quick Preanalysis 
 【限制条件】
 1. slot 必须从指定选项中选择（occupation/role/work_content/company/time_stage/experience/other）
 2. 异常 type 必须从指定选项中选择
-3. 使用 score 表示风险强度（0-100），不要使用 severity
+3. 必须使用 severity/confidence 表示风险等级和置信度；score 仅为兼容字段，可以输出但后续不会使用
 4. surface_risk_score: 0-100（0=无明显风险，100=高风险）
 5. 不允许直接判定"用户说谎"
 6. 如无新事实，facts 为空数组，has_new_fact 为 false
@@ -895,6 +860,17 @@ QUICK_PREANALYSIS_TEMPLATE = """你是快速预分析助手（Quick Preanalysis 
 
 请输出 JSON："""
 
+QUICK_PREANALYSIS_TEMPLATE += """
+
+【全局数据字典补充要求】
+必须在顶层输出：
+- severity: CRITICAL|HIGH|MEDIUM|LOW
+- confidence: HIGH|LOW
+surface_risk_score 可以继续输出作为兼容字段，但路由和后续硬规则不会使用它。
+每条 anomalies 中也应尽量带上 severity/confidence。
+如果无法判断 severity/confidence，不要输出该条 anomaly。
+"""
+
 QUICK_PREANALYSIS_PROMPT = ChatPromptTemplate.from_messages([
     ("system", QUICK_PREANALYSIS_TEMPLATE),
 ])
@@ -930,7 +906,6 @@ LIGHTWEIGHT_ROUTING_SUPERVISOR_TEMPLATE = """你是轻量路由监督者（Light
 【输出要求】
 必须输出标准 JSON 格式：
 {{
-  "need_specialist": true|false,
   "selected_specialists": ["semantic", "logical", "domain", "psycho_linguistic"],
   "routing_reason": "简短理由（20-50字）",
   "priority_issue": "最需要关注的问题",
@@ -950,10 +925,9 @@ followup_strategy 必须从以下选项中选择：
 
 【限制条件】
 1. selected_specialists 只能从 ["semantic", "logical", "domain", "psycho_linguistic"] 中选择
-2. need_specialist 字段保留为 true（系统已决定需要专家分析）
-3. routing_reason 要简短，不输出完整推理过程
-4. 如果无法判断，selected_specialists 返回 ["semantic", "logical"]
-5. 不要默认调用全部专家，只在确实需要时才调用多个专家
+2. routing_reason 要简短，不输出完整推理过程
+3. 如果无法判断，selected_specialists 返回 ["semantic", "logical"]
+4. 不要默认调用全部专家，只在确实需要时才调用多个专家
 
 【失败处理】
 - 如果输入信息不足但系统已进入本节点，selected_specialists 返回 ["semantic", "logical"]
@@ -1003,7 +977,7 @@ STRATEGY_SUPERVISOR_TEMPLATE = """你是策略决策者（Strategy Supervisor）
 边界：
 - 不负责决定调用哪些专家（由 Lightweight Routing Supervisor 负责）；
 - 不重新抽取事实（由 Quick Fact Extraction 负责）；
-- 不重新判断所有矛盾（由 Specialist Agent 和 Debate Agent 负责）；
+- 不重新判断所有矛盾（由 Specialist Agent 负责）；
 - 不生成追问问题（由 Follow-up Generator 负责生成具体问题）。
 
 【重要更新 v3.3】
@@ -1020,7 +994,6 @@ STRATEGY_SUPERVISOR_TEMPLATE = """你是策略决策者（Strategy Supervisor）
 - lie_index: 当前谎言指数（0-100）
 - dimension_scores: 各维度分数（JSON）
 - specialist_results: 各 Specialist Agent 结果
-- debate_result: Debate 结果
 - anomalies_table: 已识别的异常表
 - round_id: 当前轮次（整数）
 - max_rounds: 最大轮次（整数）
@@ -1036,8 +1009,8 @@ STRATEGY_SUPERVISOR_TEMPLATE = """你是策略决策者（Strategy Supervisor）
   "reason_summary": "简短理由（20-50字）"
 }}
 
-注意：不要输出 next_action 字段，该字段由 Python 硬规则决定。
-LLM 只需给出继续追问时的策略建议。
+注意：必须输出 decision 字段，由你判断 ASK_MORE 或 GENERATE_REPORT。
+Python 只负责把你的 decision 映射为图路由动作。
 
 【追问策略选择规则】
 followup_strategy 必须从以下选项中选择：
@@ -1055,7 +1028,7 @@ followup_strategy 必须从以下选项中选择：
 禁止输出 deep_dive、verify、investigate、interview、professional_probe、clarification、continue、expansion 等不受控策略。
 
 【限制条件】
-1. 不输出 next_action 字段（由系统根据规则决定）
+1. 不输出 next_action 字段；必须输出 decision 字段
 2. 优先为当前最需要解决的异常提供 target_anomaly_id
 3. priority_issue 用自然语言表达后台关注点，但不要泄露系统内部判断
 4. followup_strategy 必须从允许列表中选择
@@ -1074,9 +1047,6 @@ followup_strategy 必须从以下选项中选择：
 各 Specialist Agent 结果：
 {specialist_results}
 
-Debate 结果：
-{debate_result}
-
 异常表：
 {anomalies_table}
 
@@ -1089,6 +1059,59 @@ Debate 结果：
 {called_specialists}
 
 请输出 JSON："""
+
+STRATEGY_SUPERVISOR_TEMPLATE = """You are the Strategy Supervisor, acting as an LLM-as-a-Judge.
+
+Your job is to read the assembled global context and choose exactly one action:
+- ASK_MORE: continue with one more follow-up question.
+- GENERATE_REPORT: stop asking and generate the final report.
+
+Round budget signal:
+- Current round is {round_id} / {max_rounds}.
+- If the dialogue is close to or has reached the maximum round, you should normally choose GENERATE_REPORT unless there is a compelling reason to ask one final question.
+- This is your decision as the judge; the Python layer will route according to your JSON decision.
+
+Judge these dimensions:
+1. Saturation: Has the useful information already been collected?
+2. Loop risk: Does followup_history show repeated chasing of the same point?
+3. Quantitative risk: Current LieIndex is {lie_index}.
+4. Evidence quality: Specialist evidence and anomalies may be more important than the numeric score alone.
+5. Opportunity value: A low score can still justify ASK_MORE if there is a promising unresolved factual gap.
+
+Return strict JSON only:
+{{
+  "decision": "ASK_MORE|GENERATE_REPORT",
+  "priority_issue": "the most valuable issue to pursue next, or empty if generating report",
+  "followup_strategy": "daily_routine|entry_experience|work_style|recent_memory|light_clarification|topic_shift_buffer|experience_probe|knowledge_probe|tool_workflow_probe|scenario_judgment_probe",
+  "target_anomaly_id": "anomaly_id if the next follow-up targets one, otherwise empty",
+  "reason_summary": "short reason, 20-80 Chinese characters"
+}}
+
+Current data:
+dimension_scores:
+{dimension_scores}
+
+risk_explanation:
+{risk_explanation}
+
+specialist_results:
+{specialist_results}
+
+anomalies_table:
+{anomalies_table}
+
+dialogue_history:
+{dialogue_history}
+
+followup_history:
+{followup_history}
+
+routing_decision:
+{routing_decision}
+
+called_specialists:
+{called_specialists}
+"""
 
 STRATEGY_SUPERVISOR_PROMPT = ChatPromptTemplate.from_messages([
     ("system", STRATEGY_SUPERVISOR_TEMPLATE),
@@ -1103,7 +1126,6 @@ PROMPT_MAP = {
     "logical_agent": LOGICAL_AGENT_PROMPT,
     "domain_agent": DOMAIN_AGENT_PROMPT,
     "psycho_linguistic_agent": PSYCHO_LINGUISTIC_AGENT_PROMPT,
-    "debate": DEBATE_PROMPT,
     "followup_generation": FOLLOWUP_GENERATION_PROMPT,
     "final_report": FINAL_REPORT_PROMPT,
     "quick_preanalysis": QUICK_PREANALYSIS_PROMPT,
@@ -1163,3 +1185,4 @@ if __name__ == "__main__":
     )
     print("=== Quick Preanalysis Prompt 示例 ===")
     print(formatted)
+

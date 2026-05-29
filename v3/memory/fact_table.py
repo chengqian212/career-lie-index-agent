@@ -95,3 +95,4 @@ def get_facts_summary(facts_table: List[Dict]) -> str:
             lines.append(f"  - {item}")
 
     return "\n".join(lines)
+

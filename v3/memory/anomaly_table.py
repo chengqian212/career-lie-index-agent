@@ -11,7 +11,16 @@ v3.3 改进：
 - get_active_anomalies 排除 stop_followup=True 的异常
 """
 
+import logging
 from typing import List, Dict, Optional
+
+from utils.score_utils import (
+    VALID_CONFIDENCES,
+    VALID_SEVERITIES,
+    effective_risk_value,
+)
+
+logger = logging.getLogger(__name__)
 
 
 # ============================================================
@@ -99,6 +108,9 @@ def normalize_anomaly(
     
     # 确保 score 是 float
     score = float(anomaly.get("score", 0))
+    severity = str(anomaly.get("severity") or "").strip().upper()
+    confidence = str(anomaly.get("confidence") or "").strip().upper()
+    has_valid_labels = severity in VALID_SEVERITIES and confidence in VALID_CONFIDENCES
     
     return {
         "anomaly_id": anomaly_id,
@@ -108,6 +120,10 @@ def normalize_anomaly(
         "description": anomaly.get("description", ""),
         "evidence": evidence,
         "score": score,
+        "severity": severity if has_valid_labels else "",
+        "confidence": confidence if has_valid_labels else "",
+        "risk_value": effective_risk_value(severity, confidence) if has_valid_labels else 0.0,
+        "schema_error": "" if has_valid_labels else "anomaly_risk_labels_invalid",
         "status": anomaly.get("status", "unresolved"),
         "clarification_status": anomaly.get("clarification_status", "none"),
         "followup_needed": anomaly.get("followup_needed", True),
@@ -384,13 +400,13 @@ def apply_specialist_anomaly_updates(
     )
 
 
-def convert_findings_to_anomalies(findings: List[Dict], result: Dict) -> List[Dict]:
-    """v3 新增：将 findings 转换为 anomalies 格式
+def convert_legacy_items_to_anomalies(legacy_items: List[Dict], result: Dict) -> List[Dict]:
+    """Convert legacy evidence-like items to anomalies.
 
     用于兼容旧版 expert 输出格式
 
     Args:
-        findings: findings 列表
+        legacy_items: legacy item list
         result: 专家结果，包含 agent 和 score
     
     Returns:
@@ -400,17 +416,19 @@ def convert_findings_to_anomalies(findings: List[Dict], result: Dict) -> List[Di
     base_score = result.get("score", 0)
     
     anomalies = []
-    for finding in findings:
-        if not isinstance(finding, dict):
+    for legacy_item in legacy_items:
+        if not isinstance(legacy_item, dict):
             continue
         
         anomalies.append({
             "source": source,
-            "type": finding.get("type", "specialist_finding"),
-            "description": finding.get("explanation", ""),
-            "evidence": finding.get("evidence", []),
+            "type": legacy_item.get("type", "specialist_evidence"),
+            "description": legacy_item.get("description", ""),
+            "evidence": legacy_item.get("evidence", []),
+            "severity": legacy_item.get("severity"),
+            "confidence": legacy_item.get("confidence"),
             "score": base_score,
-            "related_facts": finding.get("related_facts", []),
+            "related_facts": legacy_item.get("related_facts", []),
         })
     
     return anomalies
@@ -421,7 +439,7 @@ def add_specialist_results_as_anomalies(
     specialist_results: List[Dict],
     round_id: int,
 ) -> List[Dict]:
-    """v3 新增：将专家的 new_anomalies（或 findings）添加到异常表
+    """v3 新增：将专家的 evidence_list/new_anomalies 添加到异常表
 
     处理顺序：semantic → logical → domain → psycho_linguistic
 
@@ -448,16 +466,28 @@ def add_specialist_results_as_anomalies(
             continue
         
         # 优先读取 new_anomalies
-        new_anomalies = result.get("new_anomalies", [])
-        
-        # 如果没有 new_anomalies，兼容旧字段 findings
+        new_anomalies = result.get("evidence_list", [])
         if not new_anomalies:
-            findings = result.get("findings", [])
-            new_anomalies = convert_findings_to_anomalies(findings, result)
+            new_anomalies = result.get("new_anomalies", [])
+        
+        # No legacy field fallback; evidence_list is the canonical source.
+        if not new_anomalies:
+            new_anomalies = []
         
         # 写入 anomalies_table
         # 同一 round_id + source + type + evidence 相同则不重复写入
         for idx, new_anomaly in enumerate(new_anomalies):
+            severity = str(new_anomaly.get("severity") or "").strip().upper()
+            confidence = str(new_anomaly.get("confidence") or "").strip().upper()
+            if severity not in VALID_SEVERITIES or confidence not in VALID_CONFIDENCES:
+                logger.warning(
+                    "[anomaly_table] dropped specialist anomaly with invalid "
+                    f"severity/confidence: source={source}, "
+                    f"type={new_anomaly.get('type', '')}, "
+                    f"severity={new_anomaly.get('severity')}, "
+                    f"confidence={new_anomaly.get('confidence')}"
+                )
+                continue
             # 检查是否重复
             is_duplicate = False
             atype = new_anomaly.get("type", "")
@@ -482,40 +512,3 @@ def add_specialist_results_as_anomalies(
     
     return updated
 
-
-# ============================================================
-# 旧版兼容函数（保留但标记为废弃）
-# ============================================================
-
-
-def resolve_anomaly(
-    anomalies_table: List[Dict],
-    index: int,
-    status: str = "resolved",
-) -> List[Dict]:
-    """标记指定异常为已解决（保留用于兼容）
-
-    Args:
-        anomalies_table: 异常表
-        index: 异常索引
-        status: 新状态，默认 "resolved"
-    Returns:
-        更新后的异常表
-    """
-    updated = list(anomalies_table)
-    if 0 <= index < len(updated):
-        updated[index] = dict(updated[index])
-        updated[index]["status"] = status
-    return updated
-
-
-def get_anomalies_by_type(anomalies_table: List[Dict], anomaly_type: str) -> List[Dict]:
-    """获取指定类型的异常（保留用于兼容）
-
-    Args:
-        anomalies_table: 异常表
-        anomaly_type: 异常类型
-    Returns:
-        该类型的异常列表
-    """
-    return [a for a in anomalies_table if a.get("type") == anomaly_type]

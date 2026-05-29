@@ -1,135 +1,127 @@
-﻿"""轻量路由监督节点：决定是否调用专家 Agent 以及调用哪些 Agent"""
+"""轻量级路由监督器（Lightweight Routing Supervisor）
+作用：根据当前对话状态决定是否调用专家，以及调用哪些专家。
+"""
+import random
 
 import logging
-
 from langchain_core.messages import HumanMessage
-
-from ..llm_client import get_llm
-from ..prompts import LIGHTWEIGHT_ROUTING_SUPERVISOR_PROMPT
-from ..state_schema import DialogueState
-from ..utils.json_utils import extract_json_from_text
-from ..utils.text_utils import format_facts_table, format_anomalies_table, clean_llm_output
-from ..config import ENABLE_ON_DEMAND_SPECIALISTS
-from ..memory.anomaly_table import count_unresolved
+from config import ENABLE_ON_DEMAND_SPECIALISTS
+from llm_client import get_llm
+from memory.anomaly_table import count_unresolved
+from prompts import LIGHTWEIGHT_ROUTING_SUPERVISOR_PROMPT
+from state_schema import DialogueState
+from utils.strategy_utils import normalize_followup_strategy
+from utils.json_utils import extract_json_from_text
+from utils.text_utils import clean_llm_output, format_anomalies_table, format_facts_table
 
 logger = logging.getLogger(__name__)
 
-
-# ============================================================
-# 新增常量
-# ============================================================
-
+# 定义合法专家列表
 VALID_SPECIALISTS = ["semantic", "logical", "domain", "psycho_linguistic"]
+
+# 默认核心专家（语义 + 逻辑），用于兜底
 DEFAULT_CORE_SPECIALISTS = ["semantic", "logical"]
 
-# ============================================================
-# 允许的追问策略集合
-# ============================================================
-ALLOWED_FOLLOWUP_STRATEGIES = [
-    "daily_routine",
-    "entry_experience",
-    "work_style",
-    "recent_memory",
-    "light_clarification",
-    "topic_shift_buffer",
-    "experience_probe",
-    "knowledge_probe",
-    "tool_workflow_probe",
-    "scenario_judgment_probe",
-]
-
-
-def normalize_followup_strategy(strategy: str, has_risk: bool) -> str:
-    """归一化追问策略
-
-    如果策略不在允许集合中，根据是否有风险进行兜底：
-    - 有风险 → light_clarification（温和澄清）
-    - 无风险 → daily_routine（日常了解）
+def _has_valid_quick_labels(state: DialogueState) -> bool:
     """
-    if strategy in ALLOWED_FOLLOWUP_STRATEGIES:
-        return strategy
-    return "light_clarification" if has_risk else "daily_routine"
+    检查当前状态的快速风险标签是否有效
+    输入：
+        state: 当前 DialogueState
+    输出：
+        True/False
+    说明：
+        - severity 必须在 CRITICAL/HIGH/MEDIUM/LOW
+        - confidence 必须在 HIGH/LOW
+    """
+    severity = str(state.get("severity") or "").strip().upper()
+    confidence = str(state.get("confidence") or "").strip().upper()
+    return severity in {"CRITICAL", "HIGH", "MEDIUM", "LOW"} and confidence in {"HIGH", "LOW"}
 
 
-# ============================================================
-# 新增辅助函数
-# ============================================================
-def should_skip_specialist(state):
-    surface_risk_score = state.get("surface_risk_score", 0)
-    current_anomalies = state.get("current_anomalies", [])
+def should_skip_specialist(state: DialogueState) -> bool:
+    """
+    规则判断是否可以跳过专家节点
+    输入：
+        state: 当前 DialogueState
+    输出：
+        True / False
+    说明：
+        通过 severity/confidence/异常状态/事实数量判断
+        - CRITICAL/HIGH -> 不跳过
+        - 有未解决历史异常 -> 不跳过
+        - 核心事实且中等风险 -> 不跳过
+        - 低风险且无新核心事实 -> 跳过
+        - facts_table 小于 3 条 -> 跳过
+    """
+    severity = str(state.get("severity") or "").strip().upper()
+    confidence = str(state.get("confidence") or "").strip().upper()
     anomalies_table = state.get("anomalies_table", [])
     current_facts = state.get("current_facts", [])
     facts_table = state.get("facts_table", [])
     has_new_fact = state.get("has_new_fact", False)
     round_id = state.get("round_id", 1)
 
-    unresolved_count = count_unresolved(anomalies_table)
+    # 筛选历史未解决异常
+    historical_unresolved = [
+        a for a in anomalies_table
+        if isinstance(a, dict)
+        and a.get("round_id") != round_id
+        and a.get("stop_followup") is not True
+        and (
+            a.get("status") in ("unresolved", "reinforced")
+            or a.get("followup_needed") is True
+        )
+    ]
 
-    if current_anomalies:
+    # 第一层硬红线判断
+    if severity in {"CRITICAL", "HIGH"}:
+        return False
+    if historical_unresolved:
         return False
 
-    if unresolved_count > 0:
-        return False
-
-    if surface_risk_score >= 40:
-        return False
-
-    if round_id <= 1:
-        return True
-
-    if not has_new_fact and surface_risk_score < 30:
-        return True
-
-    core_slots = {
-        "occupation",
-        "role",
-        "company",
-        "time_stage",
-        "experience",
-        "work_content",
-    }
-
+    # 核心事实判断
+    core_slots = {"occupation", "role", "company", "time_stage", "experience", "work_content"}
     has_core_new_fact = any(
         isinstance(f, dict) and f.get("slot") in core_slots
         for f in current_facts
     )
+    if has_core_new_fact and severity == "MEDIUM" and confidence == "HIGH":
+        return False
 
-    if has_new_fact and not has_core_new_fact and surface_risk_score < 20:
+    # 安全释放条件
+    if has_new_fact and not has_core_new_fact and severity == "LOW":
+        return True
+    if not has_new_fact and severity == "LOW":
+        return True
+    if len(facts_table) < 3:
         return True
 
-    if has_new_fact and surface_risk_score == 0 and len(current_facts) <= 2:
-        return True
+    return random.random() < 0.5  # 50%概率跳过专家
 
-    if len(facts_table) < 3 and surface_risk_score < 30:
-        return True
-
-    return False
 
 def infer_default_specialists(state: DialogueState) -> list[str]:
-    """推断默认的专家列表
-
-    根据当前状态推断应该调用的专家：
-    - 默认优先 semantic + logical（核心任务：多轮职业身份/经历一致性分析）
-    - domain 和 psycho_linguistic 只在异常类型明显相关时补充
-
-    Args:
-        state: 对话状态
-
-    Returns:
-        推断的专家列表
+    """
+    根据当前状态推断默认专家列表（兜底逻辑）
+    输入：
+        state: DialogueState
+    输出：
+        selected: list[str] 要调用的专家名
+    说明：
+        - 有新事实或事实表>=2条 -> 默认核心专家
+        - 异常文本中含 domain 或心理线索 -> 添加 domain/psycho_linguistic
+        - 表层风险分>=50 且没有选择 -> 强制核心专家
+        - 兜底选择默认核心专家
     """
     current_anomalies = state.get("current_anomalies", [])
     has_new_fact = state.get("has_new_fact", False)
     facts_table = state.get("facts_table", [])
     surface_risk_score = state.get("surface_risk_score", 0)
 
-    selected = []
+    selected: list[str] = []
 
-    # 有新事实或多条事实，需要核心专家检查一致性
     if has_new_fact or len(facts_table) >= 2:
-        selected.extend(["semantic", "logical"])
+        selected.extend(DEFAULT_CORE_SPECIALISTS)
 
-    # 提取异常类型关键词
     anomaly_types = [
         str(a.get("type", ""))
         for a in current_anomalies
@@ -137,33 +129,34 @@ def infer_default_specialists(state: DialogueState) -> list[str]:
     ]
     anomaly_text = " ".join(anomaly_types)
 
-    # 根据异常类型补充专家
     if any(k in anomaly_text for k in ["职业常识", "岗位职责", "domain", "responsibility", "industry"]):
         selected.append("domain")
 
     if any(k in anomaly_text for k in ["回避", "模糊", "过度解释", "答非所问", "细节缺失", "self_correction", "avoidance", "vague"]):
         selected.append("psycho_linguistic")
 
-    # 高风险且没有选择任何专家，默认调用核心专家
     if surface_risk_score >= 50 and not selected:
-        selected.extend(["semantic", "logical"])
+        selected.extend(DEFAULT_CORE_SPECIALISTS)
 
-    # 最终兜底：如果仍然为空，使用默认核心专家
     if not selected:
         selected.extend(DEFAULT_CORE_SPECIALISTS)
 
-    # 去重并保持顺序
+    # 去重返回
     return list(dict.fromkeys(selected))
 
 
 def invoke_router_with_retry(llm, prompt_input: dict, max_retries: int = 2):
-    """带重试的路由 LLM 调用
-
-    最多调用 max_retries + 1 次 LLM：
-    - 第 1 次正常调用
-    - 后续重试时追加 HumanMessage 要求输出合法 JSON
-    每次调用后尝试两次 JSON 解析（普通清理 + 激进清理）。
-    全部失败返回 None。
+    """
+    调用 LLM 做路由决策，并在 JSON 解析失败时进行重试
+    输入：
+        llm: LLM 客户端对象
+        prompt_input: prompt 所需输入字典
+        max_retries: 最大重试次数
+    输出：
+        dict 或 None: LLM 返回的 JSON 结果
+    说明：
+        - 每轮失败会提示 LLM 输出标准 JSON
+        - 如果重试后仍失败，返回 None
     """
     for attempt in range(max_retries + 1):
         prompt_value = LIGHTWEIGHT_ROUTING_SUPERVISOR_PROMPT.invoke(prompt_input)
@@ -175,11 +168,10 @@ def invoke_router_with_retry(llm, prompt_input: dict, max_retries: int = 2):
                     "你上一次输出不是合法 JSON，无法解析。"
                     "请重新输出，只输出一个标准 JSON 对象。"
                     "不要 Markdown，不要解释，不要代码块。"
-                    "必须包含字段：need_specialist, selected_specialists, "
-                    "routing_reason, priority_issue, followup_strategy。"
-                    "followup_strategy 只能是 daily_routine、entry_experience、"
-                    "work_style、recent_memory、light_clarification、topic_shift_buffer、"
-                    "experience_probe、knowledge_probe、tool_workflow_probe、scenario_judgment_probe 之一。"
+                    "必须包含字段：selected_specialists, routing_reason, "
+                    "priority_issue, followup_strategy。"
+                    "selected_specialists 只能从 semantic、logical、domain、"
+                    "psycho_linguistic 中选择。"
                 ))
             )
 
@@ -189,14 +181,15 @@ def invoke_router_with_retry(llm, prompt_input: dict, max_retries: int = 2):
         result = extract_json_from_text(raw_output)
         if isinstance(result, dict):
             if attempt > 0:
-                logger.info(f"[路由监督节点] 第 {attempt + 1} 次调用 LLM 后解析成功")
+                logger.info("[路由监督节点] retry 后 JSON 解析成功")
             return result
 
+        # 激进清理尝试
         cleaned_again = clean_llm_output(raw_output, aggressive=True)
         result = extract_json_from_text(cleaned_again)
         if isinstance(result, dict):
             if attempt > 0:
-                logger.info(f"[路由监督节点] 第 {attempt + 1} 次调用 LLM 后激进清理解析成功")
+                logger.info("[路由监督节点] retry 后激进清理解析成功")
             return result
 
         logger.warning(
@@ -208,33 +201,36 @@ def invoke_router_with_retry(llm, prompt_input: dict, max_retries: int = 2):
 
 
 def lightweight_routing_supervisor_node(state: DialogueState) -> dict:
-    """轻量路由监督节点
-
-    根据第一层轻量预分析结果，决定调用第二层 Specialist Agent哪些 Agent
-    
-    新路由逻辑：
-    - Python 规则决定本轮是否允许跳过专家
-    - LLM 只决定如果不能跳过专家，具体调用哪些专家
-    - LLM 选择失败则默认 semantic + logical
     """
-    # 如果未启用按需专家，默认调用全部
+    路由监督器主节点
+    输入：
+        state: DialogueState
+    输出：
+        dict: 包含 routing_decision, selected_specialists, followup_strategy 等
+    功能：
+        1. 判断是否启用按需专家
+        2. 检查快速预分析标签是否有效
+        3. 规则跳过专家 / 调用 LLM 选择专家
+        4. 如果 LLM 未返回专家，使用 infer_default_specialists 兜底
+        5. 规范化 followup_strategy
+    """
     if not ENABLE_ON_DEMAND_SPECIALISTS:
+        # 未启用按需模式，直接调用全部专家
+        selected = ["semantic", "logical", "domain", "psycho_linguistic"]
         return {
             "routing_decision": {
-                "need_specialist": True,
-                "selected_specialists": ["semantic", "logical", "domain", "psycho_linguistic"],
+                "selected_specialists": selected,
                 "routing_reason": "未启用按需专家模式，默认调用全部专家",
                 "priority_issue": "完整分析",
                 "followup_strategy": "light_clarification",
                 "router_mode": "all_specialists",
             },
-            "selected_specialists": ["semantic", "logical", "domain", "psycho_linguistic"],
-            "need_specialist": True,
+            "selected_specialists": selected,
             "priority_issue": "完整分析",
             "followup_strategy": "light_clarification",
         }
 
-    # 提取输入
+    # 提取状态信息
     current_user_text = state.get("current_user_text", "")
     current_facts = state.get("current_facts", [])
     current_anomalies = state.get("current_anomalies", [])
@@ -242,125 +238,123 @@ def lightweight_routing_supervisor_node(state: DialogueState) -> dict:
     anomalies_table = state.get("anomalies_table", [])
     surface_risk_score = state.get("surface_risk_score", 0)
 
-    # ============================================================
-    # 规则跳过判断（优先级最高，不调用 LLM）
-    # ============================================================
+    # 快速预分析标签无效，尝试重跑
+    if not _has_valid_quick_labels(state):
+        retry_count = int(state.get("quick_preanalysis_retry_count", 0) or 0)
+        logger.warning(
+            "[lightweight_routing] quick_preanalysis missing severity/confidence; "
+            f"retry_count={retry_count}, schema_error={state.get('schema_error', '')}"
+        )
+        if retry_count < 1:
+            return {
+                "routing_decision": {
+                    "selected_specialists": [],
+                    "routing_reason": "quick_preanalysis 缺少 severity/confidence，回跳重跑一次",
+                    "priority_issue": "",
+                    "followup_strategy": "daily_routine",
+                    "router_mode": "retry_quick_preanalysis",
+                },
+                "selected_specialists": [],
+                "priority_issue": "",
+                "followup_strategy": "daily_routine",
+                "quick_preanalysis_retry_count": retry_count + 1,
+                "schema_error": "quick_risk_labels_invalid",
+            }
+
+        return {
+            "routing_decision": {
+                "selected_specialists": [],
+                "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+                "priority_issue": "",
+                "followup_strategy": "daily_routine",
+                "router_mode": "schema_error_drop_quick_evidence",
+            },
+            "selected_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "current_anomalies": [],
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+        }
+
+    # 规则跳过专家判断
     if should_skip_specialist(state):
         routing_decision = {
-            "need_specialist": False,
             "selected_specialists": [],
-            "routing_reason": "规则判定为极低风险：无新事实、无当前异常、无未解决异常，跳过专家分析",
+            "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
             "priority_issue": "无明显待澄清点",
             "followup_strategy": "daily_routine",
             "router_mode": "rule_skip",
         }
-        
         logger.info(
             f"[路由监督节点] 规则跳过专家 - "
             f"surface_risk_score={surface_risk_score}, "
             f"has_new_fact={state.get('has_new_fact', False)}, "
-            f"current_anomalies={len(state.get('current_anomalies', []))}, "
+            f"current_anomalies={len(current_anomalies)}, "
             f"unresolved_count={count_unresolved(anomalies_table)}"
         )
-        
         return {
             "routing_decision": routing_decision,
             "selected_specialists": [],
-            "need_specialist": False,
             "priority_issue": routing_decision["priority_issue"],
             "followup_strategy": routing_decision["followup_strategy"],
         }
 
-    # ============================================================
-    # 格式化数据并调用 LLM
-    # ============================================================
-    # 格式化事实表
+    # 将 facts_table/anomalies_table 转为文本供 LLM 使用
     facts_str = format_facts_table(facts_table) if facts_table else "暂无事实记录"
-    
-    # 格式化当前事实
     current_facts_str = "\n".join([
         f"- {f.get('content', '')}（类型:{f.get('slot', '')}）"
         for f in current_facts
     ]) if current_facts else "本轮无新事实"
-    
-    # 格式化当前异常
     current_anomalies_str = "\n".join([
         f"- {a.get('type', '')}: {a.get('description', '')}（分数:{a.get('score', 0)}）"
         for a in current_anomalies
     ]) if current_anomalies else "本轮无新异常"
-    
-    # 格式化异常表
     anomalies_str = format_anomalies_table(anomalies_table) if anomalies_table else "暂无异常记录"
 
-    # 调用 LLM（带重试：最多 3 次调用，每次调用后 2 次解析尝试）
     llm = get_llm()
-    prompt_input = {
-        "current_user_text": current_user_text,
-        "current_facts": current_facts_str,
-        "current_anomalies": current_anomalies_str,
-        "facts_table": facts_str,
-        "anomalies_table": anomalies_str,
-        "surface_risk_score": surface_risk_score,
-    }
+    result = invoke_router_with_retry(
+        llm,
+        {
+            "current_user_text": current_user_text,
+            "current_facts": current_facts_str,
+            "current_anomalies": current_anomalies_str,
+            "facts_table": facts_str,
+            "anomalies_table": anomalies_str,
+            "surface_risk_score": surface_risk_score,
+        },
+        max_retries=2,
+    )
 
-    result = invoke_router_with_retry(llm, prompt_input, max_retries=2)
-
-    # 全部重试均失败，走兜底逻辑
+    # LLM 返回为空时，使用默认推断
     if not result:
-        logger.error(
-            "[路由监督节点] LLM 调用 3 次均无法解析出有效 JSON，进入兜底"
-        )
-
-        if should_skip_specialist(state):
-            fallback_decision = {
-                "need_specialist": False,
-                "selected_specialists": [],
-                "routing_reason": "[解析错误兜底] 规则判定为极低风险，跳过专家分析",
-                "priority_issue": "无明显待澄清点",
-                "followup_strategy": "daily_routine",
-                "parse_error": "json_parse_failed",
-                "fallback_used": True,
-                "router_mode": "rule_skip_after_parse_error",
-            }
-            logger.info(
-                "[路由监督节点] 使用低风险兜底决策（重试耗尽，但满足跳过条件）"
-            )
-        else:
-            fallback_selected = infer_default_specialists(state)
-            fallback_decision = {
-                "need_specialist": True,
-                "selected_specialists": fallback_selected,
-                "routing_reason": "[解析错误兜底] 不满足跳过条件，调用默认核心专家",
-                "priority_issue": "需要进一步澄清当前事实或异常",
-                "followup_strategy": "light_clarification",
-                "parse_error": "json_parse_failed",
-                "fallback_used": True,
-                "router_mode": "rule_force_after_parse_error",
-            }
-            logger.info(
-                "[路由监督节点] 使用默认专家兜底决策（重试耗尽，不满足跳过条件）"
-            )
-
+        selected_specialists = infer_default_specialists(state)
+        routing_decision = {
+            "selected_specialists": selected_specialists,
+            "routing_reason": "[解析错误兜底] 不满足跳过条件，调用默认核心专家",
+            "priority_issue": "需要进一步澄清当前事实或异常",
+            "followup_strategy": "light_clarification",
+            "parse_error": "json_parse_failed",
+            "fallback_used": True,
+            "router_mode": "rule_force_after_parse_error",
+        }
         return {
-            "routing_decision": fallback_decision,
-            "selected_specialists": fallback_decision["selected_specialists"],
-            "need_specialist": fallback_decision["need_specialist"],
-            "priority_issue": fallback_decision["priority_issue"],
-            "followup_strategy": fallback_decision["followup_strategy"],
-            "parse_error": fallback_decision["parse_error"],
+            "routing_decision": routing_decision,
+            "selected_specialists": selected_specialists,
+            "priority_issue": routing_decision["priority_issue"],
+            "followup_strategy": routing_decision["followup_strategy"],
+            "parse_error": routing_decision["parse_error"],
         }
 
-    # ============================================================
-    # 提取 LLM 结果（修改：忽略 LLM 的 need_specialist）
-    # ============================================================
-    # 忽略 LLM 返回的 need_specialist，规则已经判定不能跳过
-    need_specialist = True
-    selected_specialists = result.get("selected_specialists", [])
-    routing_reason = result.get("routing_reason", "")
-    priority_issue = result.get("priority_issue", "")
-    followup_strategy = result.get("followup_strategy", "")
+    # 过滤合法专家
+    selected_specialists = [
+        s for s in result.get("selected_specialists", [])
+        if s in VALID_SPECIALISTS
+    ]
+    if not selected_specialists:
+        logger.info("[路由监督节点] LLM 未选择专家，使用默认推断")
+        selected_specialists = infer_default_specialists(state)
 
-    # 校验 followup_strategy 合法性，非法则兜底
+    # 判断当前是否有风险
     has_risk = bool(
         current_anomalies
         or any(
@@ -373,33 +367,16 @@ def lightweight_routing_supervisor_node(state: DialogueState) -> dict:
         )
         or surface_risk_score >= 40
     )
-    followup_strategy = normalize_followup_strategy(followup_strategy, has_risk)
-
-    logger.info(
-        f"[路由监督节点] LLM 决策成功解析 - "
-        f"selected_specialists={selected_specialists}, "
-        f"priority_issue={priority_issue}, "
-        f"reason={routing_reason}"
+    # 规范化 followup_strategy
+    followup_strategy = normalize_followup_strategy(
+        result.get("followup_strategy", ""),
+        has_risk,
     )
+    routing_reason = result.get("routing_reason", "")
+    priority_issue = result.get("priority_issue", "")
 
-    # 验证 selected_specialists
-    selected_specialists = [s for s in selected_specialists if s in VALID_SPECIALISTS]
-
-    # ============================================================
-    # 修改：LLM 选择为空时的兜底规则
-    # ============================================================
-    if not selected_specialists:
-        logger.info(
-            f"[路由监督节点] LLM 未选择专家，使用默认推断"
-        )
-        selected_specialists = infer_default_specialists(state)
-
-    # ============================================================
-    # 返回结果（保持原有格式）
-    # ============================================================
     return {
         "routing_decision": {
-            "need_specialist": need_specialist,
             "selected_specialists": selected_specialists,
             "routing_reason": routing_reason,
             "priority_issue": priority_issue,
@@ -407,7 +384,7 @@ def lightweight_routing_supervisor_node(state: DialogueState) -> dict:
             "router_mode": "rule_force_llm_select",
         },
         "selected_specialists": selected_specialists,
-        "need_specialist": need_specialist,
         "priority_issue": priority_issue,
         "followup_strategy": followup_strategy,
     }
+

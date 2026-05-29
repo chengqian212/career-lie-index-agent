@@ -2,7 +2,7 @@
 
 import time
 from typing import Callable, Dict
-from .logger import get_logger
+from utils.logger import get_logger
 
 
 def wrap_node(node_func: Callable) -> Callable:
@@ -82,3 +82,4 @@ def wrap_node(node_func: Callable) -> Callable:
     wrapped.__module__ = node_func.__module__
     
     return wrapped
+

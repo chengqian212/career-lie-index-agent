@@ -1,17 +1,18 @@
-﻿"""语义一致性分析 Agent 节点"""
+"""语义一致性分析 Agent 节点"""
 
 import logging
 
-from ...llm_client import get_llm
-from ...prompts import SEMANTIC_AGENT_PROMPT
-from ...utils.json_utils import safe_json_parse_with_retry
-from ...utils.text_utils import (
+from llm_client import get_llm
+from prompts import SEMANTIC_AGENT_PROMPT
+from utils.json_utils import safe_json_parse_with_retry
+from utils.score_utils import normalize_specialist_result
+from utils.text_utils import (
     format_dialogue_history,
     format_facts_table,
     format_anomalies_table,
     clean_llm_output,
 )
-from ...state_schema import DialogueState
+from state_schema import DialogueState
 
 logger = logging.getLogger(__name__)
 
@@ -68,26 +69,25 @@ def semantic_agent_node(state: DialogueState) -> dict:
         default={
             "agent": "semantic",
             "score": 0,
-            "findings": [],
+            "evidence_list": [],
         },
         node_name="语义分析专家"
     )
 
     # 确保 agent 字段正确
-    if isinstance(result, dict):
-        result["agent"] = "semantic"
-    else:
-        result = {
-            "agent": "semantic",
-            "score": 0,
-            "findings": [],
-        }
+    result = normalize_specialist_result(result, "semantic")
+    if result.get("schema_error"):
+        logger.warning(
+            "[semantic_agent] dropped invalid evidence: "
+            f"{result.get('dropped_evidence_count', 0)}"
+        )
     
     logger.info(
-        f"[语义分析专家] 分析完成 - score={result.get('score', 0)}, findings数量={len(result.get('findings', []))}"
+        f"[语义分析专家] 分析完成 - score={result.get('score', 0)}, evidence数量={len(result.get('evidence_list', []))}"
     )
 
     return {
         "specialist_results": [result],
         "called_specialists": ["semantic"],
     }
+
