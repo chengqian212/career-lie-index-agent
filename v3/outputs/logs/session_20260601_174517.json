@@ -1,0 +1,4419 @@
+{
+  "session_start_time": "2026-06-01T17:38:23.103729",
+  "rounds": [
+    {
+      "round_id": 1,
+      "start_time": "2026-06-01T17:38:23.103729",
+      "user_input": "大学生，大三，计算机专业",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.099,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {},
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "",
+            "quick_signal_summary": "",
+            "surface_risk_score": 0.0,
+            "severity": "",
+            "confidence": "",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 0,
+            "facts_table_recent": [],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户是一名大三计算机专业的大学生，尚未明确细分方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份阶段，属于正常的探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "大学生",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 1.927,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {},
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的大学生，尚未明确细分方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份阶段，属于正常的探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "大学生",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户提供基础身份信息，无异常，需语义和逻辑专家建立基线。",
+              "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "semantic_agent_node",
+          "elapsed_seconds": 0.929,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户提供基础身份信息，无异常，需语义和逻辑专家建立基线。",
+              "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的大学生，尚未明确细分方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份阶段，属于正常的探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "大学生",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "semantic"
+            ],
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "logical_agent_node",
+          "elapsed_seconds": 1.135,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户提供基础身份信息，无异常，需语义和逻辑专家建立基线。",
+              "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的大学生，尚未明确细分方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份阶段，属于正常的探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "大学生",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "logical"
+            ],
+            "specialist_results": [
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户提供基础身份信息，无异常，需语义和逻辑专家建立基线。",
+              "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的大学生，尚未明确细分方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份阶段，属于正常的探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "大学生",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.348,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户提供基础身份信息，无异常，需语义和逻辑专家建立基线。",
+              "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的大学生，尚未明确细分方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份阶段，属于正常的探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "大学生",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "仅获得基础身份信息，尚未收集具体学习方向或项目经历，信息不饱和，且轮次充足，值得继续追问。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.434,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户提供基础身份信息，无异常，需语义和逻辑专家建立基线。",
+              "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "仅获得基础身份信息，尚未收集具体学习方向或项目经历，信息不饱和，且轮次充足，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的大学生，尚未明确细分方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份阶段，属于正常的探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "大学生",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T17:38:31.147384",
+      "total_elapsed_seconds": 8.044
+    },
+    {
+      "round_id": 2,
+      "start_time": "2026-06-01T17:41:13.157190",
+      "user_input": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.457,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+            "last_followup_question": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户提供基础身份信息，无异常，需语义和逻辑专家建立基线。",
+              "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "仅获得基础身份信息，尚未收集具体学习方向或项目经历，信息不饱和，且轮次充足，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的大学生，尚未明确细分方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份阶段，属于正常的探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "大学生",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户为计算机专业大三学生，当前以课程学习为主，对保研/考研路径有基本认知，但尚未明确选择方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合大三学生身份，对上一轮追问给出了合理回应，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 1.7,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+            "last_followup_question": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户提供基础身份信息，无异常，需语义和逻辑专家建立基线。",
+              "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或项目经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "仅获得基础身份信息，尚未收集具体学习方向或项目经历，信息不饱和，且轮次充足，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户为计算机专业大三学生，当前以课程学习为主，对保研/考研路径有基本认知，但尚未明确选择方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合大三学生身份，对上一轮追问给出了合理回应，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户身份为大学生，当前回答内容合理，无异常信号，仅需基础事实一致性检查。",
+              "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "logical_agent_node",
+          "elapsed_seconds": 0.877,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+            "last_followup_question": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户身份为大学生，当前回答内容合理，无异常信号，仅需基础事实一致性检查。",
+              "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "仅获得基础身份信息，尚未收集具体学习方向或项目经历，信息不饱和，且轮次充足，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户为计算机专业大三学生，当前以课程学习为主，对保研/考研路径有基本认知，但尚未明确选择方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合大三学生身份，对上一轮追问给出了合理回应，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "logical"
+            ],
+            "specialist_results": [
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "semantic_agent_node",
+          "elapsed_seconds": 1.121,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+            "last_followup_question": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户身份为大学生，当前回答内容合理，无异常信号，仅需基础事实一致性检查。",
+              "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "仅获得基础身份信息，尚未收集具体学习方向或项目经历，信息不饱和，且轮次充足，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户为计算机专业大三学生，当前以课程学习为主，对保研/考研路径有基本认知，但尚未明确选择方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合大三学生身份，对上一轮追问给出了合理回应，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "semantic"
+            ],
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+            "last_followup_question": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户身份为大学生，当前回答内容合理，无异常信号，仅需基础事实一致性检查。",
+              "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "仅获得基础身份信息，尚未收集具体学习方向或项目经历，信息不饱和，且轮次充足，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户为计算机专业大三学生，当前以课程学习为主，对保研/考研路径有基本认知，但尚未明确选择方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合大三学生身份，对上一轮追问给出了合理回应，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.217,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+            "last_followup_question": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户身份为大学生，当前回答内容合理，无异常信号，仅需基础事实一致性检查。",
+              "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "仅获得基础身份信息，尚未收集具体学习方向或项目经历，信息不饱和，且轮次充足，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户为计算机专业大三学生，当前以课程学习为主，对保研/考研路径有基本认知，但尚未明确选择方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合大三学生身份，对上一轮追问给出了合理回应，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖用户身份和学习状态，无异常或矛盾，信息饱和，无需继续追问。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.364,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+            "last_followup_question": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户身份为大学生，当前回答内容合理，无异常信号，仅需基础事实一致性检查。",
+              "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖用户身份和学习状态，无异常或矛盾，信息饱和，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户为计算机专业大三学生，当前以课程学习为主，对保研/考研路径有基本认知，但尚未明确选择方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合大三学生身份，对上一轮追问给出了合理回应，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？",
+            "next_action": "generate_followup",
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T17:41:21.082484",
+      "total_elapsed_seconds": 7.925
+    },
+    {
+      "round_id": 3,
+      "start_time": "2026-06-01T17:43:03.516866",
+      "user_input": "小组分工呗",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.387,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "小组分工呗",
+            "last_followup_question": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户身份为大学生，当前回答内容合理，无异常信号，仅需基础事实一致性检查。",
+              "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖用户身份和学习状态，无异常或矛盾，信息饱和，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户为计算机专业大三学生，当前以课程学习为主，对保研/考研路径有基本认知，但尚未明确选择方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合大三学生身份，对上一轮追问给出了合理回应，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户回答课程设计采用小组分工方式，属于正常的学习经历描述。",
+            "quick_signal_summary": "未检测到异常信号，回答简洁但符合问题粒度，属于正常表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "小组分工呗",
+            "last_followup_question": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户身份为大学生，当前回答内容合理，无异常信号，仅需基础事实一致性检查。",
+              "priority_issue": "用户对保研和考研路径的区分是否与后续回答一致",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖用户身份和学习状态，无异常或矛盾，信息饱和，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户回答课程设计采用小组分工方式，属于正常的学习经历描述。",
+            "quick_signal_summary": "未检测到异常信号，回答简洁但符合问题粒度，属于正常表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "小组分工呗",
+            "last_followup_question": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖用户身份和学习状态，无异常或矛盾，信息饱和，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户回答课程设计采用小组分工方式，属于正常的学习经历描述。",
+            "quick_signal_summary": "未检测到异常信号，回答简洁但符合问题粒度，属于正常表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.675,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "小组分工呗",
+            "last_followup_question": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖用户身份和学习状态，无异常或矛盾，信息饱和，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户回答课程设计采用小组分工方式，属于正常的学习经历描述。",
+            "quick_signal_summary": "未检测到异常信号，回答简洁但符合问题粒度，属于正常表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖基本信息，用户回答简短且无异常，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.448,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "小组分工呗",
+            "last_followup_question": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖基本信息，用户回答简短且无异常，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户回答课程设计采用小组分工方式，属于正常的学习经历描述。",
+            "quick_signal_summary": "未检测到异常信号，回答简洁但符合问题粒度，属于正常表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "计算机专业大三课业应该挺忙的吧，我有个表弟也是学计算机的，天天看他写代码到很晚。你平时是更偏向做项目、刷算法题，还是跟着课程走呀，哪种方式你觉得学起来更扎实？"
+              },
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？",
+            "next_action": "generate_followup",
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T17:43:09.098380",
+      "total_elapsed_seconds": 5.582
+    },
+    {
+      "round_id": 4,
+      "start_time": "2026-06-01T17:44:37.231848",
+      "user_input": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.599,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧",
+            "last_followup_question": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖基本信息，用户回答简短且无异常，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户回答课程设计采用小组分工方式，属于正常的学习经历描述。",
+            "quick_signal_summary": "未检测到异常信号，回答简洁但符合问题粒度，属于正常表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "other",
+                "content": "计算机专业",
+                "evidence": "大学生，大三，计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "平时主要上课，保研路径涉及科研或项目，考研路径涉及复习课程",
+                "evidence": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户补充了小组分工的具体内容：每个人都会参与写代码、做文档和汇报，且认为各种角色锻炼效果差不多。",
+            "quick_signal_summary": "本轮未检测到异常信号。用户回答自然、具体，符合大三学生课程设计的常见情况，没有回避或矛盾之处。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 1.509,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧",
+            "last_followup_question": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖基本信息，用户回答简短且无异常，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了小组分工的具体内容：每个人都会参与写代码、做文档和汇报，且认为各种角色锻炼效果差不多。",
+            "quick_signal_summary": "本轮未检测到异常信号。用户回答自然、具体，符合大三学生课程设计的常见情况，没有回避或矛盾之处。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户回答内容与历史事实一致，无异常，但信息较浅，需语义和逻辑专家分析角色认知与分工逻辑。",
+              "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+            "followup_strategy": "work_style"
+          },
+          "success": true
+        },
+        {
+          "node_name": "semantic_agent_node",
+          "elapsed_seconds": 1.162,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧",
+            "last_followup_question": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户回答内容与历史事实一致，无异常，但信息较浅，需语义和逻辑专家分析角色认知与分工逻辑。",
+              "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+            "followup_strategy": "work_style",
+            "stop_reason": "对话已覆盖基本信息，用户回答简短且无异常，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了小组分工的具体内容：每个人都会参与写代码、做文档和汇报，且认为各种角色锻炼效果差不多。",
+            "quick_signal_summary": "本轮未检测到异常信号。用户回答自然、具体，符合大三学生课程设计的常见情况，没有回避或矛盾之处。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "semantic"
+            ],
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "logical_agent_node",
+          "elapsed_seconds": 1.297,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧",
+            "last_followup_question": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户回答内容与历史事实一致，无异常，但信息较浅，需语义和逻辑专家分析角色认知与分工逻辑。",
+              "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+            "followup_strategy": "work_style",
+            "stop_reason": "对话已覆盖基本信息，用户回答简短且无异常，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了小组分工的具体内容：每个人都会参与写代码、做文档和汇报，且认为各种角色锻炼效果差不多。",
+            "quick_signal_summary": "本轮未检测到异常信号。用户回答自然、具体，符合大三学生课程设计的常见情况，没有回避或矛盾之处。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "logical"
+            ],
+            "specialist_results": [
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧",
+            "last_followup_question": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户回答内容与历史事实一致，无异常，但信息较浅，需语义和逻辑专家分析角色认知与分工逻辑。",
+              "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+            "followup_strategy": "work_style",
+            "stop_reason": "对话已覆盖基本信息，用户回答简短且无异常，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了小组分工的具体内容：每个人都会参与写代码、做文档和汇报，且认为各种角色锻炼效果差不多。",
+            "quick_signal_summary": "本轮未检测到异常信号。用户回答自然、具体，符合大三学生课程设计的常见情况，没有回避或矛盾之处。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.332,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧",
+            "last_followup_question": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户回答内容与历史事实一致，无异常，但信息较浅，需语义和逻辑专家分析角色认知与分工逻辑。",
+              "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+            "followup_strategy": "work_style",
+            "stop_reason": "对话已覆盖基本信息，用户回答简短且无异常，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了小组分工的具体内容：每个人都会参与写代码、做文档和汇报，且认为各种角色锻炼效果差不多。",
+            "quick_signal_summary": "本轮未检测到异常信号。用户回答自然、具体，符合大三学生课程设计的常见情况，没有回避或矛盾之处。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "已收集足够的基础信息，用户回答一致且无异常，LieIndex为0，继续追问价值有限，建议生成报告。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.853,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧",
+            "last_followup_question": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户回答内容与历史事实一致，无异常，但信息较浅，需语义和逻辑专家分析角色认知与分工逻辑。",
+              "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "已收集足够的基础信息，用户回答一致且无异常，LieIndex为0，继续追问价值有限，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了小组分工的具体内容：每个人都会参与写代码、做文档和汇报，且认为各种角色锻炼效果差不多。",
+            "quick_signal_summary": "本轮未检测到异常信号。用户回答自然、具体，符合大三学生课程设计的常见情况，没有回避或矛盾之处。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "就平时上上课呗，如果不保研的话基本上没人会做项目或刷算法题，要保研就得跟着老师搞科研或者做项目了，考研的现在开始复习课程"
+              },
+              {
+                "role": "assistant",
+                "content": "原来是这样，那你们专业大三的课程里，有没有那种需要自己动手做点东西的大作业或者课程设计呀，一般是怎么做的呢？"
+              },
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "generate_followup",
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T17:44:45.914027",
+      "total_elapsed_seconds": 8.682
+    },
+    {
+      "round_id": 5,
+      "start_time": "2026-06-01T17:45:03.010538",
+      "user_input": "那肯定是写代码啊",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.216,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户回答内容与历史事实一致，无异常，但信息较浅，需语义和逻辑专家分析角色认知与分工逻辑。",
+              "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "已收集足够的基础信息，用户回答一致且无异常，LieIndex为0，继续追问价值有限，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了小组分工的具体内容：每个人都会参与写代码、做文档和汇报，且认为各种角色锻炼效果差不多。",
+            "quick_signal_summary": "本轮未检测到异常信号。用户回答自然、具体，符合大三学生课程设计的常见情况，没有回避或矛盾之处。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课程设计采用小组分工方式完成",
+                "evidence": "小组分工呗",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，未发现异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户回答内容与历史事实一致，无异常，但信息较浅，需语义和逻辑专家分析角色认知与分工逻辑。",
+              "priority_issue": "用户认为小组内不同角色锻炼效果差不多，需关注其对角色分工和成长路径的认知深度。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "已收集足够的基础信息，用户回答一致且无异常，LieIndex为0，继续追问价值有限，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，未发现异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "已收集足够的基础信息，用户回答一致且无异常，LieIndex为0，继续追问价值有限，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，未发现异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.508,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "已收集足够的基础信息，用户回答一致且无异常，LieIndex为0，继续追问价值有限，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，未发现异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report",
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已覆盖学习方向、课程实践、小组分工、技术偏好，信息饱和；无异常且LieIndex=0，无需继续追问。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "report_generation_node",
+          "elapsed_seconds": 3.449,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已覆盖学习方向、课程实践、小组分工、技术偏好，信息饱和；无异常且LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，未发现异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report"
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T17:45:10.268734",
+      "total_elapsed_seconds": 7.258
+    },
+    {
+      "round_id": 5,
+      "start_time": "2026-06-01T17:45:10.269733",
+      "user_input": "（自动生成最终报告）",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 1.645,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已覆盖学习方向、课程实践、小组分工、技术偏好，信息饱和；无异常且LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，未发现异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "在小组任务中，每个人都参与写代码、做文档和汇报的工作",
+                "evidence": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已覆盖学习方向、课程实践、小组分工、技术偏好，信息饱和；无异常且LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖学习方向、课程实践、小组分工、技术偏好，信息饱和；无异常且LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.372,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖学习方向、课程实践、小组分工、技术偏好，信息饱和；无异常且LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report",
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已满8轮对话，信息饱和且无异常，LieIndex为0，无需继续追问。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "report_generation_node",
+          "elapsed_seconds": 3.886,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是写代码啊",
+            "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已满8轮对话，信息饱和且无异常，LieIndex为0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+            "quick_signal_summary": "无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "小组分工呗"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+              },
+              {
+                "role": "user",
+                "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是写代码啊"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "experience",
+                "content": "认为各种角色锻炼效果差不多",
+                "evidence": "我感觉都差不多吧",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "认为写代码对走技术方向更管用",
+                "evidence": "那肯定是写代码啊",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report"
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T17:45:17.201700",
+      "total_elapsed_seconds": 6.932
+    }
+  ],
+  "session_end_time": "2026-06-01T17:45:17.204047",
+  "final_state_snapshot": {
+    "round_id": 5,
+    "max_rounds": 8,
+    "current_user_text": "那肯定是写代码啊",
+    "last_followup_question": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？",
+    "next_action": "final_report",
+    "lie_index": 0.0,
+    "risk_explanation": [
+      "No active specialist evidence; LieIndex=0.",
+      "No active specialist evidence; LieIndex=0."
+    ],
+    "dimension_scores": {},
+    "routing_decision": {
+      "selected_specialists": [],
+      "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+      "priority_issue": "无明显待澄清点",
+      "followup_strategy": "daily_routine",
+      "router_mode": "rule_skip"
+    },
+    "selected_specialists": [],
+    "called_specialists": [],
+    "priority_issue": "",
+    "followup_strategy": "",
+    "stop_reason": "已满8轮对话，信息饱和且无异常，LieIndex为0，无需继续追问。",
+    "target_anomaly_id": "",
+    "quick_fact_summary": "用户明确表示写代码对走技术方向更管用。",
+    "quick_signal_summary": "无异常信号。",
+    "surface_risk_score": 0.0,
+    "severity": "LOW",
+    "confidence": "HIGH",
+    "schema_error": "",
+    "schema_errors": [],
+    "has_new_fact": true,
+    "dialogue_history": [
+      {
+        "role": "user",
+        "content": "小组分工呗"
+      },
+      {
+        "role": "assistant",
+        "content": "哈哈，小组分工确实是最常见的做法。那你一般在这种小组里是负责写代码、搭框架，还是做文档和汇报那一块呀，哪种角色你觉得最锻炼人？"
+      },
+      {
+        "role": "user",
+        "content": "我们小组一般每一个任务都分工，每个人都干一点写代码，做文档，和汇报的活。我感觉都差不多吧"
+      },
+      {
+        "role": "assistant",
+        "content": "哈哈，那你们小组分工还挺公平的，每个人都能轮着练一遍。不过我感觉写代码和做文档其实差别还挺大的，你觉得如果以后想走技术方向的话，平时多练练哪一块会更管用呀？"
+      },
+      {
+        "role": "user",
+        "content": "那肯定是写代码啊"
+      }
+    ],
+    "dialogue_history_count": 10,
+    "specialist_results": [],
+    "specialist_results_count": 0,
+    "facts_table_count": 9,
+    "facts_table_recent": [
+      {
+        "round_id": 4,
+        "slot": "experience",
+        "content": "认为各种角色锻炼效果差不多",
+        "evidence": "我感觉都差不多吧",
+        "source": "quick_preanalysis"
+      },
+      {
+        "round_id": 5,
+        "slot": "work_content",
+        "content": "认为写代码对走技术方向更管用",
+        "evidence": "那肯定是写代码啊",
+        "source": "quick_preanalysis"
+      },
+      {
+        "round_id": 8,
+        "slot": "other",
+        "content": "认为写代码对走技术方向更管用",
+        "evidence": "那肯定是写代码啊",
+        "source": "quick_preanalysis"
+      }
+    ],
+    "anomalies_table_count": 0,
+    "anomalies_table_recent": []
+  }
+}

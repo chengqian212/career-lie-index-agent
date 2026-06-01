@@ -1,0 +1,5159 @@
+{
+  "session_start_time": "2026-06-01T16:08:34.550561",
+  "rounds": [
+    {
+      "round_id": 1,
+      "start_time": "2026-06-01T16:08:34.550561",
+      "user_input": "大学生",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.277,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {},
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "",
+            "quick_signal_summary": "",
+            "surface_risk_score": 0.0,
+            "severity": "",
+            "confidence": "",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 0,
+            "facts_table_recent": [],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户当前身份为大学生，未提及具体工作方向。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {},
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，未提及具体工作方向。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，未提及具体工作方向。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.663,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，未提及具体工作方向。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户是大学生，缺乏专业或日常细节，存在有价值的澄清空间，且轮次充足。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 0.939,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户是大学生，缺乏专业或日常细节，存在有价值的澄清空间，且轮次充足。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，未提及具体工作方向。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:08:39.543002",
+      "total_elapsed_seconds": 4.992
+    },
+    {
+      "round_id": 2,
+      "start_time": "2026-06-01T16:09:37.360793",
+      "user_input": "我是计算机专业的",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 1.813,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "我是计算机专业的",
+            "last_followup_question": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户是大学生，缺乏专业或日常细节，存在有价值的澄清空间，且轮次充足。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，未提及具体工作方向。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户确认是计算机专业的大学生，身份信息与上一轮一致，无冲突。",
+            "quick_signal_summary": "本轮回答直接、明确，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "occupation",
+                "content": "计算机专业大学生",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "我是计算机专业的",
+            "last_followup_question": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户是大学生，缺乏专业或日常细节，存在有价值的澄清空间，且轮次充足。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认是计算机专业的大学生，身份信息与上一轮一致，无冲突。",
+            "quick_signal_summary": "本轮回答直接、明确，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "occupation",
+                "content": "计算机专业大学生",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "我是计算机专业的",
+            "last_followup_question": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户是大学生，缺乏专业或日常细节，存在有价值的澄清空间，且轮次充足。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认是计算机专业的大学生，身份信息与上一轮一致，无冲突。",
+            "quick_signal_summary": "本轮回答直接、明确，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "occupation",
+                "content": "计算机专业大学生",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.682,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "我是计算机专业的",
+            "last_followup_question": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户是大学生，缺乏专业或日常细节，存在有价值的澄清空间，且轮次充足。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认是计算机专业的大学生，身份信息与上一轮一致，无冲突。",
+            "quick_signal_summary": "本轮回答直接、明确，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "occupation",
+                "content": "计算机专业大学生",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "了解用户日常学习或项目经历，进一步验证身份真实性",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前仅获知专业信息，信息量不足，继续询问日常学习或项目经历可丰富证据。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.195,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "我是计算机专业的",
+            "last_followup_question": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "了解用户日常学习或项目经历，进一步验证身份真实性",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前仅获知专业信息，信息量不足，继续询问日常学习或项目经历可丰富证据。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认是计算机专业的大学生，身份信息与上一轮一致，无冲突。",
+            "quick_signal_summary": "本轮回答直接、明确，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "occupation",
+                "content": "计算机专业大学生",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？",
+            "next_action": "generate_followup",
+            "priority_issue": "了解用户日常学习或项目经历，进一步验证身份真实性",
+            "followup_strategy": "daily_routine",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:09:42.181421",
+      "total_elapsed_seconds": 4.821
+    },
+    {
+      "round_id": 3,
+      "start_time": "2026-06-01T16:10:14.795828",
+      "user_input": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.216,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+            "last_followup_question": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "了解用户日常学习或项目经历，进一步验证身份真实性",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前仅获知专业信息，信息量不足，继续询问日常学习或项目经历可丰富证据。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认是计算机专业的大学生，身份信息与上一轮一致，无冲突。",
+            "quick_signal_summary": "本轮回答直接、明确，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "occupation",
+                "content": "计算机专业大学生",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户确认大三，课业压力中等，有截止日期驱动的学习节奏。",
+            "quick_signal_summary": "无异常信号。回答自然、一致，符合大三学生身份和上一轮追问的粒度。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+            "last_followup_question": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "了解用户日常学习或项目经历，进一步验证身份真实性",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前仅获知专业信息，信息量不足，继续询问日常学习或项目经历可丰富证据。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认大三，课业压力中等，有截止日期驱动的学习节奏。",
+            "quick_signal_summary": "无异常信号。回答自然、一致，符合大三学生身份和上一轮追问的粒度。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+            "last_followup_question": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前仅获知专业信息，信息量不足，继续询问日常学习或项目经历可丰富证据。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认大三，课业压力中等，有截止日期驱动的学习节奏。",
+            "quick_signal_summary": "无异常信号。回答自然、一致，符合大三学生身份和上一轮追问的粒度。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.941,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+            "last_followup_question": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前仅获知专业信息，信息量不足，继续询问日常学习或项目经历可丰富证据。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认大三，课业压力中等，有截止日期驱动的学习节奏。",
+            "quick_signal_summary": "无异常信号。回答自然、一致，符合大三学生身份和上一轮追问的粒度。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖基本信息，无异常或风险信号，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.353,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+            "last_followup_question": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖基本信息，无异常或风险信号，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认大三，课业压力中等，有截止日期驱动的学习节奏。",
+            "quick_signal_summary": "无异常信号。回答自然、一致，符合大三学生身份和上一轮追问的粒度。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，原来还在上学呀，那你现在学的是什么专业呀？"
+              },
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？",
+            "next_action": "generate_followup",
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:10:20.450130",
+      "total_elapsed_seconds": 5.654
+    },
+    {
+      "round_id": 4,
+      "start_time": "2026-06-01T16:12:21.652362",
+      "user_input": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 1.625,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识",
+            "last_followup_question": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖基本信息，无异常或风险信号，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认大三，课业压力中等，有截止日期驱动的学习节奏。",
+            "quick_signal_summary": "无异常信号。回答自然、一致，符合大三学生身份和上一轮追问的粒度。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 5,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "work_content",
+                "content": "计算机专业学习",
+                "evidence": "我是计算机专业的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户大三计算机专业，课余时间正在做一个多agent项目，并学习agent架构知识。",
+            "quick_signal_summary": "本轮回答自然具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个多agent的项目",
+                "evidence": "最近在做一个多agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 1.543,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识",
+            "last_followup_question": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖基本信息，无异常或风险信号，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户大三计算机专业，课余时间正在做一个多agent项目，并学习agent架构知识。",
+            "quick_signal_summary": "本轮回答自然具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个多agent的项目",
+                "evidence": "最近在做一个多agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户为计算机专业大三学生，当前事实与身份背景一致，无异常，仅需基础语义和逻辑检查。",
+              "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style"
+          },
+          "success": true
+        },
+        {
+          "node_name": "logical_agent_node",
+          "elapsed_seconds": 0.836,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识",
+            "last_followup_question": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户为计算机专业大三学生，当前事实与身份背景一致，无异常，仅需基础语义和逻辑检查。",
+              "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "stop_reason": "对话已覆盖基本信息，无异常或风险信号，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户大三计算机专业，课余时间正在做一个多agent项目，并学习agent架构知识。",
+            "quick_signal_summary": "本轮回答自然具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个多agent的项目",
+                "evidence": "最近在做一个多agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "logical"
+            ],
+            "specialist_results": [
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "semantic_agent_node",
+          "elapsed_seconds": 1.236,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识",
+            "last_followup_question": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户为计算机专业大三学生，当前事实与身份背景一致，无异常，仅需基础语义和逻辑检查。",
+              "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "stop_reason": "对话已覆盖基本信息，无异常或风险信号，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户大三计算机专业，课余时间正在做一个多agent项目，并学习agent架构知识。",
+            "quick_signal_summary": "本轮回答自然具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个多agent的项目",
+                "evidence": "最近在做一个多agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "semantic"
+            ],
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识",
+            "last_followup_question": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户为计算机专业大三学生，当前事实与身份背景一致，无异常，仅需基础语义和逻辑检查。",
+              "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "stop_reason": "对话已覆盖基本信息，无异常或风险信号，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户大三计算机专业，课余时间正在做一个多agent项目，并学习agent架构知识。",
+            "quick_signal_summary": "本轮回答自然具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个多agent的项目",
+                "evidence": "最近在做一个多agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.188,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识",
+            "last_followup_question": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户为计算机专业大三学生，当前事实与身份背景一致，无异常，仅需基础语义和逻辑检查。",
+              "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "stop_reason": "对话已覆盖基本信息，无异常或风险信号，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户大三计算机专业，课余时间正在做一个多agent项目，并学习agent架构知识。",
+            "quick_signal_summary": "本轮回答自然具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个多agent的项目",
+                "evidence": "最近在做一个多agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "stop_reason": "用户刚提到多agent项目，这是具体技术细节的切入点，可验证其专业真实性，且对话轮次尚充裕。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.495,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识",
+            "last_followup_question": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户为计算机专业大三学生，当前事实与身份背景一致，无异常，仅需基础语义和逻辑检查。",
+              "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "stop_reason": "用户刚提到多agent项目，这是具体技术细节的切入点，可验证其专业真实性，且对话轮次尚充裕。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户大三计算机专业，课余时间正在做一个多agent项目，并学习agent架构知识。",
+            "quick_signal_summary": "本轮回答自然具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "我是计算机专业的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，计算机专业现在挺吃香的，我有个朋友也是学这个的，他说平时作业和项目都挺多的。那你现在大几了呀，平时课业压力大不大？"
+              },
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个多agent的项目",
+                "evidence": "最近在做一个多agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:12:28.914096",
+      "total_elapsed_seconds": 7.262
+    },
+    {
+      "round_id": 5,
+      "start_time": "2026-06-01T16:13:40.431725",
+      "user_input": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 3.046,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了",
+            "last_followup_question": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户为计算机专业大三学生，当前事实与身份背景一致，无异常，仅需基础语义和逻辑检查。",
+              "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "stop_reason": "用户刚提到多agent项目，这是具体技术细节的切入点，可验证其专业真实性，且对话轮次尚充裕。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户大三计算机专业，课余时间正在做一个多agent项目，并学习agent架构知识。",
+            "quick_signal_summary": "本轮回答自然具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "课业压力中等，截止日期前较忙，其余时间较空闲",
+                "evidence": "课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个多agent的项目",
+                "evidence": "最近在做一个多agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户补充了多agent项目的搭建思路（先选框架再定职责），同时纠正了agent的术语称呼。",
+            "quick_signal_summary": "回答中包含与问题无关的术语纠正，属于轻微偏离，但核心内容（项目搭建方法）有回应，整体风险较低。",
+            "surface_risk_score": 15.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了",
+            "last_followup_question": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户为计算机专业大三学生，当前事实与身份背景一致，无异常，仅需基础语义和逻辑检查。",
+              "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户正在做的多agent项目具体内容及与课程学习的关联",
+            "followup_strategy": "work_style",
+            "stop_reason": "用户刚提到多agent项目，这是具体技术细节的切入点，可验证其专业真实性，且对话轮次尚充裕。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了多agent项目的搭建思路（先选框架再定职责），同时纠正了agent的术语称呼。",
+            "quick_signal_summary": "回答中包含与问题无关的术语纠正，属于轻微偏离，但核心内容（项目搭建方法）有回应，整体风险较低。",
+            "surface_risk_score": 15.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 缺少 severity/confidence，回跳重跑一次",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "retry_quick_preanalysis"
+            },
+            "selected_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "schema_error": "quick_risk_labels_invalid"
+          },
+          "success": true
+        },
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.67,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了",
+            "last_followup_question": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 缺少 severity/confidence，回跳重跑一次",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "retry_quick_preanalysis"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "用户刚提到多agent项目，这是具体技术细节的切入点，可验证其专业真实性，且对话轮次尚充裕。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了多agent项目的搭建思路（先选框架再定职责），同时纠正了agent的术语称呼。",
+            "quick_signal_summary": "回答中包含与问题无关的术语纠正，属于轻微偏离，但核心内容（项目搭建方法）有回应，整体风险较低。",
+            "surface_risk_score": 15.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "学习agent架构方面的知识",
+                "evidence": "学点agent架构方面的知识",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户重申了多agent项目的搭建思路（先选框架），并纠正了agent的称呼为智能体。",
+            "quick_signal_summary": "用户回答中包含了与问题无关的纠正性内容，但核心问题（搭建方法）已得到回答，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "facts_table_count": 11,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.002,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了",
+            "last_followup_question": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 缺少 severity/confidence，回跳重跑一次",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "retry_quick_preanalysis"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "用户刚提到多agent项目，这是具体技术细节的切入点，可验证其专业真实性，且对话轮次尚充裕。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户重申了多agent项目的搭建思路（先选框架），并纠正了agent的称呼为智能体。",
+            "quick_signal_summary": "用户回答中包含了与问题无关的纠正性内容，但核心问题（搭建方法）已得到回答，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 11,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "schema_error": "quick_risk_labels_invalid_after_retry"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了",
+            "last_followup_question": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "用户刚提到多agent项目，这是具体技术细节的切入点，可验证其专业真实性，且对话轮次尚充裕。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户重申了多agent项目的搭建思路（先选框架），并纠正了agent的称呼为智能体。",
+            "quick_signal_summary": "用户回答中包含了与问题无关的纠正性内容，但核心问题（搭建方法）已得到回答，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 11,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.404,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了",
+            "last_followup_question": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "用户刚提到多agent项目，这是具体技术细节的切入点，可验证其专业真实性，且对话轮次尚充裕。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户重申了多agent项目的搭建思路（先选框架），并纠正了agent的称呼为智能体。",
+            "quick_signal_summary": "用户回答中包含了与问题无关的纠正性内容，但核心问题（搭建方法）已得到回答，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 11,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户对多agent项目的具体技术细节和实际经验了解程度",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "用户自称计算机专业大三学生，能主动提及多agent项目，但尚未深入验证其技术深度，可追问具体框架或实现细节以确认真实性。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.305,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了",
+            "last_followup_question": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户对多agent项目的具体技术细节和实际经验了解程度",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "用户自称计算机专业大三学生，能主动提及多agent项目，但尚未深入验证其技术深度，可追问具体框架或实现细节以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户重申了多agent项目的搭建思路（先选框架），并纠正了agent的称呼为智能体。",
+            "quick_signal_summary": "用户回答中包含了与问题无关的纠正性内容，但核心问题（搭建方法）已得到回答，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大三了，课业压力还行吧，只要快到ddl的时候比较忙，其余时间都挺空的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那还挺好的，大三确实是个挺关键的阶段。我听说计算机专业很多同学都会自己找点项目做做，或者提前接触一些方向，你平时空的时候会自己捣鼓点小项目或者学点感兴趣的技术吗？"
+              },
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 11,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户对多agent项目的具体技术细节和实际经验了解程度",
+            "followup_strategy": "knowledge_probe",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:13:49.083041",
+      "total_elapsed_seconds": 8.651
+    },
+    {
+      "round_id": 6,
+      "start_time": "2026-06-01T16:15:07.478683",
+      "user_input": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.876,
+          "input": {
+            "round_id": 6,
+            "max_rounds": 8,
+            "current_user_text": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧",
+            "last_followup_question": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户对多agent项目的具体技术细节和实际经验了解程度",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "用户自称计算机专业大三学生，能主动提及多agent项目，但尚未深入验证其技术深度，可追问具体框架或实现细节以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户重申了多agent项目的搭建思路（先选框架），并纠正了agent的称呼为智能体。",
+            "quick_signal_summary": "用户回答中包含了与问题无关的纠正性内容，但核心问题（搭建方法）已得到回答，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              }
+            ],
+            "dialogue_history_count": 12,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 11,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "用户正在做多agent项目，认为应该先选择框架，再根据项目类型设定框架，然后思考agent负责什么",
+                "evidence": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户正在自己搭建多agent项目的框架，因为刚开始做且项目较少，没有现成开源框架可参考。",
+            "quick_signal_summary": "用户回答中提到了判断框架适合性需要根据几个标准，但未具体说明，存在轻微模糊性。考虑到用户是学生且刚开始做项目，属于正常探索性表达，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 6,
+            "max_rounds": 8,
+            "current_user_text": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧",
+            "last_followup_question": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户对多agent项目的具体技术细节和实际经验了解程度",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "用户自称计算机专业大三学生，能主动提及多agent项目，但尚未深入验证其技术深度，可追问具体框架或实现细节以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户正在自己搭建多agent项目的框架，因为刚开始做且项目较少，没有现成开源框架可参考。",
+            "quick_signal_summary": "用户回答中提到了判断框架适合性需要根据几个标准，但未具体说明，存在轻微模糊性。考虑到用户是学生且刚开始做项目，属于正常探索性表达，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              }
+            ],
+            "dialogue_history_count": 12,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "schema_error": "quick_risk_labels_invalid_after_retry"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 6,
+            "max_rounds": 8,
+            "current_user_text": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧",
+            "last_followup_question": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "用户自称计算机专业大三学生，能主动提及多agent项目，但尚未深入验证其技术深度，可追问具体框架或实现细节以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户正在自己搭建多agent项目的框架，因为刚开始做且项目较少，没有现成开源框架可参考。",
+            "quick_signal_summary": "用户回答中提到了判断框架适合性需要根据几个标准，但未具体说明，存在轻微模糊性。考虑到用户是学生且刚开始做项目，属于正常探索性表达，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              }
+            ],
+            "dialogue_history_count": 12,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.528,
+          "input": {
+            "round_id": 6,
+            "max_rounds": 8,
+            "current_user_text": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧",
+            "last_followup_question": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "用户自称计算机专业大三学生，能主动提及多agent项目，但尚未深入验证其技术深度，可追问具体框架或实现细节以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户正在自己搭建多agent项目的框架，因为刚开始做且项目较少，没有现成开源框架可参考。",
+            "quick_signal_summary": "用户回答中提到了判断框架适合性需要根据几个标准，但未具体说明，存在轻微模糊性。考虑到用户是学生且刚开始做项目，属于正常探索性表达，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              }
+            ],
+            "dialogue_history_count": 12,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户提到判断框架适合性的标准，但未具体说明，这是有价值的技术细节缺口",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "用户刚提到判断框架适合性的标准但未展开，追问可获取具体技术细节，且LieIndex=0无风险，剩余2轮足够",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.429,
+          "input": {
+            "round_id": 6,
+            "max_rounds": 8,
+            "current_user_text": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧",
+            "last_followup_question": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户提到判断框架适合性的标准，但未具体说明，这是有价值的技术细节缺口",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "用户刚提到判断框架适合性的标准但未展开，追问可获取具体技术细节，且LieIndex=0无风险，剩余2轮足够",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户正在自己搭建多agent项目的框架，因为刚开始做且项目较少，没有现成开源框架可参考。",
+            "quick_signal_summary": "用户回答中提到了判断框架适合性需要根据几个标准，但未具体说明，存在轻微模糊性。考虑到用户是学生且刚开始做项目，属于正常探索性表达，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "会啊，最近在做一个多agent的项目，学点agent架构方面的知识"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，多agent项目听起来挺有意思的，我之前也刷到过一些智能体协作的东西，感觉还挺复杂的。你教教我，这种项目一般从零开始是怎么搭起来的呀，是先想清楚每个agent负责什么，还是先找个框架跑起来再说？"
+              },
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              }
+            ],
+            "dialogue_history_count": 12,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户提到判断框架适合性的标准，但未具体说明，这是有价值的技术细节缺口",
+            "followup_strategy": "knowledge_probe",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:15:13.493272",
+      "total_elapsed_seconds": 6.015
+    },
+    {
+      "round_id": 7,
+      "start_time": "2026-06-01T16:15:37.125897",
+      "user_input": "“我一个奇葩的”，什么意思，你是奇葩吗",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 1.933,
+          "input": {
+            "round_id": 7,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户提到判断框架适合性的标准，但未具体说明，这是有价值的技术细节缺口",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "用户刚提到判断框架适合性的标准但未展开，追问可获取具体技术细节，且LieIndex=0无风险，剩余2轮足够",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户正在自己搭建多agent项目的框架，因为刚开始做且项目较少，没有现成开源框架可参考。",
+            "quick_signal_summary": "用户回答中提到了判断框架适合性需要根据几个标准，但未具体说明，存在轻微模糊性。考虑到用户是学生且刚开始做项目，属于正常探索性表达，风险较低。",
+            "surface_risk_score": 10.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 7,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户提到判断框架适合性的标准，但未具体说明，这是有价值的技术细节缺口",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "用户刚提到判断框架适合性的标准但未展开，追问可获取具体技术细节，且LieIndex=0无风险，剩余2轮足够",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "schema_error": "quick_risk_labels_invalid_after_retry"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 7,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "用户刚提到判断框架适合性的标准但未展开，追问可获取具体技术细节，且LieIndex=0无风险，剩余2轮足够",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.328,
+          "input": {
+            "round_id": 7,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "用户刚提到判断框架适合性的标准但未展开，追问可获取具体技术细节，且LieIndex=0无风险，剩余2轮足够",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report",
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已进行6轮对话，覆盖专业、年级、项目等基本信息，用户最后一句出现对抗情绪，继续追问可能引发反感，LieIndex=0且无异常，建议终止。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "report_generation_node",
+          "elapsed_seconds": 1.329,
+          "input": {
+            "round_id": 7,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已进行6轮对话，覆盖专业、年级、项目等基本信息，用户最后一句出现对抗情绪，继续追问可能引发反感，LieIndex=0且无异常，建议终止。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report"
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:15:41.879546",
+      "total_elapsed_seconds": 4.754
+    },
+    {
+      "round_id": 8,
+      "start_time": "2026-06-01T16:15:41.879546",
+      "user_input": "（自动生成最终报告）",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 1.847,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已进行6轮对话，覆盖专业、年级、项目等基本信息，用户最后一句出现对抗情绪，继续追问可能引发反感，LieIndex=0且无异常，建议终止。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已进行6轮对话，覆盖专业、年级、项目等基本信息，用户最后一句出现对抗情绪，继续追问可能引发反感，LieIndex=0且无异常，建议终止。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "schema_error": "quick_risk_labels_invalid_after_retry"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "已进行6轮对话，覆盖专业、年级、项目等基本信息，用户最后一句出现对抗情绪，继续追问可能引发反感，LieIndex=0且无异常，建议终止。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.508,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "已进行6轮对话，覆盖专业、年级、项目等基本信息，用户最后一句出现对抗情绪，继续追问可能引发反感，LieIndex=0且无异常，建议终止。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report",
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已到最大轮次8/8，用户身份与专业信息已充分获取，无异常或风险信号，LieIndex=0，建议生成报告。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "report_generation_node",
+          "elapsed_seconds": 1.09,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+            "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+              "priority_issue": "",
+              "followup_strategy": "daily_routine",
+              "router_mode": "schema_error_drop_quick_evidence"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已到最大轮次8/8，用户身份与专业信息已充分获取，无异常或风险信号，LieIndex=0，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "本轮未抽取到新的事实。",
+            "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+            "surface_risk_score": 20.0,
+            "severity": null,
+            "confidence": null,
+            "schema_error": "quick_risk_labels_invalid_after_retry",
+            "schema_errors": [
+              "missing_or_invalid_severity",
+              "missing_or_invalid_confidence"
+            ],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+              },
+              {
+                "role": "user",
+                "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+              },
+              {
+                "role": "user",
+                "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+              }
+            ],
+            "dialogue_history_count": 14,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 13,
+            "facts_table_recent": [
+              {
+                "round_id": 5,
+                "slot": "other",
+                "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+                "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "work_content",
+                "content": "用户正在自己搭建多agent项目的框架",
+                "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 6,
+                "slot": "experience",
+                "content": "用户刚开始做多agent项目，项目经验较少",
+                "evidence": "因为我还刚开始做，这个项目比较少",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report"
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:15:46.450317",
+      "total_elapsed_seconds": 4.571
+    }
+  ],
+  "session_end_time": "2026-06-01T16:15:46.452325",
+  "final_state_snapshot": {
+    "round_id": 8,
+    "max_rounds": 8,
+    "current_user_text": "“我一个奇葩的”，什么意思，你是奇葩吗",
+    "last_followup_question": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？",
+    "next_action": "final_report",
+    "lie_index": 0.0,
+    "risk_explanation": [
+      "No active specialist evidence; LieIndex=0.",
+      "No active specialist evidence; LieIndex=0."
+    ],
+    "dimension_scores": {},
+    "routing_decision": {
+      "selected_specialists": [],
+      "routing_reason": "quick_preanalysis 二次输出仍缺少 severity/confidence，丢弃本轮风险证据",
+      "priority_issue": "",
+      "followup_strategy": "daily_routine",
+      "router_mode": "schema_error_drop_quick_evidence"
+    },
+    "selected_specialists": [],
+    "called_specialists": [],
+    "priority_issue": "",
+    "followup_strategy": "",
+    "stop_reason": "已到最大轮次8/8，用户身份与专业信息已充分获取，无异常或风险信号，LieIndex=0，建议生成报告。",
+    "target_anomaly_id": "",
+    "quick_fact_summary": "本轮未抽取到新的事实。",
+    "quick_signal_summary": "用户未回答上一轮关于评估框架标准的问题，而是反问系统措辞，存在答非所问的异常信号。",
+    "surface_risk_score": 20.0,
+    "severity": null,
+    "confidence": null,
+    "schema_error": "quick_risk_labels_invalid_after_retry",
+    "schema_errors": [
+      "missing_or_invalid_severity",
+      "missing_or_invalid_confidence"
+    ],
+    "has_new_fact": false,
+    "dialogue_history": [
+      {
+        "role": "user",
+        "content": "先找个框架啊，根据项目类型设定框架，然后才能思考agent负责什么。还有agent现在不叫代理，叫智能体，你也太落后了"
+      },
+      {
+        "role": "assistant",
+        "content": "哈哈，你说得对，是我落伍了，智能体这个词确实更准确。那你现在用的这个框架，是自己搭的还是用现成的开源框架呀，一般怎么判断哪个框架更适合自己的项目呢？"
+      },
+      {
+        "role": "user",
+        "content": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考，要说怎么判断最适合的，要根据几个标准吧"
+      },
+      {
+        "role": "assistant",
+        "content": "哈哈，自己搭框架那还挺厉害的，我连现成的都还没搞明白呢。你刚才说要根据几个标准来判断框架适不适合，我挺好奇的，一般会从哪几个方面去评估呀？"
+      },
+      {
+        "role": "user",
+        "content": "“我一个奇葩的”，什么意思，你是奇葩吗"
+      }
+    ],
+    "dialogue_history_count": 14,
+    "specialist_results": [],
+    "specialist_results_count": 0,
+    "facts_table_count": 13,
+    "facts_table_recent": [
+      {
+        "round_id": 5,
+        "slot": "other",
+        "content": "用户纠正了agent的称呼，认为应该叫智能体而不是代理",
+        "evidence": "还有agent现在不叫代理，叫智能体，你也太落后了",
+        "source": "quick_preanalysis"
+      },
+      {
+        "round_id": 6,
+        "slot": "work_content",
+        "content": "用户正在自己搭建多agent项目的框架",
+        "evidence": "这个是我自己搭的，因为我还刚开始做，这个项目比较少，没有相关的开源框架参考",
+        "source": "quick_preanalysis"
+      },
+      {
+        "round_id": 6,
+        "slot": "experience",
+        "content": "用户刚开始做多agent项目，项目经验较少",
+        "evidence": "因为我还刚开始做，这个项目比较少",
+        "source": "quick_preanalysis"
+      }
+    ],
+    "anomalies_table_count": 0,
+    "anomalies_table_recent": []
+  }
+}

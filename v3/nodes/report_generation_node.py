@@ -3,7 +3,11 @@
 import json
 from llm_client import get_llm
 from prompts import FINAL_REPORT_PROMPT
-from utils.text_utils import format_dialogue_history, format_anomalies_table, clean_llm_output
+from utils.text_utils import (
+    format_dialogue_history,
+    format_facts_table,
+    clean_llm_output,
+)
 from state_schema import DialogueState
 from memory.anomaly_table import get_unresolved_anomalies
 
@@ -27,6 +31,8 @@ def report_generation_node(state: DialogueState) -> dict:
     dimension_scores = state.get("dimension_scores", {})
     specialist_results = state.get("specialist_results", [])
     anomalies_table = state.get("anomalies_table", [])
+    facts_table = state.get("facts_table", [])
+    dialogue_history = state.get("dialogue_history", [])
 
     # 格式化各维度分数
     dimension_text = "\n".join(
@@ -49,6 +55,9 @@ def report_generation_node(state: DialogueState) -> dict:
         for a in unresolved
     ) if unresolved else "暂无明显待澄清点"
 
+    facts_text = format_facts_table(facts_table)
+    dialogue_text = format_dialogue_history(dialogue_history)
+
     # 调用 LLM（使用 ChatPromptTemplate 的 invoke 方法）
     response = llm.invoke(
         FINAL_REPORT_PROMPT.invoke({
@@ -56,6 +65,8 @@ def report_generation_node(state: DialogueState) -> dict:
             "dimension_scores": dimension_text,
             "specialist_results": specialist_text,
             "unresolved_anomalies": unresolved_text,
+            "facts_table": facts_text,
+            "dialogue_history": dialogue_text,
         })
     )
 

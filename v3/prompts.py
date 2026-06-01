@@ -606,6 +606,8 @@ FOLLOWUP_GENERATION_TEMPLATE = """你是对话追问生成器（Follow-up Genera
 8. 如果用户已工作，优先围绕日常任务、工具习惯、协作方式、行业认知、典型场景和处理方法追问。
 9. 不问薪资、职级、隐私信息、公司机密。
 10. 不要连续生成“你当时怎么……”这种很像复盘/面试的问题，可以多换成“这个一般怎么……”“哪种方式更……”“如果想入门是不是应该……”。
+11. 输出前必须自检中文是否自然、是否有错别字、语义漂移或不合语境的词。
+12. 不要为了口语化牺牲准确性；如果不确定某个表达是否自然，使用更稳妥的普通说法。
 
 【推荐表达方式】
 更推荐这类开放式问法：
@@ -662,6 +664,42 @@ FOLLOWUP_GENERATION_PROMPT = ChatPromptTemplate.from_messages([
 ])
 
 
+FOLLOWUP_POLISH_TEMPLATE = """你是中文对话质检与润色器。
+
+【任务】
+检查候选追问是否存在以下问题，并在必要时改写：
+1. 错别字、近音误用、搭配不自然；
+2. 与对话上下文无关的专业词、名词或项目类型；
+3. 从宽泛经历语义漂移到过窄或无关的具体领域，导致问题显得突兀；
+4. 语气过于面试、审问、考试或背景调查；
+5. 连环追问过多，核心问题不清。
+
+【改写原则】
+- 只输出最终可直接展示给用户的一句话，不加解释、不加引号、不加编号；
+- 保留原候选追问的核心意图，但可以替换不合语境的名词；
+- 不能凭空加入对话中没有出现、也不能从上下文自然推出的专业领域或项目名称；
+- 如果候选追问里出现了上下文无法支撑的具体术语，优先改成更稳妥、宽泛、中性的说法；
+- 保持相亲聊天式、自然、轻松，不要改成正式面试问题；
+- 只能保留一个核心问题；
+- 如果原句已经自然准确，原样返回。
+
+【当前上下文】
+优先问题：{priority_issue}
+追问策略：{followup_strategy}
+
+对话历史：
+{dialogue_history}
+
+候选追问：
+{raw_question}
+
+请输出润色后的最终追问："""
+
+FOLLOWUP_POLISH_PROMPT = ChatPromptTemplate.from_messages([
+    ("system", FOLLOWUP_POLISH_TEMPLATE),
+])
+
+
 # ============================================================
 # Final Report Prompt
 # ============================================================
@@ -669,7 +707,7 @@ FINAL_REPORT_TEMPLATE = """你是最终测评报告生成器（Final Report Gene
 
 【功能描述】
 职责：汇总所有分析结果，生成一份简洁的测评报告，供用户查看整体评估。
-用途：将多维度的风险分析整合为3部分简化报告（总体结果、关键依据、待澄清点）。
+用途：将多维度的风险分析整合为4部分报告（用户个人信息总结、总体结果、关键依据、待澄清点）。
 边界：
 - 严禁使用"对方说谎""他/她撒谎""谎言""造假""欺骗"等指责性表述；
 - 应使用"当前职业身份叙述中存在若干待澄清线索""部分信息有待验证"等客观表述；
@@ -681,21 +719,28 @@ FINAL_REPORT_TEMPLATE = """你是最终测评报告生成器（Final Report Gene
 - dimension_scores: 各维度分数（JSON）
 - specialist_results: 各 Specialist Agent 主要发现
 - unresolved_anomalies: 待澄清问题
+- facts_table: 已抽取的用户事实
+- dialogue_history: 完整对话历史
 
 【输出要求】
-输出一份简洁测评结果，包含以下 3 个部分：
+输出一份测评结果，包含以下 4 个部分：
 
-1. 总体结果
+1. 用户个人信息总结
+- 必须单独成段，总结用户已明确表达的个人信息
+- 覆盖身份/阶段、专业或职业方向、项目经历、技术兴趣、日常学习或工作情况等已知信息
+- 只能基于 facts_table 和 dialogue_history，不要编造未知信息；未知项写"未明确"
+
+2. 总体结果
 - 给出综合分数 lie_index，格式为"xx/100"
 - 用 1-2 句话概括当前职业叙述的整体稳定性
 - 不输出 risk level，不使用"说谎、欺骗、造假"等指责性词汇
 
-2. 关键依据
+3. 关键依据
 - 只列出 2-3 条最重要的依据
 - 每条依据应说明对应的事实、异常或专家发现
 - 如果没有明显问题，说明"当前未发现明显不一致线索"
 
-3. 待澄清点
+4. 待澄清点
 - 列出 1-3 个仍需要进一步了解的问题
 - 语气保持中性，例如"具体职责边界仍不够清楚"
 - 如果没有待澄清点，写"暂无明显待澄清点"
@@ -704,8 +749,8 @@ FINAL_REPORT_TEMPLATE = """你是最终测评报告生成器（Final Report Gene
 1. 严禁使用以下表述："对方说谎""他/她撒谎""谎言""造假""欺骗"
 2. 应使用以下表述："当前职业身份叙述中存在若干待澄清线索""部分信息有待验证"
 3. 语气客观、专业，不带有指责性
-4. 报告必须包含3个部分：总体结果、关键依据、待澄清点
-5. 每个部分内容简洁明了，总体结果1-2句话，关键依据2-3条，待澄清点1-3个
+4. 报告必须包含4个部分：用户个人信息总结、总体结果、关键依据、待澄清点
+5. 用户个人信息总结应具体但不冗长；总体结果1-2句话，关键依据2-3条，待澄清点1-3个
 
 【失败处理】
 - 如果输入数据不完整：总体结果显示"数据不足，无法计算"，关键依据和待澄清点留空
@@ -721,13 +766,20 @@ FINAL_REPORT_TEMPLATE = """你是最终测评报告生成器（Final Report Gene
 各 Specialist Agent 主要发现：
 {specialist_results}
 
+已抽取事实：
+{facts_table}
+
+对话历史：
+{dialogue_history}
+
 待澄清问题：
 {unresolved_anomalies}
 
-请输出简洁测评结果，包含以下 3 个部分：
-1. 总体结果
-2. 关键依据
-3. 待澄清点"""
+请输出测评结果，包含以下 4 个部分：
+1. 用户个人信息总结
+2. 总体结果
+3. 关键依据
+4. 待澄清点"""
 
 FINAL_REPORT_PROMPT = ChatPromptTemplate.from_messages([
     ("system", FINAL_REPORT_TEMPLATE),
@@ -768,6 +820,8 @@ QUICK_PREANALYSIS_TEMPLATE = """你是快速预分析助手（Quick Preanalysis 
     }}
   ],
   "has_new_fact": true|false,
+  "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+  "confidence": "HIGH|LOW",
   "anomaly_updates": [
     {{
       "target_anomaly_id": "历史异常ID",
@@ -783,6 +837,8 @@ QUICK_PREANALYSIS_TEMPLATE = """你是快速预分析助手（Quick Preanalysis 
       "description": "简短说明",
       "evidence": ["原文引用"],
       "score": 0,
+      "severity": "CRITICAL|HIGH|MEDIUM|LOW",
+      "confidence": "HIGH|LOW",
       "related_facts": []
     }}
   ],
@@ -802,7 +858,7 @@ QUICK_PREANALYSIS_TEMPLATE = """你是快速预分析助手（Quick Preanalysis 
 【限制条件】
 1. slot 必须从指定选项中选择（occupation/role/work_content/company/time_stage/experience/other）
 2. 异常 type 必须从指定选项中选择
-3. 必须使用 severity/confidence 表示风险等级和置信度；score 仅为兼容字段，可以输出但后续不会使用
+3. 必须在 JSON 顶层输出 severity/confidence；每条 anomaly 也应输出 severity/confidence；score 仅为兼容字段，可以输出但后续不会使用
 4. surface_risk_score: 0-100（0=无明显风险，100=高风险）
 5. 不允许直接判定"用户说谎"
 6. 如无新事实，facts 为空数组，has_new_fact 为 false

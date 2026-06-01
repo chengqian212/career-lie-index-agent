@@ -1,0 +1,4083 @@
+{
+  "session_start_time": "2026-06-01T17:59:20.306482",
+  "rounds": [
+    {
+      "round_id": 1,
+      "start_time": "2026-06-01T17:59:20.306482",
+      "user_input": "大学生，大三，计算机专业",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 1.837,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {},
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "",
+            "quick_signal_summary": "",
+            "surface_risk_score": 0.0,
+            "severity": "",
+            "confidence": "",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 0,
+            "facts_table_recent": [],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户是一名大三计算机专业的学生，目前没有明确的工作方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 1.34,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {},
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的学生，目前没有明确的工作方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户仅提供基础身份信息，无异常，需语义和逻辑专家核实身份与后续内容一致性。",
+              "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "semantic_agent_node",
+          "elapsed_seconds": 1.045,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户仅提供基础身份信息，无异常，需语义和逻辑专家核实身份与后续内容一致性。",
+              "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的学生，目前没有明确的工作方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "semantic"
+            ],
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "logical_agent_node",
+          "elapsed_seconds": 1.36,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户仅提供基础身份信息，无异常，需语义和逻辑专家核实身份与后续内容一致性。",
+              "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的学生，目前没有明确的工作方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "logical"
+            ],
+            "specialist_results": [
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户仅提供基础身份信息，无异常，需语义和逻辑专家核实身份与后续内容一致性。",
+              "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的学生，目前没有明确的工作方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.661,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户仅提供基础身份信息，无异常，需语义和逻辑专家核实身份与后续内容一致性。",
+              "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的学生，目前没有明确的工作方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或实习经历，以评估后续回答的一致性。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅为基础身份，无异常但证据不足，需进一步收集专业方向或实践细节以建立基线。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.282,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生，大三，计算机专业",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户仅提供基础身份信息，无异常，需语义和逻辑专家核实身份与后续内容一致性。",
+              "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或实习经历，以评估后续回答的一致性。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅为基础身份，无异常但证据不足，需进一步收集专业方向或实践细节以建立基线。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的学生，目前没有明确的工作方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或实习经历，以评估后续回答的一致性。",
+            "followup_strategy": "daily_routine",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T17:59:27.862405",
+      "total_elapsed_seconds": 7.556
+    },
+    {
+      "round_id": 2,
+      "start_time": "2026-06-01T17:59:53.543462",
+      "user_input": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 1.987,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+            "last_followup_question": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户仅提供基础身份信息，无异常，需语义和逻辑专家核实身份与后续内容一致性。",
+              "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或实习经历，以评估后续回答的一致性。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅为基础身份，无异常但证据不足，需进一步收集专业方向或实践细节以建立基线。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是一名大三计算机专业的学生，目前没有明确的工作方向。",
+            "quick_signal_summary": "未检测到异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户明确表示计划读研究生，并补充了动机（认为不读研究生工资低）。",
+            "quick_signal_summary": "无异常信号。回答直接回应了上一轮问题，符合大三学生常见规划，无回避或冲突。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+            "last_followup_question": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "用户仅提供基础身份信息，无异常，需语义和逻辑专家核实身份与后续内容一致性。",
+              "priority_issue": "用户身份为计算机专业大三学生，需确认其具体学习方向或实习经历。",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户为计算机专业大三学生，需了解其具体学习方向或实习经历，以评估后续回答的一致性。",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅为基础身份，无异常但证据不足，需进一步收集专业方向或实践细节以建立基线。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划读研究生，并补充了动机（认为不读研究生工资低）。",
+            "quick_signal_summary": "无异常信号。回答直接回应了上一轮问题，符合大三学生常见规划，无回避或冲突。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+            "last_followup_question": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅为基础身份，无异常但证据不足，需进一步收集专业方向或实践细节以建立基线。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划读研究生，并补充了动机（认为不读研究生工资低）。",
+            "quick_signal_summary": "无异常信号。回答直接回应了上一轮问题，符合大三学生常见规划，无回避或冲突。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.695,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+            "last_followup_question": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅为基础身份，无异常但证据不足，需进一步收集专业方向或实践细节以建立基线。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划读研究生，并补充了动机（认为不读研究生工资低）。",
+            "quick_signal_summary": "无异常信号。回答直接回应了上一轮问题，符合大三学生常见规划，无回避或冲突。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户自称计算机专业大三学生，但尚未验证其专业背景真实性，可追问具体课程或项目经历",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "当前信息仅为基础身份声明，缺乏专业细节验证，且对话轮次充裕，可进一步探查以确认真实性。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.483,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+            "last_followup_question": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户自称计算机专业大三学生，但尚未验证其专业背景真实性，可追问具体课程或项目经历",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "当前信息仅为基础身份声明，缺乏专业细节验证，且对话轮次充裕，可进一步探查以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划读研究生，并补充了动机（认为不读研究生工资低）。",
+            "quick_signal_summary": "无异常信号。回答直接回应了上一轮问题，符合大三学生常见规划，无回避或冲突。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户自称计算机专业大三学生，但尚未验证其专业背景真实性，可追问具体课程或项目经历",
+            "followup_strategy": "knowledge_probe",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T17:59:58.798176",
+      "total_elapsed_seconds": 5.255
+    },
+    {
+      "round_id": 3,
+      "start_time": "2026-06-01T18:02:19.954690",
+      "user_input": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.206,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生",
+            "last_followup_question": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户自称计算机专业大三学生，但尚未验证其专业背景真实性，可追问具体课程或项目经历",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "当前信息仅为基础身份声明，缺乏专业细节验证，且对话轮次充裕，可进一步探查以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划读研究生，并补充了动机（认为不读研究生工资低）。",
+            "quick_signal_summary": "无异常信号。回答直接回应了上一轮问题，符合大三学生常见规划，无回避或冲突。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "time_stage",
+                "content": "大三",
+                "evidence": "大三",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 1,
+                "slot": "work_content",
+                "content": "计算机专业",
+                "evidence": "计算机专业",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户明确表示计划保研，并指出保研需要项目经历，当前竞争压力大。",
+            "quick_signal_summary": "无明显异常信号。用户回答自然承接上一轮追问，补充了保研计划，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 6,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生",
+            "last_followup_question": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户自称计算机专业大三学生，但尚未验证其专业背景真实性，可追问具体课程或项目经历",
+            "followup_strategy": "knowledge_probe",
+            "stop_reason": "当前信息仅为基础身份声明，缺乏专业细节验证，且对话轮次充裕，可进一步探查以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划保研，并指出保研需要项目经历，当前竞争压力大。",
+            "quick_signal_summary": "无明显异常信号。用户回答自然承接上一轮追问，补充了保研计划，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 6,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生",
+            "last_followup_question": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅为基础身份声明，缺乏专业细节验证，且对话轮次充裕，可进一步探查以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划保研，并指出保研需要项目经历，当前竞争压力大。",
+            "quick_signal_summary": "无明显异常信号。用户回答自然承接上一轮追问，补充了保研计划，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 6,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.257,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生",
+            "last_followup_question": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅为基础身份声明，缺乏专业细节验证，且对话轮次充裕，可进一步探查以确认真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划保研，并指出保研需要项目经历，当前竞争压力大。",
+            "quick_signal_summary": "无明显异常信号。用户回答自然承接上一轮追问，补充了保研计划，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 6,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖用户身份、学业规划及保研意向，信息充分且无异常，LieIndex=0，建议生成报告。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.379,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生",
+            "last_followup_question": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖用户身份、学业规划及保研意向，信息充分且无异常，LieIndex=0，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划保研，并指出保研需要项目经历，当前竞争压力大。",
+            "quick_signal_summary": "无明显异常信号。用户回答自然承接上一轮追问，补充了保研计划，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生，大三，计算机专业"
+              },
+              {
+                "role": "assistant",
+                "content": "哦计算机专业呀，那平时课业压力大不大？我有个朋友也是学计算机的，他说大三开始就要准备实习或者做项目了，你现在是更偏向考研、直接找工作，还是想先做点项目积累经验呀？"
+              },
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 6,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？",
+            "next_action": "generate_followup",
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T18:02:24.870784",
+      "total_elapsed_seconds": 4.916
+    },
+    {
+      "round_id": 4,
+      "start_time": "2026-06-01T18:03:01.982207",
+      "user_input": "现在在做了，做一个agent的项目",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.013,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "现在在做了，做一个agent的项目",
+            "last_followup_question": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖用户身份、学业规划及保研意向，信息充分且无异常，LieIndex=0，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户明确表示计划保研，并指出保研需要项目经历，当前竞争压力大。",
+            "quick_signal_summary": "无明显异常信号。用户回答自然承接上一轮追问，补充了保研计划，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 6,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "experience",
+                "content": "计划读研究生",
+                "evidence": "读研究生吧，现在大学不读个研究生出来工资都很低的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户确认正在做一个agent项目，属于正常的项目探索阶段。",
+            "quick_signal_summary": "未检测到异常信号，回答与历史事实一致，且符合学生身份和保研准备阶段。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "现在在做了，做一个agent的项目",
+            "last_followup_question": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖用户身份、学业规划及保研意向，信息充分且无异常，LieIndex=0，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做一个agent项目，属于正常的项目探索阶段。",
+            "quick_signal_summary": "未检测到异常信号，回答与历史事实一致，且符合学生身份和保研准备阶段。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "现在在做了，做一个agent的项目",
+            "last_followup_question": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖用户身份、学业规划及保研意向，信息充分且无异常，LieIndex=0，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做一个agent项目，属于正常的项目探索阶段。",
+            "quick_signal_summary": "未检测到异常信号，回答与历史事实一致，且符合学生身份和保研准备阶段。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.427,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "现在在做了，做一个agent的项目",
+            "last_followup_question": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖用户身份、学业规划及保研意向，信息充分且无异常，LieIndex=0，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做一个agent项目，属于正常的项目探索阶段。",
+            "quick_signal_summary": "未检测到异常信号，回答与历史事实一致，且符合学生身份和保研准备阶段。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖学业方向、考研/保研规划及项目现状，信息饱和且无异常，LieIndex=0，无需继续追问。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.566,
+          "input": {
+            "round_id": 4,
+            "max_rounds": 8,
+            "current_user_text": "现在在做了，做一个agent的项目",
+            "last_followup_question": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖学业方向、考研/保研规划及项目现状，信息饱和且无异常，LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做一个agent项目，属于正常的项目探索阶段。",
+            "quick_signal_summary": "未检测到异常信号，回答与历史事实一致，且符合学生身份和保研准备阶段。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "读研究生吧，现在大学不读个研究生出来工资都很低的"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，读研确实是个不错的选择，现在好多岗位都看学历了。那你现在大三的话，是不是已经开始准备考研了呀？还是说想先做点项目或者比赛，给简历加点东西再考？"
+              },
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              }
+            ],
+            "dialogue_history_count": 8,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "generate_followup",
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T18:03:07.068619",
+      "total_elapsed_seconds": 5.086
+    },
+    {
+      "round_id": 5,
+      "start_time": "2026-06-01T18:04:37.502349",
+      "user_input": "那肯定是先确定需求了",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.046,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖学业方向、考研/保研规划及项目现状，信息饱和且无异常，LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做一个agent项目，属于正常的项目探索阶段。",
+            "quick_signal_summary": "未检测到异常信号，回答与历史事实一致，且符合学生身份和保研准备阶段。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 7,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "experience",
+                "content": "计划保研",
+                "evidence": "我准备保研",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户确认正在做agent项目，并说明项目第一步是先确定需求。",
+            "quick_signal_summary": "本轮回答正常，无异常信号。用户作为大三学生，在项目初期阶段回答项目启动步骤，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "温和了解：No active specialist evidence; LieIndex=0.",
+            "followup_strategy": "light_clarification",
+            "stop_reason": "对话已覆盖学业方向、考研/保研规划及项目现状，信息饱和且无异常，LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做agent项目，并说明项目第一步是先确定需求。",
+            "quick_signal_summary": "本轮回答正常，无异常信号。用户作为大三学生，在项目初期阶段回答项目启动步骤，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖学业方向、考研/保研规划及项目现状，信息饱和且无异常，LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做agent项目，并说明项目第一步是先确定需求。",
+            "quick_signal_summary": "本轮回答正常，无异常信号。用户作为大三学生，在项目初期阶段回答项目启动步骤，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.516,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖学业方向、考研/保研规划及项目现状，信息饱和且无异常，LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做agent项目，并说明项目第一步是先确定需求。",
+            "quick_signal_summary": "本轮回答正常，无异常信号。用户作为大三学生，在项目初期阶段回答项目启动步骤，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report",
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已收集用户基本信息（大三计算机、保研、做agent项目），无异常或矛盾，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "report_generation_node",
+          "elapsed_seconds": 3.778,
+          "input": {
+            "round_id": 5,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已收集用户基本信息（大三计算机、保研、做agent项目），无异常或矛盾，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做agent项目，并说明项目第一步是先确定需求。",
+            "quick_signal_summary": "本轮回答正常，无异常信号。用户作为大三学生，在项目初期阶段回答项目启动步骤，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report"
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T18:04:44.914967",
+      "total_elapsed_seconds": 7.413
+    },
+    {
+      "round_id": 5,
+      "start_time": "2026-06-01T18:04:44.915967",
+      "user_input": "（自动生成最终报告）",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.353,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已收集用户基本信息（大三计算机、保研、做agent项目），无异常或矛盾，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认正在做agent项目，并说明项目第一步是先确定需求。",
+            "quick_signal_summary": "本轮回答正常，无异常信号。用户作为大三学生，在项目初期阶段回答项目启动步骤，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 8,
+            "facts_table_recent": [
+              {
+                "round_id": 3,
+                "slot": "work_content",
+                "content": "需要做项目来增加保研竞争力",
+                "evidence": "保研是肯定需要项目的，现在竞争压力很大",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户确认agent项目的第一步是先确定需求，这是对上一轮追问的补充回答。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，内容合理且与之前事实一致，未检测到异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "work_content",
+                "content": "agent项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 1.615,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已收集用户基本信息（大三计算机、保研、做agent项目），无异常或矛盾，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认agent项目的第一步是先确定需求，这是对上一轮追问的补充回答。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，内容合理且与之前事实一致，未检测到异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "work_content",
+                "content": "agent项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "当前回答简短且与历史事实重复，需确认语义一致性和逻辑连贯性。",
+              "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+            "followup_strategy": "work_style"
+          },
+          "success": true
+        },
+        {
+          "node_name": "logical_agent_node",
+          "elapsed_seconds": 0.808,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "当前回答简短且与历史事实重复，需确认语义一致性和逻辑连贯性。",
+              "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+            "followup_strategy": "work_style",
+            "stop_reason": "已收集用户基本信息（大三计算机、保研、做agent项目），无异常或矛盾，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认agent项目的第一步是先确定需求，这是对上一轮追问的补充回答。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，内容合理且与之前事实一致，未检测到异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "work_content",
+                "content": "agent项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "logical"
+            ],
+            "specialist_results": [
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "semantic_agent_node",
+          "elapsed_seconds": 1.001,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "当前回答简短且与历史事实重复，需确认语义一致性和逻辑连贯性。",
+              "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [],
+            "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+            "followup_strategy": "work_style",
+            "stop_reason": "已收集用户基本信息（大三计算机、保研、做agent项目），无异常或矛盾，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认agent项目的第一步是先确定需求，这是对上一轮追问的补充回答。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，内容合理且与之前事实一致，未检测到异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "work_content",
+                "content": "agent项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "called_specialists": [
+              "semantic"
+            ],
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 1
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "当前回答简短且与历史事实重复，需确认语义一致性和逻辑连贯性。",
+              "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+            "followup_strategy": "work_style",
+            "stop_reason": "已收集用户基本信息（大三计算机、保研、做agent项目），无异常或矛盾，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认agent项目的第一步是先确定需求，这是对上一轮追问的补充回答。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，内容合理且与之前事实一致，未检测到异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "work_content",
+                "content": "agent项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.299,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "当前回答简短且与历史事实重复，需确认语义一致性和逻辑连贯性。",
+              "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+            "followup_strategy": "work_style",
+            "stop_reason": "已收集用户基本信息（大三计算机、保研、做agent项目），无异常或矛盾，LieIndex=0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认agent项目的第一步是先确定需求，这是对上一轮追问的补充回答。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，内容合理且与之前事实一致，未检测到异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "work_content",
+                "content": "agent项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report",
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已满8轮，用户回答简短但信息一致，无异常或矛盾，LieIndex=0，无进一步追问价值。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "report_generation_node",
+          "elapsed_seconds": 2.734,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "那肯定是先确定需求了",
+            "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [
+                "semantic",
+                "logical"
+              ],
+              "routing_reason": "当前回答简短且与历史事实重复，需确认语义一致性和逻辑连贯性。",
+              "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+              "followup_strategy": "work_style",
+              "router_mode": "rule_force_llm_select"
+            },
+            "selected_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "called_specialists": [
+              "semantic",
+              "logical"
+            ],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "已满8轮，用户回答简短但信息一致，无异常或矛盾，LieIndex=0，无进一步追问价值。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认agent项目的第一步是先确定需求，这是对上一轮追问的补充回答。",
+            "quick_signal_summary": "本轮回答直接回应了上一轮追问，内容合理且与之前事实一致，未检测到异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+              },
+              {
+                "role": "user",
+                "content": "现在在做了，做一个agent的项目"
+              },
+              {
+                "role": "assistant",
+                "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+              },
+              {
+                "role": "user",
+                "content": "那肯定是先确定需求了"
+              }
+            ],
+            "dialogue_history_count": 10,
+            "specialist_results": [
+              {
+                "agent": "semantic",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              },
+              {
+                "agent": "logical",
+                "score": 0.0,
+                "evidence_list": [],
+                "anomaly_updates": [],
+                "new_anomalies": []
+              }
+            ],
+            "specialist_results_count": 2,
+            "facts_table_count": 9,
+            "facts_table_recent": [
+              {
+                "round_id": 4,
+                "slot": "work_content",
+                "content": "正在做一个agent项目",
+                "evidence": "现在在做了，做一个agent的项目",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 5,
+                "slot": "work_content",
+                "content": "正在做一个agent项目，项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "work_content",
+                "content": "agent项目第一步是先确定需求",
+                "evidence": "那肯定是先确定需求了",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report"
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T18:04:53.950334",
+      "total_elapsed_seconds": 9.034
+    }
+  ],
+  "session_end_time": "2026-06-01T18:04:53.953697",
+  "final_state_snapshot": {
+    "round_id": 5,
+    "max_rounds": 8,
+    "current_user_text": "那肯定是先确定需求了",
+    "last_followup_question": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？",
+    "next_action": "final_report",
+    "lie_index": 0.0,
+    "risk_explanation": [
+      "No active specialist evidence; LieIndex=0.",
+      "No active specialist evidence; LieIndex=0."
+    ],
+    "dimension_scores": {},
+    "routing_decision": {
+      "selected_specialists": [
+        "semantic",
+        "logical"
+      ],
+      "routing_reason": "当前回答简短且与历史事实重复，需确认语义一致性和逻辑连贯性。",
+      "priority_issue": "用户对agent项目的描述过于笼统，需确认其具体工作内容和进展。",
+      "followup_strategy": "work_style",
+      "router_mode": "rule_force_llm_select"
+    },
+    "selected_specialists": [
+      "semantic",
+      "logical"
+    ],
+    "called_specialists": [
+      "logical",
+      "semantic"
+    ],
+    "priority_issue": "",
+    "followup_strategy": "",
+    "stop_reason": "已满8轮，用户回答简短但信息一致，无异常或矛盾，LieIndex=0，无进一步追问价值。",
+    "target_anomaly_id": "",
+    "quick_fact_summary": "用户确认agent项目的第一步是先确定需求，这是对上一轮追问的补充回答。",
+    "quick_signal_summary": "本轮回答直接回应了上一轮追问，内容合理且与之前事实一致，未检测到异常信号。",
+    "surface_risk_score": 0.0,
+    "severity": "LOW",
+    "confidence": "HIGH",
+    "schema_error": "",
+    "schema_errors": [],
+    "has_new_fact": true,
+    "dialogue_history": [
+      {
+        "role": "user",
+        "content": "差不多吧，我准备保研，保研是肯定需要项目的，现在竞争压力很大，不像前几年拼绩点就能读研究生"
+      },
+      {
+        "role": "assistant",
+        "content": "哦对，保研确实项目经历挺重要的，我听说现在很多学校面试的时候也会问项目细节。那你现在有没有在做什么项目呀，还是说还在想方向？"
+      },
+      {
+        "role": "user",
+        "content": "现在在做了，做一个agent的项目"
+      },
+      {
+        "role": "assistant",
+        "content": "哦 agent 项目呀，这个方向现在确实挺火的，我最近也刷到过一些相关的教程，感觉从零开始搭还挺有挑战的。你教教我，这种项目一般怎么从想法到能跑起来呀，第一步是先想功能还是先搭框架？"
+      },
+      {
+        "role": "user",
+        "content": "那肯定是先确定需求了"
+      }
+    ],
+    "dialogue_history_count": 10,
+    "specialist_results": [
+      {
+        "agent": "logical",
+        "score": 0.0,
+        "evidence_list": [],
+        "anomaly_updates": [],
+        "new_anomalies": []
+      },
+      {
+        "agent": "semantic",
+        "score": 0.0,
+        "evidence_list": [],
+        "anomaly_updates": [],
+        "new_anomalies": []
+      }
+    ],
+    "specialist_results_count": 2,
+    "facts_table_count": 9,
+    "facts_table_recent": [
+      {
+        "round_id": 4,
+        "slot": "work_content",
+        "content": "正在做一个agent项目",
+        "evidence": "现在在做了，做一个agent的项目",
+        "source": "quick_preanalysis"
+      },
+      {
+        "round_id": 5,
+        "slot": "work_content",
+        "content": "正在做一个agent项目，项目第一步是先确定需求",
+        "evidence": "那肯定是先确定需求了",
+        "source": "quick_preanalysis"
+      },
+      {
+        "round_id": 8,
+        "slot": "work_content",
+        "content": "agent项目第一步是先确定需求",
+        "evidence": "那肯定是先确定需求了",
+        "source": "quick_preanalysis"
+      }
+    ],
+    "anomalies_table_count": 0,
+    "anomalies_table_recent": []
+  }
+}

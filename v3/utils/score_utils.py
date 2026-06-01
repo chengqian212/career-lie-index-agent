@@ -110,6 +110,31 @@ def normalize_quick_risk_labels(result: Dict[str, Any]) -> Dict[str, Any]:
     severity = str(normalized.get("severity") or "").strip().upper()
     confidence = str(normalized.get("confidence") or "").strip().upper()
 
+    surface_risk_score = float(normalized.get("surface_risk_score") or 0)
+    anomalies = normalized.get("anomalies", [])
+    has_anomalies = isinstance(anomalies, list) and bool(anomalies)
+
+    if severity not in VALID_SEVERITIES:
+        if surface_risk_score >= 70:
+            severity = "CRITICAL"
+        elif surface_risk_score >= 50:
+            severity = "HIGH"
+        elif surface_risk_score >= 20 or has_anomalies:
+            severity = "MEDIUM"
+        else:
+            severity = "LOW"
+        normalized["severity"] = severity
+
+    if confidence not in QUICK_CONFIDENCES:
+        has_assessment_text = bool(
+            normalized.get("quick_fact_summary")
+            or normalized.get("quick_signal_summary")
+            or normalized.get("facts")
+            or has_anomalies
+        )
+        confidence = "HIGH" if has_assessment_text else "LOW"
+        normalized["confidence"] = confidence
+
     schema_errors = []
     if severity not in VALID_SEVERITIES:
         schema_errors.append("missing_or_invalid_severity")

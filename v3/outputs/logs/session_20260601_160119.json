@@ -1,0 +1,2071 @@
+{
+  "session_start_time": "2026-06-01T16:00:03.497361",
+  "rounds": [
+    {
+      "round_id": 1,
+      "start_time": "2026-06-01T16:00:03.497361",
+      "user_input": "大学生",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.492,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {},
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "",
+            "quick_signal_summary": "",
+            "surface_risk_score": 0.0,
+            "severity": "",
+            "confidence": "",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": false,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 0,
+            "facts_table_recent": [],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户当前身份为大学生，尚未进入正式职业阶段。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {},
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，尚未进入正式职业阶段。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，尚未进入正式职业阶段。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.745,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，尚未进入正式职业阶段。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户为大学生，缺乏专业方向等关键背景，存在信息缺口，值得继续追问。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.366,
+          "input": {
+            "round_id": 1,
+            "max_rounds": 8,
+            "current_user_text": "大学生",
+            "last_followup_question": "你平时是做什么方向的工作呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户为大学生，缺乏专业方向等关键背景，存在信息缺口，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，尚未进入正式职业阶段。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 2,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:00:09.207025",
+      "total_elapsed_seconds": 5.71
+    },
+    {
+      "round_id": 2,
+      "start_time": "2026-06-01T16:00:26.312963",
+      "user_input": "睡觉，玩游戏什么的",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.019,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "睡觉，玩游戏什么的",
+            "last_followup_question": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户为大学生，缺乏专业方向等关键背景，存在信息缺口，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户当前身份为大学生，尚未进入正式职业阶段。",
+            "quick_signal_summary": "无异常信号。用户回答符合其学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 1,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户是大学生，课余时间主要进行睡觉和玩游戏等休闲活动。",
+            "quick_signal_summary": "未检测到异常信号。回答符合大学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 2,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "睡觉，玩游戏什么的",
+            "last_followup_question": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户身份为大学生，需进一步了解其专业背景或日常学习内容，以判断是否与后续任务相关",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户为大学生，缺乏专业方向等关键背景，存在信息缺口，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是大学生，课余时间主要进行睡觉和玩游戏等休闲活动。",
+            "quick_signal_summary": "未检测到异常信号。回答符合大学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 2,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "睡觉，玩游戏什么的",
+            "last_followup_question": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户为大学生，缺乏专业方向等关键背景，存在信息缺口，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是大学生，课余时间主要进行睡觉和玩游戏等休闲活动。",
+            "quick_signal_summary": "未检测到异常信号。回答符合大学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 2,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.994,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "睡觉，玩游戏什么的",
+            "last_followup_question": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息仅知用户为大学生，缺乏专业方向等关键背景，存在信息缺口，值得继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是大学生，课余时间主要进行睡觉和玩游戏等休闲活动。",
+            "quick_signal_summary": "未检测到异常信号。回答符合大学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 2,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "generate_followup",
+            "priority_issue": "用户自称大学生，但回答过于简略，缺乏具体生活细节，可能存在身份虚构风险",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息量极少，仅两轮对话，LieIndex为0但无实质内容，需进一步了解日常安排以验证身份真实性。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "followup_generation_node",
+          "elapsed_seconds": 1.898,
+          "input": {
+            "round_id": 2,
+            "max_rounds": 8,
+            "current_user_text": "睡觉，玩游戏什么的",
+            "last_followup_question": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户自称大学生，但回答过于简略，缺乏具体生活细节，可能存在身份虚构风险",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息量极少，仅两轮对话，LieIndex为0但无实质内容，需进一步了解日常安排以验证身份真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是大学生，课余时间主要进行睡觉和玩游戏等休闲活动。",
+            "quick_signal_summary": "未检测到异常信号。回答符合大学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "assistant",
+                "content": "你平时是做什么方向的工作呀？"
+              },
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 4,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 2,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "generate_followup",
+            "priority_issue": "用户自称大学生，但回答过于简略，缺乏具体生活细节，可能存在身份虚构风险",
+            "followup_strategy": "daily_routine",
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:00:32.352628",
+      "total_elapsed_seconds": 6.04
+    },
+    {
+      "round_id": 3,
+      "start_time": "2026-06-01T16:01:09.789340",
+      "user_input": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 1.951,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户自称大学生，但回答过于简略，缺乏具体生活细节，可能存在身份虚构风险",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息量极少，仅两轮对话，LieIndex为0但无实质内容，需进一步了解日常安排以验证身份真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户是大学生，课余时间主要进行睡觉和玩游戏等休闲活动。",
+            "quick_signal_summary": "未检测到异常信号。回答符合大学生身份，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 2,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户补充了游戏偏好：玩金铲铲，以单排为主，偶尔和朋友双排。",
+            "quick_signal_summary": "本轮回答自然、具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "用户自称大学生，但回答过于简略，缺乏具体生活细节，可能存在身份虚构风险",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息量极少，仅两轮对话，LieIndex为0但无实质内容，需进一步了解日常安排以验证身份真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了游戏偏好：玩金铲铲，以单排为主，偶尔和朋友双排。",
+            "quick_signal_summary": "本轮回答自然、具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息量极少，仅两轮对话，LieIndex为0但无实质内容，需进一步了解日常安排以验证身份真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了游戏偏好：玩金铲铲，以单排为主，偶尔和朋友双排。",
+            "quick_signal_summary": "本轮回答自然、具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.423,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "generate_followup",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "当前信息量极少，仅两轮对话，LieIndex为0但无实质内容，需进一步了解日常安排以验证身份真实性。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了游戏偏好：玩金铲铲，以单排为主，偶尔和朋友双排。",
+            "quick_signal_summary": "本轮回答自然、具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report",
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已覆盖基本生活与娱乐信息，无异常或风险信号，LieIndex为0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "report_generation_node",
+          "elapsed_seconds": 1.346,
+          "input": {
+            "round_id": 3,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已覆盖基本生活与娱乐信息，无异常或风险信号，LieIndex为0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了游戏偏好：玩金铲铲，以单排为主，偶尔和朋友双排。",
+            "quick_signal_summary": "本轮回答自然、具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report"
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:01:14.661078",
+      "total_elapsed_seconds": 4.872
+    },
+    {
+      "round_id": 8,
+      "start_time": "2026-06-01T16:01:14.661078",
+      "user_input": "（自动生成最终报告）",
+      "nodes": [
+        {
+          "node_name": "quick_preanalysis_node",
+          "elapsed_seconds": 2.181,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已覆盖基本生活与娱乐信息，无异常或风险信号，LieIndex为0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户补充了游戏偏好：玩金铲铲，以单排为主，偶尔和朋友双排。",
+            "quick_signal_summary": "本轮回答自然、具体，与历史事实一致，无异常信号。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 3,
+            "facts_table_recent": [
+              {
+                "round_id": 1,
+                "slot": "occupation",
+                "content": "用户目前是大学生",
+                "evidence": "大学生",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "quick_fact_summary": "用户确认玩金铲铲游戏，偏好单排，也接受朋友邀请双排。",
+            "quick_signal_summary": "本轮无异常信号。用户回答自然、具体，与上一轮追问和已有事实一致，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "lightweight_routing_supervisor_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已覆盖基本生活与娱乐信息，无异常或风险信号，LieIndex为0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认玩金铲铲游戏，偏好单排，也接受朋友邀请双排。",
+            "quick_signal_summary": "本轮无异常信号。用户回答自然、具体，与上一轮追问和已有事实一致，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine"
+          },
+          "success": true
+        },
+        {
+          "node_name": "risk_aggregator_node",
+          "elapsed_seconds": 0.0,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0.",
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖基本生活与娱乐信息，无异常或风险信号，LieIndex为0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认玩金铲铲游戏，偏好单排，也接受朋友邀请双排。",
+            "quick_signal_summary": "本轮无异常信号。用户回答自然、具体，与上一轮追问和已有事实一致，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "success": true
+        },
+        {
+          "node_name": "strategy_supervisor_node",
+          "elapsed_seconds": 1.576,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "无明显待澄清点",
+            "followup_strategy": "daily_routine",
+            "stop_reason": "对话已覆盖基本生活与娱乐信息，无异常或风险信号，LieIndex为0，继续追问价值低，建议生成报告。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认玩金铲铲游戏，偏好单排，也接受朋友邀请双排。",
+            "quick_signal_summary": "本轮无异常信号。用户回答自然、具体，与上一轮追问和已有事实一致，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report",
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已达最大轮次，信息饱和且无异常，LieIndex=0，无需继续追问。",
+            "target_anomaly_id": ""
+          },
+          "success": true
+        },
+        {
+          "node_name": "report_generation_node",
+          "elapsed_seconds": 1.247,
+          "input": {
+            "round_id": 8,
+            "max_rounds": 8,
+            "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+            "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+            "next_action": "final_report",
+            "lie_index": 0.0,
+            "risk_explanation": [
+              "No active specialist evidence; LieIndex=0."
+            ],
+            "dimension_scores": {},
+            "routing_decision": {
+              "selected_specialists": [],
+              "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+              "priority_issue": "无明显待澄清点",
+              "followup_strategy": "daily_routine",
+              "router_mode": "rule_skip"
+            },
+            "selected_specialists": [],
+            "called_specialists": [],
+            "priority_issue": "",
+            "followup_strategy": "",
+            "stop_reason": "对话已达最大轮次，信息饱和且无异常，LieIndex=0，无需继续追问。",
+            "target_anomaly_id": "",
+            "quick_fact_summary": "用户确认玩金铲铲游戏，偏好单排，也接受朋友邀请双排。",
+            "quick_signal_summary": "本轮无异常信号。用户回答自然、具体，与上一轮追问和已有事实一致，属于正常探索性表达。",
+            "surface_risk_score": 0.0,
+            "severity": "LOW",
+            "confidence": "HIGH",
+            "schema_error": "",
+            "schema_errors": [],
+            "has_new_fact": true,
+            "dialogue_history": [
+              {
+                "role": "user",
+                "content": "大学生"
+              },
+              {
+                "role": "assistant",
+                "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+              },
+              {
+                "role": "user",
+                "content": "睡觉，玩游戏什么的"
+              },
+              {
+                "role": "assistant",
+                "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+              },
+              {
+                "role": "user",
+                "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+              }
+            ],
+            "dialogue_history_count": 6,
+            "specialist_results": [],
+            "specialist_results_count": 0,
+            "facts_table_count": 4,
+            "facts_table_recent": [
+              {
+                "round_id": 2,
+                "slot": "other",
+                "content": "课余活动：睡觉、玩游戏",
+                "evidence": "睡觉，玩游戏什么的",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 3,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              },
+              {
+                "round_id": 8,
+                "slot": "other",
+                "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+                "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+                "source": "quick_preanalysis"
+              }
+            ],
+            "anomalies_table_count": 0,
+            "anomalies_table_recent": []
+          },
+          "output": {
+            "next_action": "final_report"
+          },
+          "success": true
+        }
+      ],
+      "end_time": "2026-06-01T16:01:19.761795",
+      "total_elapsed_seconds": 5.101
+    }
+  ],
+  "session_end_time": "2026-06-01T16:01:19.769718",
+  "final_state_snapshot": {
+    "round_id": 8,
+    "max_rounds": 8,
+    "current_user_text": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+    "last_followup_question": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？",
+    "next_action": "final_report",
+    "lie_index": 0.0,
+    "risk_explanation": [
+      "No active specialist evidence; LieIndex=0.",
+      "No active specialist evidence; LieIndex=0."
+    ],
+    "dimension_scores": {},
+    "routing_decision": {
+      "selected_specialists": [],
+      "routing_reason": "规则判定为极低风险：无当前异常、无未解决异常，跳过专家分析",
+      "priority_issue": "无明显待澄清点",
+      "followup_strategy": "daily_routine",
+      "router_mode": "rule_skip"
+    },
+    "selected_specialists": [],
+    "called_specialists": [],
+    "priority_issue": "",
+    "followup_strategy": "",
+    "stop_reason": "对话已达最大轮次，信息饱和且无异常，LieIndex=0，无需继续追问。",
+    "target_anomaly_id": "",
+    "quick_fact_summary": "用户确认玩金铲铲游戏，偏好单排，也接受朋友邀请双排。",
+    "quick_signal_summary": "本轮无异常信号。用户回答自然、具体，与上一轮追问和已有事实一致，属于正常探索性表达。",
+    "surface_risk_score": 0.0,
+    "severity": "LOW",
+    "confidence": "HIGH",
+    "schema_error": "",
+    "schema_errors": [],
+    "has_new_fact": true,
+    "dialogue_history": [
+      {
+        "role": "user",
+        "content": "大学生"
+      },
+      {
+        "role": "assistant",
+        "content": "哦哦，大学生活其实也挺充实的，那你平时除了上课，课余时间一般会忙些什么呀？"
+      },
+      {
+        "role": "user",
+        "content": "睡觉，玩游戏什么的"
+      },
+      {
+        "role": "assistant",
+        "content": "哈哈，那也挺自在的，我大学那会儿也差不多，不过有时候玩久了也会觉得有点无聊。你玩游戏的话，是跟室友一起开黑比较多，还是自己玩单机呀？"
+      },
+      {
+        "role": "user",
+        "content": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩"
+      }
+    ],
+    "dialogue_history_count": 6,
+    "specialist_results": [],
+    "specialist_results_count": 0,
+    "facts_table_count": 4,
+    "facts_table_recent": [
+      {
+        "round_id": 2,
+        "slot": "other",
+        "content": "课余活动：睡觉、玩游戏",
+        "evidence": "睡觉，玩游戏什么的",
+        "source": "quick_preanalysis"
+      },
+      {
+        "round_id": 3,
+        "slot": "other",
+        "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+        "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+        "source": "quick_preanalysis"
+      },
+      {
+        "round_id": 8,
+        "slot": "other",
+        "content": "用户玩金铲铲游戏，喜欢自己单排，有时和朋友双排",
+        "evidence": "都有吧，我玩金铲铲，喜欢自己单排，但有时候朋友叫我双排我也玩",
+        "source": "quick_preanalysis"
+      }
+    ],
+    "anomalies_table_count": 0,
+    "anomalies_table_recent": []
+  }
+}

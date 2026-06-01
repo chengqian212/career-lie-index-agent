@@ -21,16 +21,16 @@ def get_llm(temperature: float | None = None, model: str | None = None) -> ChatO
     # 确保代理已禁用（config.disable_proxy 会设置 NO_PROXY='*'）
     config.disable_proxy()
 
-    api_key = config.BAILIAN_API_KEY
+    api_key = config.DEEPSEEK_API_KEY
 
     if not api_key:
         raise ValueError(
-            "缺少 API 密钥！请在 .env 文件中设置 BAILIAN_API_KEY 环境变量。"
+            "缺少 API 密钥！请在 .env 文件中设置 DEEPSEEK_API_KEY 环境变量。"
         )
 
     return ChatOpenAI(
         api_key=SecretStr(api_key),
-        base_url=config.BAILIAN_BASE_URL,
+        base_url=config.DEEPSEEK_BASE_URL,
         model=model or config.MODEL_NAME,
         temperature=temperature if temperature is not None else config.TEMPERATURE,
         max_retries=2,

@@ -1,8 +1,4 @@
-"""项目配置模块：读取 .env 并提供全局配置
-
-支持通过 .env 文件配置 API 密钥、基础 URL、模型名称等信息。
-默认值适用于阿里云百炼（DashScope）平台，模型使用 deepseek-v3。
-"""
+"""Project configuration loaded from .env."""
 
 import os
 from dotenv import load_dotenv
@@ -36,23 +32,18 @@ def disable_proxy():
 # 启动时默认关闭代理
 disable_proxy()
 
-# --- 配置项 ---
+# --- LLM provider configuration ---
 
-# 阿里云百炼 API 密钥（统一使用 BAILIAN_API_KEY，去除首尾空白）
-BAILIAN_API_KEY: str = os.getenv("BAILIAN_API_KEY", "").strip()
-
-# 提供旧变量名兼容（但建议使用 BAILIAN_API_KEY）
-DASHSCOPE_API_KEY: str = BAILIAN_API_KEY
-LLM_API_KEY: str = BAILIAN_API_KEY
-
-# API 基础地址（OpenAI SDK 兼容格式）
-BAILIAN_BASE_URL: str = os.getenv(
-    "BAILIAN_BASE_URL", "https://dashscope.aliyuncs.com/compatible-mode/v1"
+# DeepSeek official OpenAI-compatible API configuration.
+DEEPSEEK_API_KEY: str = os.getenv("DEEPSEEK_API_KEY", "").strip()
+DEEPSEEK_BASE_URL: str = os.getenv(
+    "DEEPSEEK_BASE_URL", "https://api.deepseek.com"
 ).strip()
 
-# 默认模型名称（deepseek-v3 在百炼平台上的模型 ID）
-MODEL_NAME: str = os.getenv("MODEL_NAME", "deepseek-v3").strip()
+# DeepSeek V3 non-thinking chat model name in the official OpenAI-compatible API.
+MODEL_NAME: str = os.getenv("MODEL_NAME", "deepseek-chat").strip()
 MAX_ROUNDS: int = int(os.getenv("MAX_ROUNDS", "8"))
+MIN_FOLLOWUP_ROUNDS: int = int(os.getenv("MIN_FOLLOWUP_ROUNDS", "5"))
 TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.2"))
 
 # 风险等级阈值

@@ -93,6 +93,7 @@ def strategy_supervisor_node(state: DialogueState) -> dict:
     # 获取轮次和最大轮次
     round_id = state.get("round_id", 1)
     max_rounds = state.get("max_rounds", config.MAX_ROUNDS)
+    min_followup_rounds = min(config.MIN_FOLLOWUP_ROUNDS, max_rounds)
 
     # 创建 LLM 客户端
     llm = get_llm()
@@ -125,6 +126,27 @@ def strategy_supervisor_node(state: DialogueState) -> dict:
     if decision not in {"ASK_MORE", "GENERATE_REPORT"}:
         logger.warning("[strategy_supervisor] invalid decision from LLM: %s", decision)
         decision = "ASK_MORE"
+
+    # Code-level round guardrail: before the minimum round, always keep asking;
+    # at or beyond the maximum round, always generate the final report.
+    if round_id < min_followup_rounds:
+        if decision == "GENERATE_REPORT":
+            logger.info(
+                "[strategy_supervisor] overriding GENERATE_REPORT before min rounds: "
+                "round_id=%s, min_followup_rounds=%s",
+                round_id,
+                min_followup_rounds,
+            )
+        decision = "ASK_MORE"
+    elif round_id >= max_rounds:
+        if decision != "GENERATE_REPORT":
+            logger.info(
+                "[strategy_supervisor] forcing GENERATE_REPORT at max rounds: "
+                "round_id=%s, max_rounds=%s",
+                round_id,
+                max_rounds,
+            )
+        decision = "GENERATE_REPORT"
 
     # 规范化 followup_strategy
     followup_strategy = normalize_followup_strategy(

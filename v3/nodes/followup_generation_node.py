@@ -17,7 +17,7 @@ v3.3 改进：
 """
 
 from llm_client import get_llm
-from prompts import FOLLOWUP_GENERATION_PROMPT
+from prompts import FOLLOWUP_GENERATION_PROMPT, FOLLOWUP_POLISH_PROMPT
 from state_schema import DialogueState
 from utils.text_utils import (
     clean_llm_output,           # 清理 LLM 输出
@@ -36,6 +36,33 @@ _LOW_RISK_PHRASES = [
     "当前轮次未发现明显风险信号",
     "暂无明显不一致",
 ]
+
+def _polish_followup_question(
+    raw_question: str,
+    dialogue_text: str,
+    priority_issue: str,
+    followup_strategy: str,
+) -> str:
+    """用低温编辑器做通用质检，修正错词、语义漂移和突兀术语。"""
+    raw_question = clean_llm_output(raw_question)
+    if not raw_question:
+        return ""
+
+    editor_llm = get_llm(temperature=0.0)
+    try:
+        response = editor_llm.invoke(
+            FOLLOWUP_POLISH_PROMPT.invoke({
+                "raw_question": raw_question,
+                "dialogue_history": dialogue_text,
+                "priority_issue": priority_issue,
+                "followup_strategy": followup_strategy,
+            })
+        )
+        polished = clean_llm_output(response.content)
+    except Exception:
+        return raw_question
+
+    return polished or raw_question
 
 # -------------------------
 # 判断异常是否仍活跃
@@ -195,8 +222,13 @@ def followup_generation_node(state: DialogueState) -> dict:
         })
     )
 
-    # 清理输出
-    followup_question = clean_llm_output(response.content)
+    # 二次质检：修正错词、语义漂移和突兀术语，同时保留聊天感
+    followup_question = _polish_followup_question(
+        response.content,
+        dialogue_text,
+        priority_issue,
+        followup_strategy,
+    )
     if not followup_question:
         followup_question = "能再具体聊聊你的学习或项目经历吗？"
 

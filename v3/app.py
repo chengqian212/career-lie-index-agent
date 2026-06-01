@@ -480,6 +480,32 @@ def render_thought_items(thoughts: list[dict]) -> None:
         st.markdown(format_thought_line(thought), unsafe_allow_html=True)
 
 
+def normalize_monitor_record(record: dict) -> dict:
+    """让历史监控中的追问展示严格跟随该轮保存的 ai_followup。"""
+    if not isinstance(record, dict) or record.get("is_live"):
+        return record
+
+    normalized = dict(record)
+    thoughts = [
+        dict(t)
+        for t in normalized.get("agent_thoughts", [])
+        if isinstance(t, dict) and t.get("node") != "followup_generation"
+    ]
+
+    followup = str(normalized.get("ai_followup") or "").strip()
+    if followup:
+        thoughts.append({
+            "node": "followup_generation",
+            "title": get_node_title("followup_generation"),
+            "content": f"生成追问：{followup}",
+            "elapsed_seconds": normalized.get("node_times", {}).get("followup_generation"),
+            "time": normalized.get("time", ""),
+        })
+
+    normalized["agent_thoughts"] = thoughts
+    return normalized
+
+
 def get_monitor_records(max_recent: int = 10) -> list[dict]:
     """读取历史轮次和当前实时轮次，供监控 Tab 只读展示。"""
     raw_records = st.session_state.get("round_records", [])
@@ -487,9 +513,10 @@ def get_monitor_records(max_recent: int = 10) -> list[dict]:
         records = list(raw_records.values())
     else:
         records = list(raw_records)
+    records = [normalize_monitor_record(record) for record in records]
 
     live_thoughts = st.session_state.get("live_agent_thoughts", [])
-    if live_thoughts:
+    if live_thoughts and st.session_state.get("is_processing", False):
         records.append({
             "round": st.session_state.get("live_agent_round") or st.session_state.get("round_num", 0),
             "time": "进行中",
@@ -533,30 +560,31 @@ def render_agent_monitor(max_recent: int = 10) -> None:
         for record in recent_records
     ]
     with left_col:
-        selected_label = st.radio(
+        selected_index = st.radio(
             "轮次",
-            labels,
+            range(len(labels)),
+            format_func=lambda i: labels[i],
             index=len(labels) - 1,
-            key="monitor_round_selector",
+            key=f"monitor_round_selector_{len(labels)}_{labels[-1]}",
         )
         st.caption(f"最多显示最近 {max_recent} 轮")
 
-    selected_record = recent_records[labels.index(selected_label)]
+    selected_record = recent_records[selected_index]
     with right_col:
         round_no = selected_record.get("round", "?")
-        expanded = bool(selected_record.get("is_live")) or labels.index(selected_label) == len(labels) - 1
+        expanded = bool(selected_record.get("is_live")) or selected_index == len(labels) - 1
         with st.expander(f"第 {round_no} 轮 Agent 思考", expanded=expanded):
             render_thought_items(selected_record.get("agent_thoughts") or [])
 
-        if len(recent_records) > 1:
-            st.markdown("#### 最近轮次概览")
-            for record in reversed(recent_records[-5:]):
-                title = f"第 {record.get('round', '?')} 轮"
-                if record.get("is_live"):
-                    title += "（进行中）"
-                with st.expander(title, expanded=bool(record.get("is_live"))):
-                    render_thought_items(record.get("agent_thoughts") or [])
+    st.markdown("</div>", unsafe_allow_html=True)
 
+
+def render_live_agent_monitor(round_num: int, thoughts: list[dict]) -> None:
+    """只渲染当前运行轮次，避免流式刷新时重复创建交互控件。"""
+    st.markdown('<div class="monitor-shell">', unsafe_allow_html=True)
+    st.subheader("Agent 思考监控")
+    st.caption(f"第 {round_num} 轮正在运行，这里只显示本轮已完成节点。")
+    render_thought_items(thoughts)
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -781,6 +809,8 @@ def main():
         st.session_state.live_agent_thoughts = []
     if "live_agent_round" not in st.session_state:
         st.session_state.live_agent_round = None
+    if "is_processing" not in st.session_state:
+        st.session_state.is_processing = False
 
     if "last_thinking_time" not in st.session_state:
         st.session_state.last_thinking_time = 0.0
@@ -880,6 +910,7 @@ def main():
             st.session_state.round_records = []
             st.session_state.live_agent_thoughts = []
             st.session_state.live_agent_round = None
+            st.session_state.is_processing = False
             reset_logger()  # 清空上一轮日志
             st.rerun()
 
@@ -975,6 +1006,7 @@ def render_dialogue_page(monitor_placeholder=None):
             st.session_state.state["round_id"] = round_num
             st.session_state.live_agent_round = round_num
             st.session_state.live_agent_thoughts = []
+            st.session_state.is_processing = True
 
             # 清空本轮临时字段，避免上一轮结果残留
             st.session_state.state["specialist_results"] = []
@@ -992,6 +1024,7 @@ def render_dialogue_page(monitor_placeholder=None):
                 t_start = time.time()
                 accumulated_state = dict(st.session_state.state)
                 agent_thoughts = []
+                generated_followup = ""
 
                 try:
                     # 使用 stream 代替 invoke，逐个节点获取更新
@@ -1000,6 +1033,8 @@ def render_dialogue_page(monitor_placeholder=None):
                         for node_name, node_update in event.items():
                             # 使用安全合并函数，避免列表覆盖
                             merge_node_update(accumulated_state, node_update)
+                            if node_name == "followup_generation":
+                                generated_followup = node_update.get("last_followup_question", "") or ""
 
                             # 更新状态栏标签
                             title = get_node_title(node_name)
@@ -1020,7 +1055,7 @@ def render_dialogue_page(monitor_placeholder=None):
                                 append_live_agent_thought(agent_thoughts, thought_entry)
                                 if monitor_placeholder is not None:
                                     with monitor_placeholder.container():
-                                        render_agent_monitor()
+                                        render_live_agent_monitor(round_num, st.session_state.live_agent_thoughts)
 
                     # 所有节点执行完毕
                     t_end = time.time()
@@ -1054,7 +1089,7 @@ def render_dialogue_page(monitor_placeholder=None):
                     round_record = {
                         "round": round_num,
                         "user_input": user_input,
-                        "ai_followup": st.session_state.state.get("last_followup_question", ""),
+                        "ai_followup": generated_followup,
                         "elapsed": elapsed,
                         "node_times": node_times,
                         "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -1083,6 +1118,7 @@ def render_dialogue_page(monitor_placeholder=None):
                     st.session_state.round_records.append(round_record)
                     st.session_state.live_agent_thoughts = []
                     st.session_state.live_agent_round = None
+                    st.session_state.is_processing = False
 
                     # 更新显示数据
                     st.session_state.current_lie_index = st.session_state.state.get("lie_index", 0.0)
@@ -1093,6 +1129,9 @@ def render_dialogue_page(monitor_placeholder=None):
 
                 except Exception as e:
                     logger.end_round()  # 即使出错也要结束本轮日志
+                    st.session_state.live_agent_thoughts = []
+                    st.session_state.live_agent_round = None
+                    st.session_state.is_processing = False
                     status.update(label=f"❌ 分析出错: {str(e)}", state="error")
                     st.error(f"运行出错：{e}")
                     return
@@ -1169,16 +1208,19 @@ def _generate_final_report(monitor_placeholder=None):
     if st.session_state.final_report_shown:
         return
 
+    display_round = st.session_state.get("round_num", 0)
+    # 内部仍用 MAX_ROUNDS 触发 graph 进入 report_generation，不把它作为真实对话轮次展示或保存。
     st.session_state.state["round_id"] = MAX_ROUNDS
     st.session_state.state["specialist_results"] = []
     st.session_state.state["called_specialists"] = []
     st.session_state.state["next_action"] = "final_report"
-    st.session_state.live_agent_round = MAX_ROUNDS
+    st.session_state.live_agent_round = display_round
     st.session_state.live_agent_thoughts = []
+    st.session_state.is_processing = True
 
     # 为最终报告轮次也记录日志
     logger = get_logger()
-    logger.start_round(MAX_ROUNDS, "（自动生成最终报告）")
+    logger.start_round(display_round, "（自动生成最终报告）")
 
     try:
         t_start = time.time()
@@ -1203,7 +1245,7 @@ def _generate_final_report(monitor_placeholder=None):
                     append_live_agent_thought(agent_thoughts, thought_entry)
                     if monitor_placeholder is not None:
                         with monitor_placeholder.container():
-                            render_agent_monitor()
+                            render_live_agent_monitor(display_round, st.session_state.live_agent_thoughts)
 
         t_end = time.time()
         elapsed = t_end - t_start
@@ -1220,6 +1262,7 @@ def _generate_final_report(monitor_placeholder=None):
             node_name = thought.get("node")
             thought["elapsed_seconds"] = node_times.get(node_name)
 
+        accumulated_state["round_id"] = display_round
         st.session_state.state.update(accumulated_state)
         st.session_state.final_report_shown = True
 
@@ -1227,33 +1270,10 @@ def _generate_final_report(monitor_placeholder=None):
         st.session_state.current_lie_index = accumulated_state.get("lie_index", 0.0)
         st.session_state.dimension_scores = accumulated_state.get("dimension_scores", {})
 
-        # 将最终报告轮次加入 round_records
-        final_round_record = {
-            "round": MAX_ROUNDS,
-            "user_input": "（自动生成最终报告）",
-            "ai_followup": "",
-            "elapsed": elapsed,
-            "node_times": node_times,
-            "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "lie_index": accumulated_state.get("lie_index", 0.0),
-            "dimension_scores": accumulated_state.get("dimension_scores", {}),
-            "risk_explanation": accumulated_state.get("risk_explanation", []),
-            "selected_specialists": [],
-            "called_specialists": [],
-            "quick_fact_summary": "",
-            "quick_signal_summary": "",
-            "surface_risk_score": 0.0,
-            "has_new_fact": False,
-            "routing_decision": {},
-            "priority_issue": "",
-            "followup_strategy": "",
-            "current_facts": [],
-            "current_anomalies": [],
-            "agent_thoughts": agent_thoughts,
-        }
-        st.session_state.round_records.append(final_round_record)
+        st.session_state.final_report_agent_thoughts = agent_thoughts
         st.session_state.live_agent_thoughts = []
         st.session_state.live_agent_round = None
+        st.session_state.is_processing = False
 
         # 保存完整 session 数据到 outputs 目录
         saved_path = _save_session_to_outputs(
@@ -1270,6 +1290,9 @@ def _generate_final_report(monitor_placeholder=None):
 
     except Exception as e:
         logger.end_round()
+        st.session_state.live_agent_thoughts = []
+        st.session_state.live_agent_round = None
+        st.session_state.is_processing = False
         st.error(f"生成报告出错：{e}")
 
 
